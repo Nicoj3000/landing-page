@@ -2,22 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.custom-margin {
+  margin-top: 40px; /* Ajusta el valor según sea necesario */
+  margin-right: 40px; /* Ajusta el valor según sea necesario */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
+
+html {
+  /* height: 100%; */
+}
+html,
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  /* height: 100%; */
+  color: #fff;
+  background: #1f1934;
+}
+
+main {
+  background: #393a47;
+  height: 100vh;
+  height: 100dvh;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  background-color: #f5741c;
 }
 
 @layer utilities {
