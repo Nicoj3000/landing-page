@@ -14,10 +14,10 @@ const ServicesPage = () => {
             Mis <span className="font-bold text-secondary"> servicios.</span>
           </h1>
           <div className="mb-3 text-xl text-gray-300">
-            <p>Hi! I'm Nicolas. I am a software engineer.</p>
-            <p>🔭 Im currently student.</p>
-            <p>🌱 Im currently learning TypeScript.</p>
-            <p>👯 Im looking to collaborate on projects.</p>
+          <p>Hi! I&apos;m Nicolas. I am a software engineer.</p>
+            <p>🔭 I&apos;m currently a student.</p>
+            <p>🌱 I&apos;m currently learning TypeScript.</p>
+            <p>👯 I&apos;m looking to collaborate on projects.</p>
             <p>
               💬 Ask me about SQL, JavaScript, Postgres, MongoDB, NodeJS,
               TypeScript, Python, Java and much more.
