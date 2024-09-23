@@ -9,11 +9,11 @@ const ServicesPage = () => {
 
 
       <div className="grid items-center justify-center h-screen max-w-5xl gap-6 mx-auto md:grid-cols-2">
-        <div className="max-w-[450px]">
+        <div className="max-w-[450px] mt-32">
           <h1 className="text-2xl leading-tight text-center md:text-left md:text-4xl md:mb-5">
             Mis <span className="font-bold text-secondary"> servicios.</span>
           </h1>
-          <div className="mb-3 text-xl text-gray-300">
+          <div className="mb-3 text-xl text-gray-300 space-y-4 ">
           <p>Hi! I&apos;m Nicolas. I am a software engineer.</p>
             <p>🔭 I&apos;m currently a student.</p>
             <p>🌱 I&apos;m currently learning TypeScript.</p>
@@ -23,7 +23,7 @@ const ServicesPage = () => {
               TypeScript, Python, Java and much more.
             </p>
           </div>
-          <button className="px-3 py-2 rounded-lg bg-secondary hover:bg-secondary/65">
+          <button className="px-3 py-2 rounded-lg bg-secondary hover:bg-secondary/65 mt-6">
             Contacta conmigo
           </button>
         </div>
