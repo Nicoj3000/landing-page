@@ -1,4 +1,4 @@
-import { BookText, CodeSquare, HomeIcon, UserRound, Linkedin, Twitter, Rss, Twitch, Youtube, Crop, Pencil, Computer, Book, Rocket, Speech, X, Instagram, Github } from "lucide-react";
+import { BookText, CodeSquare, HomeIcon, UserRound, Linkedin, Twitter, Rss, Twitch, Youtube, Crop, Pencil, Computer, Book, Rocket, Speech, X, Instagram, Github, Laptop, Server } from "lucide-react";
 
 export const socialNetworks = [
     {
@@ -111,22 +111,19 @@ export const dataCounter = [
 
 export const serviceData = [
     {
-        icon: <Crop />,
-        title: "Branding",
-        description: "Desarrollo de una identidad de marca sólida y coherente, incluyendo diseño de logotipo, colores y elementos visuales",
+        icon: <Laptop />,
+        title: "Web development",
+        description: "React Development implementing dynamic interfaces Optimization with Next.js for faster loading."
+
+
     },
 
     {
-        icon: <Computer />,
-        title: "Desarrollo web",
-        description: "Diseño y desarrollo de sitios web a medida, adaptados a tus necesidades",
+        icon: <Server />,
+        title: "Backend Development",
+        description: "Developing backend applications using Node.js for building fast and scalable solutions",
     },
-    {
-        icon: <Book />,
-        title: "Copywriting",
-        description: "Creación de contenido persuasivo y atractivo que capta la atención de tu audiencia",
-    },
-   
+
 ];
 
 export const dataPortfolio = [
@@ -154,6 +151,14 @@ export const dataTestimonials = [
         description:
             "¡Increíble plataforma! Muy bueno. ¡Altamente recomendado!",
         imageUrl: "/juanescode.png",
+    },
+
+    {
+        id: 2,
+        name: "Valeria Gomez",
+        description:
+            "¡Increíble plataforma! Muy bueno. ¡Altamente recomendado!",
+        imageUrl: "/valeria.png",
     },
 
 ];
