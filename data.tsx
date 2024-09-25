@@ -1,28 +1,35 @@
 import { BookText, CodeSquare, HomeIcon, UserRound, Linkedin, Twitter, Rss, Twitch, Youtube, Crop, Pencil, Computer, Book, Rocket, Speech, X, Instagram, Github, Laptop, Server } from "lucide-react";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faXTwitter, faTwitch, faLinkedin, faDiscord } from '@fortawesome/free-brands-svg-icons';
 export const socialNetworks = [
     {
         id: 4,
-        logo: <Github size={30} strokeWidth={1} />,
+        logo: <FontAwesomeIcon icon={faGithub} size="2x" />,
         src: "https://github.com/Nicoj3000",
     },
     
 
     {
         id: 3,
-        logo: <X size={30} strokeWidth={1} />,
+        logo: <FontAwesomeIcon icon={faXTwitter} size="2x" />,
         src: "https://x.com/Nicoj3000",
     },
 
     {
         id: 5,
-        logo: <Twitch size={30} strokeWidth={1} />,
+        logo: <FontAwesomeIcon icon={faTwitch} size="2x" />,
         src: "https://www.twitch.tv/nicoj_3000",
     },
     {
         id: 2,
-        logo: <Linkedin size={30} strokeWidth={1} />,
+        logo: <FontAwesomeIcon icon={faLinkedin} size="2x" />,
         src: "https://www.linkedin.com/in/nicolas-delgado-6b22372b7/",
+    },
+    
+    {
+        id: 1,
+        logo: <FontAwesomeIcon icon={faDiscord} size="2x" />,
+        src: "https://discordapp.com/users/470297641302097961",
     },
 ];
 
