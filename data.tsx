@@ -81,7 +81,7 @@ export const dataAboutPage = [
     title: "Software engineer",
     subtitle: "Universidad libre of Pereira",
     description:
-      "I am in the 8th semester of software engineering at the Universidad Libre de Pereira, where I am acquiring technical skills and specialized knowledge in software development and web application design..",
+      "I am in the 8th semester of software engineering at the Universidad Libre de Pereira, where I am acquiring technical skills and specialized knowledge in software development and web application design.",
     date: "2021 - 2024 ",
   },
   {
@@ -155,6 +155,14 @@ export const dataPortfolio = [
     image: "/image-2.jpg",
     urlGithub: "https://github.com/Nicoj3000/Vale-project",
     urlDemo: "https://valnick.netlify.app/",
+  },
+  {
+    id: 3,
+    title: "Admin PythonWebFlask",
+    image: "/image-3.jpg",
+    urlGithub: "https://github.com/Nicoj3000/project-python-flask-mysql",
+    urlDemo: "#",
+
   },
 ];
 
