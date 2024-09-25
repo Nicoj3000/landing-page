@@ -22,17 +22,8 @@ export const socialNetworks = [
     src: "https://github.com/Nicoj3000",
   },
 
-  {
-    id: 3,
-    logo: <FontAwesomeIcon icon={faXTwitter} size="2x" />,
-    src: "https://x.com/Nicoj3000",
-  },
+  
 
-  {
-    id: 5,
-    logo: <FontAwesomeIcon icon={faTwitch} size="2x" />,
-    src: "https://www.twitch.tv/nicoj_3000",
-  },
   {
     id: 2,
     logo: <FontAwesomeIcon icon={faLinkedin} size="2x" />,
@@ -43,6 +34,11 @@ export const socialNetworks = [
     id: 1,
     logo: <FontAwesomeIcon icon={faWhatsapp} size="2x" />,
     src: "https://wa.link/lhrth3",
+  },
+  {
+    id: 3,
+    logo: <FontAwesomeIcon icon={faXTwitter} size="2x" />,
+    src: "https://x.com/Nicoj3000",
   },
 ];
 
@@ -166,14 +162,14 @@ export const dataTestimonials = [
   {
     id: 1,
     name: "Juan Esteban Villada",
-    description: "¡Incredible platform! Very good. Highly recommended!",
+    description: "This platform has exceeded my expectations in every way. The features are robust and the performance is outstanding.  I highly recommend this developer to anyone looking for a reliable and efficient solution.",
     imageUrl: "/juanescode.png",
   },
 
   {
     id: 2,
     name: "Valeria Gomez",
-    description: "¡Incredible platform! Very good. Highly recommended!",
+    description: "I had an exceptional experience with this platform. The user interface is intuitive and easy to navigate. The customer support team is responsive and very helpful. I was able to achieve my goals efficiently and effectively.",
     imageUrl: "/valeria.png",
   },
 ];
