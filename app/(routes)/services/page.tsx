@@ -23,17 +23,19 @@ const ServicesPage = () => {
                 TypeScript, Python, Java and much more.
               </p>
             </div>
+            <div className="mt-8">
             <Link
-              className="px-4 py-3 rounded-lg bg-secondary hover:bg-secondary/65 text-white hover:text-white/90"
+              className="px-6 py-3 my-2 transition-all border-2 cursor-pointer text-sm w-fit rounded-xl hover:shadow-xl hover:shadow-white/50"
               href="/CV.pdf"
               target="_blank"
             >
               Contact me
             </Link>
+            </div>
           </div>
 
           {/* SLIDER */}
-          <div>
+          <div className="mt-6">
             <SliderServices />
           </div>
         </div>

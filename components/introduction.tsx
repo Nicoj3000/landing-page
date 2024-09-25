@@ -10,7 +10,7 @@ const Introduction = () => {
         <div className="z-20 grid items-center h-full p-10 py-26 md:py-14 md:grid-cols-2">
           <Image src="/home-4.png" alt="Profile pic" width={800} height={800} />
           <div className="flex flex-col justify-center max-w-xl">
-            <h1 className="mb-5 text-4xl leading-tight text-center md:text-left md:text-5xl md:mb-10">
+            <h1 className="mb-5 text-3xl leading-tight md:text-left md:text-5xl md:mb-10">
               If you can think it, <br />
               <TypeAnimation
                 sequence={[
@@ -30,20 +30,20 @@ const Introduction = () => {
               />
             </h1>
 
-            <p className="mx-auto mb-4 text-2xl md:text-3xl md:mx-0 md:mb-8">
+            <p className="mx-auto mb-4 text-lg md:text-3xl md:mx-0 md:mb-8">
               On the path to becoming a Fullstack Developer to create fantastic
               digital experiences, eager to learn more every day.
             </p>
 
-            <div className="flex items-center justify-center gap-6 md:justify-start md:gap-14">
+            <div className="flex items-center justify-center gap-4 md:justify-start md:gap-14">
               <a
                 href="/portfolio"
-                className="px-4 py-3 my-2 transition-all border-2 cursor-pointer text-lg w-fit rounded-xl hover:shadow-xl hover:shadow-white/50"
+                className="px-6 py-3 my-2 transition-all border-2 cursor-pointer text-sm w-fit rounded-xl hover:shadow-xl hover:shadow-white/50"
               >
                 See my work
               </a>
               <Link
-                className="px-4 py-3 my-5 transition-all border-2 cursor-pointer text-lg w-fit text-secondary border-secondary rounded-xl hover:shadow-xl hover:shadow-secondary"
+                className="px-6 py-3 my-2 transition-all border-2 cursor-pointer text-sm w-fit rounded-xl hover:shadow-xl hover:shadow-white/50"
                 href="/CV.pdf"
                 target="_blank"
               >
