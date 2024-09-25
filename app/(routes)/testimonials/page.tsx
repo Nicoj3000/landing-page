@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import ContainerTestimonialPage from '@/components/container-testimonial-page';
 
 
 import { dataTestimonials } from '@/data';
@@ -13,6 +14,7 @@ import TransitionPage from '@/components/transition-page';
 const TestimonialsPage = () => {
     return (
         <>
+        <ContainerTestimonialPage>
             <TransitionPage />
             <div className='flex flex-col justify-center h-lvh'>
                 <h1 className="text-4xl leading-tight text-center md:text-5xl md:mb-5">
@@ -49,6 +51,7 @@ const TestimonialsPage = () => {
                     </div>
                 </div>
             </div>
+            </ContainerTestimonialPage>
         </>
     );
 }
