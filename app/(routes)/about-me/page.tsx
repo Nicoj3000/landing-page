@@ -12,9 +12,9 @@ const AboutMePage = () => {
             <ContainerPage>
                
                 <h1 className="text-2xl leading-tight text-center md:text-left md:text-5xl md:mt-10">
-                    Toda mi{' '}
+                    My entire{' '}
                     <span className="font-bold text-secondary">
-                        trayectoria profesional
+                       profesional career 
                     </span>
                 </h1>
 

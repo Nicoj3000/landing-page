@@ -64,15 +64,15 @@ export const dataAboutPage = [
     {
         id: 1,
         title: "Software engineer",
-        subtitle: "Universidad libre de Pereira",
-        description: "Estoy en 8 semestre de ingeniería de software en la Universidad Libre de Pereira, donde estoy adquiriendo habilidades técnicas y conocimientos especializados en desarrollo de software y diseño de aplicaciones web.",
+        subtitle: "Universidad libre of Pereira",
+        description: "I am in the 8th semester of software engineering at the Universidad Libre de Pereira, where I am acquiring technical skills and specialized knowledge in software development and web application design..",
         date: "2021 - 2024 ",
     },
     {
         id: 2,
         title: "Developer Frontend and Backend",
-        subtitle: "Estudio propio",
-        description: "A lo largo de mi carrera, he adquirido habilidades en desarrollo frontend y backend, lo que me ha permitido trabajar en proyectos desafiantes y colaborar con equipos multidisciplinarios, con experiencia en tecnologías como React, Node.js, MongoDB, SQL, Postgres, TypeScript, JavaScript, HTML, CSS, Python entre otros.",
+        subtitle: "Own Studio",
+        description: "Throughout my career, I have acquired skills in frontend and backend development, which has allowed me to work on challenging projects and collaborate with multidisciplinary teams, with experience in technologies such as React, Node.js, MongoDB, SQL, Postgres, TypeScript, JavaScript, HTML, CSS, Python among others.",
         date: "Sep 2024",
     },
 
@@ -82,28 +82,28 @@ export const dataCounter = [
     {
         id: 0,
         endCounter: 1,
-        text: "Años de experiencia",
+        text: "Experience years",
         lineRight: true,
         lineRightMobile: true,
     },
     {
         id: 1,
         endCounter: 2,
-        text: "Clientes satisfechos",
+        text: "Clients satisfied",
         lineRight: true,
         lineRightMobile: false,
     },
     {
         id: 2,
         endCounter: 4,
-        text: "Proyectos finalizados",
+        text: "Projects completed",
         lineRight: true,
         lineRightMobile: true,
     },
     {
         id: 3,
         endCounter: 0,
-        text: "Premios ganadores",
+        text: "Awards won",
         lineRight: false,
         lineRightMobile: false,
     },
@@ -149,7 +149,7 @@ export const dataTestimonials = [
         id: 1,
         name: "Juan Esteban Villada",
         description:
-            "¡Increíble plataforma! Muy bueno. ¡Altamente recomendado!",
+            "¡Incredible platform! Very good. Highly recommended!",
         imageUrl: "/juanescode.png",
     },
 
@@ -157,7 +157,7 @@ export const dataTestimonials = [
         id: 2,
         name: "Valeria Gomez",
         description:
-            "¡Increíble plataforma! Muy bueno. ¡Altamente recomendado!",
+            "¡Incredible platform! Very good. Highly recommended!",
         imageUrl: "/valeria.png",
     },
 
