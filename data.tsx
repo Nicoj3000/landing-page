@@ -113,7 +113,7 @@ export const serviceData = [
     {
         icon: <Laptop />,
         title: "Web development",
-        description: "React Development implementing dynamic interfaces Optimization with Next.js for faster loading."
+        description: "React Development implementing dynamic interfaces Optimization with Next.js for faster loading. Responsive design for mobile and desktop devices.",
 
 
     },
@@ -121,8 +121,11 @@ export const serviceData = [
     {
         icon: <Server />,
         title: "Backend Development",
-        description: "Developing backend applications using Node.js for building fast and scalable solutions",
+        description: "Developing backend applications using Node.js for building fast and scalable solutions with Express.js and MongoDB.",
     },
+
+  
+
 
 ];
 

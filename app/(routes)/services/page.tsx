@@ -8,12 +8,12 @@ const ServicesPage = () => {
     <>
       <TransitionPage />
       <ContainerPage>
-        <div className="grid items-center justify-center  max-w-6xl gap-6 mx-auto md:grid-cols-2">
-          <div className="max-w-[450px] mt-16">
+        <div className="grid items-center justify-center  max-w-5xl gap-5 mx-auto md:grid-cols-2">
+          <div className="max-w-[400px] mt-16">
             <h1 className="text-2xl leading-tight text-center md:text-left md:text-4xl md:mb-5">
               My <span className="font-bold text-secondary"> services.</span>
             </h1>
-            <div className="mb-3 text-xl text-gray-300 space-y-4 ">
+            <div className="mb-3 text-lg text-gray-300 space-y-3 ">
               <p>Hi! I&apos;m Nicolas. I am a software engineer.</p>
               <p>🔭 I&apos;m currently a student.</p>
               <p>🌱 I&apos;m currently learning TypeScript.</p>

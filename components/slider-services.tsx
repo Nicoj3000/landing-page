@@ -27,7 +27,7 @@ const SliderServices = () => {
                 clickable: true
             }}
             modules={[Pagination]}
-            className="h-[320px] md:h-[380px] w-[400px] md:w-[700px]"
+            className="h-[400px] md:h-[400px] w-[300px] md:w-[850px]"
         >
             {serviceData.map((item, index) => (
                 <SwiperSlide key={index} >
