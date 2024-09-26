@@ -5,9 +5,9 @@ import Link from "next/link";
 
 const Introduction = () => {
   return (
-    <div className="z-20 w-full bg-darkBg/60">
-      <ContainerMainPage>
-        <div className="z-20 grid items-center h-full p-10 py-26 md:py-14 md:grid-cols-2">
+    <div className="z-20 w-full bg-darkBg/60 h-full">
+
+        <div className="z-20 grid items-center p-10 py-32 md:py-0 md:grid-cols-2">
           <Image src="/home-4.png" alt="Profile pic" width={800} height={800} />
           <div className="flex flex-col justify-center max-w-xl">
             <h1 className="mb-5 text-3xl leading-tight md:text-left md:text-5xl md:mb-10">
@@ -52,7 +52,6 @@ const Introduction = () => {
             </div>
           </div>
         </div>
-      </ContainerMainPage>
     </div>
   );
 };
