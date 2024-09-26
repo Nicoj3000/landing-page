@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
-import ContainerMainPage from "./container-main-page";
 import Link from "next/link";
 
 const Introduction = () => {
