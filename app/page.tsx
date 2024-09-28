@@ -1,17 +1,22 @@
 "use client"
 
+
+import  "@/utils/i18n";
+import i18n from "../utils/i18n";
+import { I18nextProvider } from "react-i18next";
+
 import { CoverParticles } from "@/components/cover-particles";
 import Introduction from "@/components/introduction";
 import TransitionPage from "@/components/transition-page";
 
 export default function Home() {
   return (
-    <main>
+      <I18nextProvider i18n={i18n}>
       <TransitionPage />
-      <div className="flex min-h-[100vh] h-full bg-no-repeat bg-gradient-cover">
+      <div className="flex min-h-[120vh] h-full bg-no-repeat bg-gradient-cover">
         <CoverParticles />
         <Introduction />
       </div>
-    </main>
+      </I18nextProvider>
   );
 }

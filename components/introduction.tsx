@@ -1,56 +1,70 @@
-import Image from "next/image";
-import { TypeAnimation } from "react-type-animation";
-import Link from "next/link";
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { TypeAnimation } from 'react-type-animation';
+import { useTranslation } from 'react-i18next';
+import Link from 'next/link';
 
 const Introduction = () => {
+  const { t, i18n } = useTranslation();
+  const [language, setLanguage] = useState(i18n.language);
+
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setLanguage(i18n.language);
+    };
+
+    i18n.on('languageChanged', handleLanguageChange);
+
+    return () => {
+      i18n.off('languageChanged', handleLanguageChange);
+    };
+  }, [i18n]);
+
   return (
     <div className="z-20 w-full bg-darkBg/60 h-full">
-
-        <div className="z-20 grid items-center p-10 py-32 md:py-0 md:grid-cols-2">
-          <Image src="/home-4.png" alt="Profile pic" width={800} height={800} />
-          <div className="flex flex-col justify-center max-w-xl">
-            <h1 className="mb-5 text-3xl leading-tight md:text-left md:text-5xl md:mb-10">
-              If you can think it, <br />
-              <TypeAnimation
-                sequence={[
-                  "you can program it",
-                  1000,
-                  "you can design it",
-                  1000,
-                  "you can create it",
-                  1000,
-                  "you can build it",
-                  1000,
-                ]}
-                wrapper="span"
-                speed={50}
-                repeat={Infinity}
-                className="font-bold text-secondary"
-              />
-            </h1>
-
-            <p className="mx-auto mb-4 text-lg md:text-3xl md:mx-0 md:mb-8">
-              On the path to becoming a Fullstack Developer to create fantastic
-              digital experiences, eager to learn more every day.
-            </p>
-
-            <div className="flex items-center justify-center gap-4 md:justify-start md:gap-14">
-              <a
-                href="/portfolio"
-                className="px-6 py-3 my-2 transition-all border-2 cursor-pointer text-sm w-fit rounded-xl hover:shadow-xl hover:shadow-white/50"
-              >
-                See my work
-              </a>
-              <Link
-                className="px-6 py-3 my-2 transition-all border-2 cursor-pointer text-sm w-fit rounded-xl hover:shadow-xl hover:shadow-white/50"
-                href="/CV.pdf"
-                target="_blank"
-              >
-                Contact me
-              </Link>
-            </div>
+      <div className="z-20 grid items-center p-10 py-32 md:py-0 md:grid-cols-2">
+        <Image src="/home-4.png" alt="Profile pic" width={800} height={800} />
+        <div className="flex flex-col justify-center max-w-xl">
+          <h1 className="mb-5 text-3xl leading-tight md:text-left md:text-5xl md:mb-10">
+            {t('titleI')} <br />
+            <TypeAnimation
+              key={language} // Forzar re-renderización cuando cambie el idioma
+              sequence={[
+                t('titleI1'),
+                1000,
+                t('titleI2'),
+                1000,
+                t('titleI3'),
+                1000,
+                t('titleI4'),
+                1000,
+              ]}
+              wrapper="span"
+              speed={50}
+              repeat={Infinity}
+              className="font-bold text-secondary"
+            />
+          </h1>
+          <p className="mx-auto mb-4 text-lg md:text-3xl md:mx-0 md:mb-8">
+            {t('titleI5')}
+          </p>
+          <div className="flex items-center justify-center gap-4 md:justify-start md:gap-14">
+            <a
+              href="/portfolio"
+              className="px-6 py-3 my-2 transition-all border-2 cursor-pointer text-sm w-fit rounded-xl hover:shadow-xl hover:shadow-white/50"
+            >
+              {t('titleI6')}
+            </a>
+            <Link
+              className="px-6 py-3 my-2 transition-all border-2 cursor-pointer text-sm w-fit rounded-xl hover:shadow-xl hover:shadow-white/50"
+              href="/CV.pdf"
+              target="_blank"
+            >
+              {t('titleI7')}
+            </Link>
           </div>
         </div>
+      </div>
     </div>
   );
 };

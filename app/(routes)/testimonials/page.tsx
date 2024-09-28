@@ -10,16 +10,18 @@ import { dataTestimonials } from '@/data';
 
 
 import TransitionPage from '@/components/transition-page';
+import { useTranslation } from 'react-i18next';
 
 const TestimonialsPage = () => {
+    const { t } = useTranslation();
     return (
         <>
         <ContainerTestimonialPage>
             <TransitionPage />
             <div className='flex flex-col justify-center h-lvh'>
                 <h1 className="text-4xl leading-tight text-center md:text-5xl md:mb-5">
-                    Some comments
-                    <span className="block font-bold text-secondary"> from us clients</span>
+                    {t('titleT1')}
+                    <span className="block font-bold text-secondary"> {t('titleT2')} </span>
                 </h1>
                 <div className="flex items-center justify-center">
                     <div>
@@ -41,9 +43,9 @@ const TestimonialsPage = () => {
                             {dataTestimonials.map(({ id, name, description, imageUrl }) => (
                                 <SwiperSlide key={id}>
                                     <Image src={imageUrl} alt={name} width={1000} height={1000} className="mx-auto md:w-[200px] md:h-[200px] h-[150px] w-[150px] rounded-full" />
-                                    <h4 className='text-center text-2xl mt-6'>{name}</h4>
+                                    <h4 className='text-center text-2xl mt-6'>{t(name)}</h4>
                                     <div className="mt-5 text-center text-xl">
-                                        {description}
+                                        {t(description)}
                                     </div>
                                 </SwiperSlide>
                             ))}
