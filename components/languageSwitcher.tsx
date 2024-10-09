@@ -20,6 +20,10 @@ const LanguageSelector: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const capitalizeFirstLetter = (string: string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   return (
     <div className="relative">
       <legend
@@ -29,6 +33,8 @@ const LanguageSelector: React.FC = () => {
         <span className="mr-2">
           <FontAwesomeIcon icon={faEarthAmericas} />
         </span>
+        <span className="mr-2">{capitalizeFirstLetter(i18n.language)}</span>
+        
         <ChevronDown className="w-4 h-4 ml-1" />
       </legend>
       {isOpen && (
