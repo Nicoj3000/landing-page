@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const LanguageSelector: React.FC = () => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [,setLanguage] = useState(i18n.language); // Estado local para forzar la actualización
+  const [, setLanguage] = useState(i18n.language); // Estado local para forzar la actualización
 
   const changeLanguage = (event: React.ChangeEvent<HTMLInputElement>) => {
     i18n.changeLanguage(event.target.value).then(() => {
@@ -24,17 +24,18 @@ const LanguageSelector: React.FC = () => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+  const currentLanguage = i18n.language ? capitalizeFirstLetter(i18n.language) : 'En';
+
   return (
     <div className="relative">
       <legend
         className="text-3xl mt-1 font-bold text-white select-none cursor-pointer flex items-center"
         onClick={toggleDropdown}
       >
+        <span className="mr-2">{currentLanguage}</span>
         <span className="mr-2">
           <FontAwesomeIcon icon={faEarthAmericas} />
         </span>
-        <span className="mr-2">{capitalizeFirstLetter(i18n.language)}</span>
-        
         <ChevronDown className="w-4 h-4 ml-1" />
       </legend>
       {isOpen && (
