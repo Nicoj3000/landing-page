@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { itemsNavbar } from "@/data";
 
+
 import { MotionTransition } from "./transition-component";
 import { usePathname } from "next/navigation";
 
