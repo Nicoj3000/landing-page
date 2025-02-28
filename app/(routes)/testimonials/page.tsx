@@ -10,6 +10,7 @@ import { dataTestimonials } from "@/data";
 import TransitionPage from "@/components/transition-page";
 import { useTranslation } from "react-i18next";
 import { ArrowRightIcon } from "lucide-react";
+import { CoverParticles } from "@/components/cover-particles";
 
 const TestimonialsPage = () => {
   const { t } = useTranslation();
@@ -17,6 +18,7 @@ const TestimonialsPage = () => {
     <>
       <ContainerTestimonialPage>
         <TransitionPage />
+        <CoverParticles />
         <div className="flex flex-col justify-center h-lvh">
           <h1 className="text-4xl leading-tight text-center md:text-5xl md:mb-5">
             {t("titleT1")}

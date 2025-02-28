@@ -4,6 +4,7 @@ import TransitionPage from "@/components/transition-page";
 import ContainerPage from "@/components/container-page";
 import PortfolioBox from "@/components/portfolio-box";
 import { useTranslation } from "react-i18next";
+import { CoverParticles } from "@/components/cover-particles";
 
 const PortfolioPage = () => {
   const { t } = useTranslation();
@@ -11,6 +12,7 @@ const PortfolioPage = () => {
   return (
     <ContainerPage>
       <TransitionPage />
+      <CoverParticles />
       <h1 className="text-2xl leading-tight text-center md:text-4xl md:mb-5">
         {t('titleP1')} <span className="font-bold text-secondary">{t('titleP2')}</span>
       </h1>

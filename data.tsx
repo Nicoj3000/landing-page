@@ -93,26 +93,40 @@ export const dataAboutPage = [
       "timeline.description2",
     date: "Sep 2024",
   },
+  {
+    id: 3,
+    titleKey: "timeline.title3",
+    subtitleKey: "timeline.subtitle3",
+    descriptionKey: "timeline.description3",
+    date: "2025",
+  },
+  {
+    id: 4,
+    titleKey: "timeline.title4",
+    subtitleKey: "timeline.subtitle4",
+    descriptionKey: "timeline.description4",
+    date: "2025",
+  },
 ];
 
 export const dataCounter = [
   {
     id: 0,
-    endCounter: 1,
+    endCounter: 2,
     text: "counters.title1",
     lineRight: true,
     lineRightMobile: true,
   },
   {
     id: 1,
-    endCounter: 2,
+    endCounter: 4,
     text: "counters.title2",
     lineRight: true,
     lineRightMobile: false,
   },
   {
     id: 2,
-    endCounter: 4,
+    endCounter: 5,
     text: "counters.title3",
     lineRight: true,
     lineRightMobile: true,

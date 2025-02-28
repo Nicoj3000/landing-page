@@ -2,6 +2,7 @@
 
 import ContainerPage from "@/components/container-page";
 import CounterServices from "@/components/counter-services";
+import { CoverParticles } from "@/components/cover-particles";
 import TimeLine from "@/components/time-line";
 import TransitionPage from "@/components/transition-page";
 import { useTranslation } from 'react-i18next';
@@ -12,6 +13,7 @@ const AboutMePage = () => {
     return (
         <>
             <TransitionPage />
+            <CoverParticles />
             <ContainerPage>
                
                 <h1 className="text-2xl leading-tight text-center md:text-left md:text-5xl md:mt-10">

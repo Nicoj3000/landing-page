@@ -5,7 +5,6 @@ import { Pagination } from "swiper/modules";
 import { serviceData } from "@/data";
 import { useTranslation } from "react-i18next";
 import Link from "next/link"; // Asegúrate de importar Link
-import { ArrowRightIcon } from "lucide-react";
 
 const SliderServices = () => {
   const { t } = useTranslation();
@@ -62,7 +61,7 @@ const SliderServices = () => {
           {serviceData.map((item, index) => (
             <SwiperSlide key={index}>
               <div className="flex px-8 py-10 h-auto md:h-[330px] rounded-lg cursor-pointer bg-[rgba(65,47,123,0.15)] sm:flex-col gap-x-8 sm:gap-x-0 group hover:bg-[rgba(89,65,169,0.15)] transition-all duration-300 hover:border-secondary border-2">
-                <ArrowRightIcon className="absolute right text-secondary md:block right-4  top-11 transform -translate-y-1" />
+                
                 <div className="mb-4 text-5xl text-secondary">{item.icon}</div>
                 <div>
                   <h3 className="mb-4 text-xl">{t(item.titleKey)}</h3>
