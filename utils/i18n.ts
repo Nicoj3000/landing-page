@@ -143,7 +143,7 @@ const resources = {
         description:"Esta plataforma ha superado mis expectativas en todos los sentidos. Las funciones son robustas y el rendimiento es excepcional. Recomiendo encarecidamente a este desarrollador a recomiendo al 100%",
       },
       testimonial2: {
-        title: "Valeria Gomez Mejia",
+        title: "Juan Jose Duque",
         description: "Tuve una experiencia excepcional con esta plataforma. La interfaz de usuario es intuitiva y fácil de navegar. El equipo de soporte al cliente es receptivo y muy servicial. Pude lograr mis objetivos de manera eficiente y efectiva.",
       },
     },

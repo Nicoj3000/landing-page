@@ -166,7 +166,7 @@ export const dataPortfolio = [
   },
   {
     id: 2,
-    title: "Vale-project",
+    title: "GF-Project",
     image: "/image-2.jpg",
     urlGithub: "https://github.com/Nicoj3000/Vale-project",
     urlDemo: "https://valnick.netlify.app/",
@@ -193,6 +193,6 @@ export const dataTestimonials = [
     id: 2,
     name: "testimonial2.title",
     description: "testimonial2.description",
-    imageUrl: "/valeria.png",
+    imageUrl: "/juan-jose.jpeg",
   },
 ];
