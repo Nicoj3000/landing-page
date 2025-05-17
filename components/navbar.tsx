@@ -1,32 +1,111 @@
-"use client"
+"use client";
 
+import { Github, HomeIcon, Linkedin, Mail, Phone, Youtube } from "lucide-react";
 import Link from "next/link";
+import React, { useState } from "react";
 
-import { itemsNavbar } from "@/data";
+import { buttonVariants } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
+import { Dock, DockIcon } from "./magicui/dock";
+import { DATA } from "@/data";
 
+export function Navbar() {
+  const [hovered] = useState(false);
 
-import { MotionTransition } from "./transition-component";
-import { usePathname } from "next/navigation";
+  return (
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto mb-20 flex origin-bottom h-full max-h-14">
+      {/* Background Blur */}
+      <div className="fixed bottom-0 inset-x-0 h-16 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background"></div>
 
-const Navbar = () => {
-    const router = usePathname()
+      <TooltipProvider>
+        {/* Dock Container */}
+        <Dock
+          className={cn(
+            "z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-1 bg-background rounded-2xl shadow-lg transition-transform duration-300 ease-in-out",
+            hovered ? "scale-105" : "scale-100"
+          )}
+        >
+          {/* Navbar Items */}
+          {DATA.navbar.map((item) => (
+            <DockIcon key={item.label}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href={item.href}
+                    aria-label={item.label}
+                    className={cn(
+                      buttonVariants({ variant: "ghost", size: "icon" }),
+                      "size-12 rounded-full "
+                    )}
+                  >
+                    <item.icon className="size-4" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{item.label}</p>
+                </TooltipContent>
+              </Tooltip>
+            </DockIcon>
+          ))}
 
-    return (
-        <MotionTransition position="right" className="fixed z-40 flex flex-col items-center justify-center w-full mt-auto h-max bottom-10">
-            <nav>
-                <div className="flex items-center justify-center gap-2 px-4 py-1 rounded-full bg-white/15 background-blur-sm">
-                    {itemsNavbar.map((item) => (
-                        <div
-                            key={item.id}
-                            className={`px-3 py-2 transition duration-150 rounded-full cursor-pointer hover:bg-secondary ${router === item.link && 'bg-secondary'}`}
-                            data-tooltip-target="tooltip-default">
-                            <Link href={item.link}>{item.icon} </Link>
-                        </div>
-                    ))}
-                </div>
-            </nav>
-        </MotionTransition>
-    );
+          {/* Separators */}
+          <Separator orientation="vertical" className="h-full" />
+          {Object.entries(DATA.contact.social).map(([name, social]) => (
+            <DockIcon key={name}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href={social.url}
+                    aria-label={social.name}
+                    className={cn(
+                      buttonVariants({ variant: "ghost", size: "icon" }),
+                      "size-12 rounded-full hover:bg-accent hover:text-accent-foreground"
+                    )}
+                  >
+                    <social.icon className="size-4 dark:text-white" />
+                  </Link>
+                </TooltipTrigger>
+
+                <TooltipContent>
+                  <p>{name}</p>
+                </TooltipContent>
+              </Tooltip>
+            </DockIcon>
+          ))}
+
+          {/* Separators */}
+          <Separator orientation="vertical" className="h-full" />
+
+          {DATA.mail.map((item) => (
+            <DockIcon key={item.label}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href={item.href}
+                    aria-label={item.label}
+                    className={cn(
+                      buttonVariants({ variant: "ghost", size: "icon" }),
+                      "size-12 rounded-full hover:bg-accent hover:text-accent-foreground"
+                    )}
+                  >
+                    <item.icon className="size-4" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{item.label}</p>
+                </TooltipContent>
+              </Tooltip>
+            </DockIcon>
+          ))}
+        </Dock>
+      </TooltipProvider>
+    </div>
+  );
 }
-
-export default Navbar;

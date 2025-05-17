@@ -14,7 +14,7 @@ const Header = () => {
                     <Link href='/'>
                         <h1 className="my-3 text-4xl font-bold text-center md:text-left">
                             Nico
-                            <span className="text-secondary">X</span>
+                            <span className="text-blue-700">X</span>
                         </h1>
                     </Link>
                     <LanguageSelector />

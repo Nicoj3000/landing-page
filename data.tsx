@@ -6,6 +6,12 @@ import {
   Speech,
   Laptop,
   Server,
+  Github,
+  Linkedin,
+  Mail,
+  Phone,
+  Youtube,
+  Target,
 } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -43,38 +49,74 @@ export const socialNetworks = [
   },
 ];
 
-export const itemsNavbar = [
+interface NavItem {
+  id: number;
+  link: string;
+  title: string;
+  icon: React.ElementType; // Ensures `icon` is a valid React component
+}
+
+export const itemsNavbar: NavItem[] = [
   {
     id: 1,
     title: "Home",
-    icon: <HomeIcon size={25} color="#fff" strokeWidth={1} />,
+    icon: HomeIcon, // Pass the component, not JSX
     link: "/",
   },
   {
     id: 2,
     title: "User",
-    icon: <UserRound size={25} color="#fff" strokeWidth={1} />,
+    icon: UserRound, // Pass the component, not JSX
     link: "/about-me",
   },
   {
     id: 3,
     title: "Book",
-    icon: <BookText size={25} color="#fff" strokeWidth={1} />,
+    icon: BookText, // Pass the component, not JSX
     link: "/services",
   },
   {
     id: 4,
     title: "Target",
-    icon: <CodeSquare size={25} color="#fff" strokeWidth={1} />,
+    icon: CodeSquare, // Pass the component, not JSX
     link: "/portfolio",
   },
   {
     id: 5,
-    title: "Home",
-    icon: <Speech size={25} color="#fff" strokeWidth={1} />,
+    title: "Speech",
+    icon: Speech, // Pass the component, not JSX
     link: "/testimonials",
   },
 ];
+
+export const DATA = {
+  navbar: [{ href: "/", icon: HomeIcon, label: "Home" }],
+  mail:[{href: "mailto:nicoj3000its@gmail.com", icon: Mail, label: "Mail"}],
+  contact: {
+    social: {
+      User: {
+        name: "User",
+        url: "/about-me",
+        icon: UserRound,
+      },
+      Services: {
+        name: "My services",
+        url: "/services",
+        icon: BookText,
+      },
+      Portafolio: {
+        name: "Youtube",
+        url: "/portfolio",
+        icon: CodeSquare
+      },
+      Speech: {
+        name: "Send Email",
+        url: "/testimonials",
+        icon: Speech,
+      }
+    },
+  },
+};
 
 export const dataAboutPage = [
   {

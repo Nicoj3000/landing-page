@@ -9,7 +9,6 @@ import { dataTestimonials } from "@/data";
 
 import TransitionPage from "@/components/transition-page";
 import { useTranslation } from "react-i18next";
-import { ArrowRightIcon } from "lucide-react";
 import { CoverParticles } from "@/components/cover-particles";
 
 const TestimonialsPage = () => {
@@ -45,7 +44,6 @@ const TestimonialsPage = () => {
               >
                 {dataTestimonials.map(({ id, name, description, imageUrl }) => (
                   <SwiperSlide key={id}>
-                    <ArrowRightIcon className="absolute right  md:block right-4  mt-16 transform -translate-y-1" />
 
                     <Image
                       src={imageUrl}

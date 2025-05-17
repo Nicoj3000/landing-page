@@ -44,7 +44,7 @@ const Introduction = () => {
               wrapper="span"
               speed={50}
               repeat={Infinity}
-              className="font-bold text-secondary"
+              className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#5d90ff] to-[#0d00ff] md:text-5xl"
             />
           </h1>
           <p className="mx-auto mb-4 text-lg md:text-3xl md:mx-0 md:mb-8">
