@@ -1,6 +1,5 @@
 "use client";
 
-import { Github, HomeIcon, Linkedin, Mail, Phone, Youtube } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 
