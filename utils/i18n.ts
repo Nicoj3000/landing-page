@@ -69,7 +69,7 @@ const resources = {
         description:"This platform has exceeded my expectations in every way. The features are robust and the performance is outstanding.  I highly recommend this developer to anyone looking for a reliable and efficient solution.",
       },
       testimonial2: {
-        title: "Valeria Gomez Mejia",
+        title: "Juan Jose Duque",
         description: "I had an exceptional experience with this platform. The user interface is intuitive and easy to navigate. The customer support team is responsive and very helpful. I was able to achieve my goals efficiently and effectively.",
       },
 
