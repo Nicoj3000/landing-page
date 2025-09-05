@@ -24,8 +24,16 @@ const Introduction = () => {
   return (
     <div className="z-20 w-full  h-full ">
       <ContainerPage>
-      <div className="z-20 grid items-center p-10 py-32 md:py-0 md:grid-cols-2">
-        <Image src="/Foto-CV.png" alt="Profile pic" width={500} height={500} className='rounded-full ' />
+        <div className="z-20 grid items-center p-10 py-32 md:py-0 md:grid-cols-2">
+          <div className="relative flex justify-center items-center">
+            <Image
+              src="/Foto-CV.png"
+              alt="Profile pic"
+              width={350}
+              height={350}
+              className="rounded-full"
+            />
+          </div>
         <div className="flex flex-col justify-center max-w-xl mt-5">
           <h1 className="text-3xl leading-tight md:text-left md:text-5xl md:mb-10">
             {t('titleI')} <br />

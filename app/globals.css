@@ -12,15 +12,17 @@
 html {
   /* height: 100%; */
 }
+
 html,
 body {
   /* height: 100%; */
   color: #fff;
-  background: #04042f;
+  background: #000;
 }
 
+
 main {
-  background: #393a47;
+  background: transparent;
   height: 100vh;
   height: 100dvh;
 }

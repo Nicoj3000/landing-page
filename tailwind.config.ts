@@ -14,7 +14,6 @@ const config: Config = {
   			darkBg: '#0f0f0f'
   		},
   		backgroundImage: {
-  			'gradient-cover': 'linear-gradient(90.21deg, rgba(40, 35, 188, 0.7) -5.91%, rgba(15, 15, 15, 0.7) 50%, rgba(15, 15, 15, 1) 111.58%)'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
