@@ -90,6 +90,9 @@ export const itemsNavbar: NavItem[] = [
 ];
 
 export const DATA = {
+  name: "Nicoj Landing Page",
+  url: "https://nicoj3000.netlify.app/",
+  description: "Landing page made by Nicoj.",
   navbar: [{ href: "/", icon: HomeIcon, label: "Home" }],
   mail:[{href: "mailto:nicoj3000its@gmail.com", icon: Mail, label: "Mail"}],
   contact: {
