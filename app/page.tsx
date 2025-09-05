@@ -13,7 +13,7 @@ export default function Home() {
   return (
       <I18nextProvider i18n={i18n}>
       <TransitionPage />
-      <div className="flex min-h-[120vh] h-full bg-no-repeat bg-gradient-cover">
+  <div className="flex h-full bg-no-repeat bg-gradient-cover">
         <CoverParticles />
         <Introduction />
       </div>
