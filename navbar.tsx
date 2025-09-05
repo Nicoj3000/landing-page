@@ -1,5 +1,4 @@
 import { Dock, DockIcon } from "@/components/magicui/dock";
-import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -7,7 +6,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { DATA } from "@/data/resume";
+import { DATA } from "@/data";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -38,7 +37,7 @@ export default function Navbar() {
         ))}
         <Separator orientation="vertical" className="h-full" />
         {Object.entries(DATA.contact.social)
-          .filter(([_, social]) => social.navbar)
+          .filter(([_, social]) => social)
           .map(([name, social]) => (
             <DockIcon key={name}>
               <Tooltip>
@@ -63,7 +62,6 @@ export default function Navbar() {
         <DockIcon>
           <Tooltip>
             <TooltipTrigger asChild>
-              <ModeToggle />
             </TooltipTrigger>
             <TooltipContent>
               <p>Theme</p>
