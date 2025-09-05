@@ -15,6 +15,7 @@ export default function Home() {
       <TransitionPage />
       <div className="flex min-h-[120vh] h-full bg-no-repeat bg-gradient-cover">
         <CoverParticles />
+        
         <Introduction />
       </div>
       </I18nextProvider>
