@@ -4,7 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { serviceData } from "@/data";
 import { useTranslation } from "react-i18next";
-import Link from "next/link"; // Asegúrate de importar Link
+import { useState } from "react";
+import ContactCvModal from "./ContactCvModal";
 
 const SliderServices = () => {
   const { t } = useTranslation();
@@ -26,13 +27,7 @@ const SliderServices = () => {
           </div>
         </div>
         <div className="mt-8">
-          <Link
-            className="px-6 py-3 my-2 transition-all border-2 cursor-pointer text-sm w-fit rounded-xl hover:shadow-xl hover:shadow-white/50"
-            href="/CV.pdf"
-            target="_blank"
-          >
-            {t("titleS3")}
-          </Link>
+          <ContactCvModal buttonText={t("titleS3")}/>
         </div>
       </div>
       <div className="relative">
