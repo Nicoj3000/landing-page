@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { serviceData } from "@/data";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
 import ContactCvModal from "./ContactCvModal";
 
 const SliderServices = () => {

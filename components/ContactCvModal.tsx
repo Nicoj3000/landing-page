@@ -8,7 +8,7 @@ interface Props {
 
 export default function ContactCvModal({ buttonText }: Props) {
   const [showModal, setShowModal] = useState(false);
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const handleDownload = (lang: "es" | "en") => {
     const file = lang === "es" ? "/Hoja de vida Español.pdf" : "/Hoja de vida Ingles.pdf";

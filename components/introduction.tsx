@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { TypeAnimation } from 'react-type-animation';
 import { useTranslation } from 'react-i18next';
-import Link from 'next/link';
 import ContainerPage from './container-page';
 
 const Introduction = () => {
