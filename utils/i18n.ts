@@ -26,7 +26,7 @@ const resources = {
         title1: "Software engineer",
         subtitle1: "Universidad Libre de Pereira",
         description1:
-          "I am in the 8th semester of software engineering at the Universidad Libre de Pereira, where I am acquiring technical skills and specialized knowledge in software development and web application design.",
+          "I am in the 10th semester of software engineering at the Universidad Libre de Pereira, where I have acquired technical skills and specialized knowledge in software development and web application design.",
         title2: "Developer Frontend and Backend",
         subtitle2: "Own Studio",
         description2:
@@ -100,7 +100,7 @@ const resources = {
         title1: "Ingeniero de software",
         subtitle1: "Universidad Libre de Pereira",
         description1:
-          "Estoy en el octavo semestre de ingeniería de software en la Universidad Libre de Pereira, donde estoy adquiriendo habilidades técnicas y conocimientos especializados en desarrollo de software y diseño de aplicaciones web.",
+          "Estoy en el Decimo semestre de ingeniería de software en la Universidad Libre de Pereira, donde estoy adquiriendo habilidades técnicas y conocimientos especializados en desarrollo de software y diseño de aplicaciones web.",
         title2: "Desarrollador Frontend y Backend",
         subtitle2: "Estudio Propio",
         description2:

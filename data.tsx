@@ -128,7 +128,7 @@ export const dataAboutPage = [
     subtitleKey: "timeline.subtitle1",
     descriptionKey:
       "timeline.description1",
-    date: "2021 - 2024",
+    date: "2021 - 2025",
   },
   {
     id: 2,
@@ -136,7 +136,7 @@ export const dataAboutPage = [
     subtitleKey: "timeline.subtitle2",
     descriptionKey:
       "timeline.description2",
-    date: "Sep 2024",
+    date: "2023",
   },
   {
     id: 3,
@@ -171,7 +171,7 @@ export const dataCounter = [
   },
   {
     id: 2,
-    endCounter: 5,
+    endCounter: 10,
     text: "counters.title3",
     lineRight: true,
     lineRightMobile: true,
@@ -218,12 +218,26 @@ export const dataPortfolio = [
   },
   {
     id: 3,
-    title: "Admin PythonWebFlask",
+    title: "PythonWebFlask",
     image: "/image-3.jpg",
     urlGithub: "https://github.com/Nicoj3000/project-python-flask-mysql",
     urlDemo: "#",
 
   },
+  {
+    id: 4,
+    title: "App Egresados ULP",
+    image: "/image-4.jpg",
+    urlGithub: "",
+    urlDemo: "https://db-ulp-egresados.vercel.app/",
+  },
+  {
+    id: 5,
+    title: "Rental Cars",
+    image: "/image-5.jpg",
+    urlGithub: "#",
+    urlDemo: "#",
+  }
 ];
 
 export const dataTestimonials = [
