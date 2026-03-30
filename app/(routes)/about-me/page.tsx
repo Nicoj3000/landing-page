@@ -16,7 +16,7 @@ const AboutMePage = () => {
             <CoverParticles />
             <ContainerPage>
                
-                <h1 className="text-2xl leading-tight text-center md:text-left md:text-5xl md:mt-10">
+                <h1 className="text-center text-3xl leading-tight sm:text-4xl md:mt-6 md:text-left lg:text-5xl xl:text-6xl">
                     {t('titleA')}{' '}
                     <span className="font-bold text-secondary">
                         {t('titleA1')} 

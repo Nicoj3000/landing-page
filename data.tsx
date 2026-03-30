@@ -16,9 +16,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
-  faXTwitter,
   faLinkedin,
-  faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
 export const socialNetworks = [
 
@@ -37,16 +35,7 @@ export const socialNetworks = [
     src: "https://www.linkedin.com/in/nicolas-delgado-6b22372b7/",
   },
 
-  {
-    id: 1,
-    logo: <FontAwesomeIcon icon={faWhatsapp} size="2x" />,
-    src: "https://wa.link/lhrth3",
-  },
-  {
-    id: 3,
-    logo: <FontAwesomeIcon icon={faXTwitter} size="2x" />,
-    src: "https://x.com/Nicoj3000",
-  },
+
 ];
 
 interface NavItem {
@@ -81,12 +70,7 @@ export const itemsNavbar: NavItem[] = [
     icon: CodeSquare, // Pass the component, not JSX
     link: "/portfolio",
   },
-  {
-    id: 5,
-    title: "Speech",
-    icon: Speech, // Pass the component, not JSX
-    link: "/testimonials",
-  },
+  
 ];
 
 export const DATA = {
@@ -112,16 +96,34 @@ export const DATA = {
         url: "/portfolio",
         icon: CodeSquare
       },
-      Speech: {
-        name: "Send Email",
-        url: "/testimonials",
-        icon: Speech,
-      }
+      
     },
   },
 };
 
 export const dataAboutPage = [
+  {
+    id: 2,
+    titleKey: "timeline.title2",
+    subtitleKey: "timeline.subtitle2",
+    descriptionKey:
+      "timeline.description2",
+    date: "2026 - Hoy",
+  },
+  {
+    id: 3,
+    titleKey: "timeline.title3",
+    subtitleKey: "timeline.subtitle3",
+    descriptionKey: "timeline.description3",
+    date: "2025 - Hoy",
+  },
+  {
+    id: 4,
+    titleKey: "timeline.title4",
+    subtitleKey: "timeline.subtitle4",
+    descriptionKey: "timeline.description4",
+    date: "2023 - 2025",
+  },
   {
     id: 1,
     titleKey: "timeline.title1",
@@ -129,28 +131,6 @@ export const dataAboutPage = [
     descriptionKey:
       "timeline.description1",
     date: "2021 - 2025",
-  },
-  {
-    id: 2,
-    titleKey: "timeline.title2",
-    subtitleKey: "timeline.subtitle2",
-    descriptionKey:
-      "timeline.description2",
-    date: "2023",
-  },
-  {
-    id: 3,
-    titleKey: "timeline.title3",
-    subtitleKey: "timeline.subtitle3",
-    descriptionKey: "timeline.description3",
-    date: "2025",
-  },
-  {
-    id: 4,
-    titleKey: "timeline.title4",
-    subtitleKey: "timeline.subtitle4",
-    descriptionKey: "timeline.description4",
-    date: "2025",
   },
 ];
 
@@ -199,6 +179,24 @@ export const serviceData = [
     descriptionKey:
       "backenddev.description",
   },
+  {
+    icon: <CodeSquare />,
+    titleKey: "fullstack.title",
+    descriptionKey:
+      "fullstack.description",
+  },
+  {
+    icon: <Target />,
+    titleKey: "itstrategy.title",
+    descriptionKey:
+      "itstrategy.description",
+  },
+  {
+    icon: <Speech />,
+    titleKey: "mentoring.title",
+    descriptionKey:
+      "mentoring.description",
+  },
 ];
 
 export const dataPortfolio = [
@@ -209,13 +207,7 @@ export const dataPortfolio = [
     urlGithub: "https://github.com/Nicoj3000/Project-Dashboard",
     urlDemo: "https://dashboard-nicodev.netlify.app/",
   },
-  {
-    id: 2,
-    title: "GF-Project",
-    image: "/image-2.jpg",
-    urlGithub: "https://github.com/Nicoj3000/Vale-project",
-    urlDemo: "https://valnick.netlify.app/",
-  },
+
   {
     id: 3,
     title: "PythonWebFlask",
@@ -240,18 +232,3 @@ export const dataPortfolio = [
   }
 ];
 
-export const dataTestimonials = [
-  {
-    id: 1,
-    name: "testimonial1.title",
-    description: "testimonial1.description",
-    imageUrl: "/juanescode.png",
-  },
-
-  {
-    id: 2,
-    name: "testimonial2.title",
-    description: "testimonial2.description",
-    imageUrl: "/juan-jose.jpeg",
-  },
-];

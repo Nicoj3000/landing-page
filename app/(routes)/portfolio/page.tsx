@@ -13,11 +13,11 @@ const PortfolioPage = () => {
     <ContainerPage>
       <TransitionPage />
       <CoverParticles />
-      <h1 className="text-2xl leading-tight text-center md:text-4xl md:mb-5">
+      <h1 className="text-center text-3xl leading-tight sm:text-4xl lg:text-5xl xl:text-6xl">
         {t('titleP1')} <span className="font-bold text-secondary">{t('titleP2')}</span>
       </h1>
       <div className="flex flex-col justify-center h-full">
-        <div className="relative z-10 grid max-w-5xl gap-6 mx-auto mt-4 md:grid-cols-4">
+        <div className="relative z-10 mx-auto mt-8 grid w-full max-w-[1240px] gap-6 md:grid-cols-2 xl:mt-10 xl:grid-cols-3 xl:gap-7 2xl:grid-cols-4">
           {dataPortfolio.map((data) => (
             <PortfolioBox key={data.id} data={data} />
           ))}

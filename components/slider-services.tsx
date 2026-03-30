@@ -1,72 +1,53 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
 import { serviceData } from "@/data";
 import { useTranslation } from "react-i18next";
 import ContactCvModal from "./ContactCvModal";
 
 const SliderServices = () => {
   const { t } = useTranslation();
+  const serviceHighlights = [
+    "pageserv.title1",
+    "pageserv.title2",
+    "pageserv.title3",
+    "pageserv.title4",
+    "pageserv.title5",
+  ];
 
   return (
-    <>
-      <div className="max-w-[400px] mb-12">
-        <h1 className="text-3xl leading-tight text-center mb-8 md:text-left md:text-4xl md:mb-5">
-          {t("titleS1")}{" "}
+    <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+      <div className="mb-4 max-w-[560px] lg:mb-0">
+        <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+          {t("titleS1")} {" "}
           <span className="font-bold text-secondary">{t("titleS2")}</span>
         </h1>
-        <div className="mb-3 text-lg text-gray-300 space-y-3">
-          <div className="mb-3 text-lg text-gray-300 space-y-3">
-            <p>{t("pageserv.title1")} </p>
-            <p>{t("pageserv.title2")} </p>
-            <p>{t("pageserv.title3")} </p>
-            <p>{t("pageserv.title4")} </p>
-            <p>{t("pageserv.title5")} </p>
-          </div>
-        </div>
-        <div className="mt-8">
-          <ContactCvModal buttonText={t("titleS3")}/>
-        </div>
-      </div>
-      <div className="relative">
-        <Swiper
-          breakpoints={{
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 20,
-            },
-          }}
-          freeMode={true}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination]}
-          className="h-[400px] md:h-[400px] w-[300px] md:w-[850px]"
-        >
-          {serviceData.map((item, index) => (
-            <SwiperSlide key={index}>
-              <div className="flex px-8 py-10 h-auto md:h-[330px] rounded-lg cursor-pointer bg-[rgba(65,47,123,0.15)] sm:flex-col gap-x-8 sm:gap-x-0 group hover:bg-[rgba(89,65,169,0.15)] transition-all duration-300 hover:border-secondary border-2">
-                
-                <div className="mb-4 text-5xl text-secondary">{item.icon}</div>
-                <div>
-                  <h3 className="mb-4 text-xl">{t(item.titleKey)}</h3>
-                  <p className="text-base">{t(item.descriptionKey)}</p>
-                </div>
-              </div>
-            </SwiperSlide>
+        <div className="mb-5 space-y-3 break-words text-sm leading-relaxed text-slate-300 sm:text-base lg:text-[1.05rem]">
+          {serviceHighlights.map((key) => (
+            <p key={key}>{t(key)}</p>
           ))}
-        </Swiper>
+        </div>
+        <div className="mt-6">
+          <ContactCvModal buttonText={t("titleS3")} />
+        </div>
       </div>
-    </>
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-3">
+        {serviceData.map((item, index) => (
+          <article
+            key={index}
+            className="transform-gpu will-change-transform flex min-h-[240px] flex-col gap-4 rounded-xl border border-white/12 bg-[#0d1326]/60 px-5 py-6 shadow-[0_0_0_0_rgba(44,88,255,0)] transition-all duration-200 hover:-translate-y-1 hover:border-secondary/70 hover:bg-[#121a32]/80 hover:shadow-[0_16px_36px_-24px_rgba(63,92,255,0.65)]"
+          >
+            <div className="text-3xl text-[#6d86ff]">{item.icon}</div>
+            <div className="min-w-0">
+              <h3 className="mb-2 break-words text-xl leading-snug text-slate-100">{t(item.titleKey)}</h3>
+              <p className="break-words whitespace-normal text-sm leading-relaxed text-slate-300 sm:text-[0.96rem]">
+                {t(item.descriptionKey)}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
   );
 };
 

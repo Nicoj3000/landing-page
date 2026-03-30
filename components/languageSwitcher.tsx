@@ -29,7 +29,7 @@ const LanguageSelector: React.FC = () => {
   return (
     <div className="relative">
       <legend
-        className="text-3xl mt-1 font-bold text-white select-none cursor-pointer flex items-center"
+        className="mt-1 flex cursor-pointer items-center text-2xl font-bold text-white select-none md:text-3xl"
         onClick={toggleDropdown}
       >
         <span className="mr-2">{currentLanguage}</span>
@@ -39,10 +39,10 @@ const LanguageSelector: React.FC = () => {
         <ChevronDown className="w-4 h-4 ml-1" />
       </legend>
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-[150px] bg-#0a0a0a p-2 rounded-lg shadow-lg z-50">
+        <div className="absolute left-0 z-50 mt-2 w-[160px] rounded-lg border border-white/20 bg-black/90 p-2 shadow-lg backdrop-blur-sm">
           <label
             htmlFor="en"
-            className="font-medium h-10 relative hover:bg-#0a0a0a transition-all duration-300 flex items-center px-3 gap-2 rounded-lg has-[:checked]:text-blue-400 has-[:checked]:bg-#0a0a0a has-[:checked]:ring-blue-500 has-[:checked]:ring-2 select-none cursor-pointer"
+            className="relative flex h-10 cursor-pointer items-center gap-2 rounded-lg px-3 font-medium transition-all duration-300 hover:bg-white/10 has-[:checked]:bg-white/10 has-[:checked]:text-blue-400 has-[:checked]:ring-2 has-[:checked]:ring-blue-500 select-none"
           >
             <span className="text-white">English</span>
             <input
@@ -54,11 +54,11 @@ const LanguageSelector: React.FC = () => {
               onChange={changeLanguage}
               checked={i18n.language === 'en'}
             />
-            <span className="absolute right-3 w-3 h-3 rounded-full border-2 border-#0a0a0a peer-checked/en:border-blue-400 peer-checked/en:bg-blue-400 transition-all duration-300"></span>
+            <span className="absolute right-3 h-3 w-3 rounded-full border-2 border-white/30 transition-all duration-300 peer-checked/en:border-blue-400 peer-checked/en:bg-blue-400"></span>
           </label>
           <label
             htmlFor="es"
-            className="font-medium h-10 relative hover:bg-#0a0a0a transition-all duration-300 flex items-center px-3 gap-2 rounded-lg has-[:checked]:text-blue-400 has-[:checked]:bg-#0a0a0a has-[:checked]:ring-blue-500 has-[:checked]:ring-2 select-none cursor-pointer"
+            className="relative flex h-10 cursor-pointer items-center gap-2 rounded-lg px-3 font-medium transition-all duration-300 hover:bg-white/10 has-[:checked]:bg-white/10 has-[:checked]:text-blue-400 has-[:checked]:ring-2 has-[:checked]:ring-blue-500 select-none"
           >
             <span className="text-white">Español</span>
             <input
@@ -70,7 +70,7 @@ const LanguageSelector: React.FC = () => {
               onChange={changeLanguage}
               checked={i18n.language === 'es'}
             />
-            <span className="absolute right-3 w-3 h-3 rounded-full border-2 border-#0a0a0a peer-checked/es:border-blue-400 peer-checked/es:bg-blue-400 transition-all duration-300"></span>
+            <span className="absolute right-3 h-3 w-3 rounded-full border-2 border-white/30 transition-all duration-300 peer-checked/es:border-blue-400 peer-checked/es:bg-blue-400"></span>
           </label>
         </div>
       )}

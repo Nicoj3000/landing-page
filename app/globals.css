@@ -15,22 +15,40 @@ html {
 
 html,
 body {
-  /* height: 100%; */
-  color: #fff;
-  background: #000;
+  min-height: 100%;
+  color: #eef2ff;
+  background:
+    radial-gradient(1200px 700px at 18% 6%, rgba(63, 92, 255, 0.2), transparent 52%),
+    radial-gradient(1100px 680px at 88% 90%, rgba(25, 35, 75, 0.45), transparent 55%),
+    #05070d;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(99, 122, 255, 0.32);
+  color: #f8fbff;
 }
 
 
 main {
   background: transparent;
-  height: 100vh;
-  height: 100dvh;
+  min-height: 100dvh;
 }
 
 .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
 .swiper-pagination-horizontal.swiper-pagination-bullets
   .swiper-pagination-bullet {
-  background-color: #0800f8;
+  background-color: #6d86ff;
+  opacity: 0.42;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
 }
 
 @layer utilities {

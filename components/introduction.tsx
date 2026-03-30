@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { TypeAnimation } from 'react-type-animation';
 import { useTranslation } from 'react-i18next';
 import ContainerPage from './container-page';
+import ContactCvModal from './ContactCvModal';
 
 const Introduction = () => {
   const { t, i18n } = useTranslation();
@@ -20,34 +21,21 @@ const Introduction = () => {
     };
   }, [i18n]);
 
-  const [showModal, setShowModal] = useState(false);
-
-  const handleDownload = (lang: 'es' | 'en') => {
-    const file = lang === 'es' ? '/Hoja de vida Español.pdf' : '/Hoja de vida Ingles.pdf';
-    const link = document.createElement('a');
-    link.href = file;
-    link.download = file.split('/').pop() || '';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setShowModal(false);
-  };
-
   return (
-    <div className="z-20 w-full  h-full ">
+    <div className="z-20 h-full w-full">
       <ContainerPage>
-        <div className="z-20 grid items-center p-10 py-32 md:py-0 md:grid-cols-2">
-          <div className="relative flex justify-center items-center">
+        <div className="z-20 mx-auto grid w-full max-w-[1240px] items-center gap-10 py-10 md:grid-cols-2 md:gap-10 md:py-8 xl:grid-cols-[minmax(330px,430px)_minmax(0,1fr)] xl:gap-12">
+          <div className="relative flex items-center justify-center xl:justify-end">
             <Image
               src="/Foto-CV.png"
               alt="Profile pic"
-              width={350}
-              height={350}
-              className="rounded-full"
+              width={460}
+              height={460}
+              className="h-[210px] w-[210px] rounded-full object-cover object-top sm:h-[260px] sm:w-[260px] md:h-[300px] md:w-[300px] lg:h-[320px] lg:w-[320px] xl:h-[350px] xl:w-[350px] 2xl:h-[380px] 2xl:w-[380px]"
             />
           </div>
-        <div className="flex flex-col justify-center max-w-xl mt-5">
-          <h1 className="text-3xl leading-tight md:text-left md:text-5xl md:mb-10">
+        <div className="mt-2 flex max-w-2xl flex-col justify-center lg:mt-5">
+          <h1 className="min-h-[4.8em] text-3xl leading-tight sm:min-h-[4.6em] sm:text-4xl md:min-h-[4.2em] md:text-left lg:min-h-[4em] lg:text-5xl xl:min-h-[3.9em] xl:text-6xl xl:leading-tight 2xl:min-h-[3.7em] 2xl:text-7xl 2xl:leading-[1.05]">
             {t('titleI')} <br />
             <TypeAnimation
               key={language} // Forzar re-renderización cuando cambie el idioma
@@ -64,71 +52,21 @@ const Introduction = () => {
               wrapper="span"
               speed={50}
               repeat={Infinity}
-              className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#5d90ff] to-[#0d00ff] md:text-5xl"
+              className="block bg-gradient-to-r from-[#8ca3ff] to-[#3f5cff] bg-clip-text font-bold text-transparent lg:text-5xl xl:whitespace-nowrap xl:text-6xl 2xl:text-7xl"
             />
           </h1>
-          <p className="mx-auto mb-4 text-lg md:text-3xl md:mx-0 md:mb-8">
+          <p className="mx-auto mb-4 mt-4 text-base leading-relaxed text-slate-300 sm:text-lg md:mx-0 lg:text-xl xl:text-2xl 2xl:text-[30px]">
             {t('titleI5')}
           </p>
-          <div className="flex items-center justify-center gap-4 md:justify-start md:gap-14">
+          <div className="flex items-center justify-center gap-4 md:justify-start md:gap-6 xl:gap-8">
             <a
               href="/portfolio"
-              className="px-6 py-3 my-2 transition-all border-2 cursor-pointer text-sm w-fit rounded-xl hover:shadow-xl hover:shadow-white/50"
+              className="my-2 w-fit cursor-pointer rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm text-white transition-all duration-200 hover:border-white/35 hover:bg-white/10 xl:px-7 xl:py-3.5 xl:text-base"
             >
               {t('titleI6')}
             </a>
-            <button
-              className="px-6 py-3 my-2 transition-all border-2 cursor-pointer text-sm w-fit rounded-xl hover:shadow-xl hover:shadow-white/50"
-              onClick={() => setShowModal(true)}
-            >
-              {t('titleI7')}
-            </button>
+            <ContactCvModal buttonText={t('titleI7')} />
           </div>
-          {showModal && (
-            <>
-              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 animate-fade-in">
-                <div className="bg-white rounded-xl p-8 flex flex-col gap-4 items-center w-80 shadow-2xl animate-scale-in">
-                  <h2 className="text-lg font-semibold text-gray-900 mb-2">
-                    {i18n.language === 'es' ? 'Selecciona el CV a descargar' : 'Select the CV to download'}
-                  </h2>
-                  <button
-                    className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-                    onClick={() => handleDownload('es')}
-                  >
-                    {i18n.language === 'es' ? 'Descargar CV en Español' : 'Download CV in Spanish'}
-                  </button>
-                  <button
-                    className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-                    onClick={() => handleDownload('en')}
-                  >
-                    {i18n.language === 'es' ? 'Descargar CV en Inglés' : 'Download CV in English'}
-                  </button>
-                  <button
-                    className="mt-2 text-gray-500 hover:text-gray-800 text-sm"
-                    onClick={() => setShowModal(false)}
-                  >
-                    {i18n.language === 'es' ? 'Cancelar' : 'Cancel'}
-                  </button>
-                </div>
-              </div>
-              <style jsx global>{`
-                @keyframes fade-in {
-                  from { opacity: 0; }
-                  to { opacity: 1; }
-                }
-                .animate-fade-in {
-                  animation: fade-in 0.2s ease;
-                }
-                @keyframes scale-in {
-                  from { transform: scale(0.95); opacity: 0; }
-                  to { transform: scale(1); opacity: 1; }
-                }
-                .animate-scale-in {
-                  animation: scale-in 0.2s cubic-bezier(.4,0,.2,1);
-                }
-              `}</style>
-            </>
-          )}
         </div>
       </div>
       </ContainerPage>
