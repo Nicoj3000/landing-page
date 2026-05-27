@@ -10,12 +10,12 @@ const resources = {
       titleI3: "you can create it",
       titleI4: "you can build it",
       titleI5:
-        "Software Engineer focused on building high-impact digital experiences, with leadership in IT strategy, fullstack development, and technical mentoring.",
+        "Systems Engineer focused on building high-impact digital experiences, with leadership in IT strategy, fullstack development, and technical mentoring.",
       titleI6: "See my work",
       titleI7: "Download CV",
       titleA: "My entire",
       titleA1: "professional career",
-      titleA2: "Software engineer",
+      titleA2: "Systems engineer",
       counters: {
         title1: "Years of experience",
         title2: "Satisfied customers",
@@ -23,10 +23,10 @@ const resources = {
         title4: "Awards won",
       },
       timeline: {
-        title1: "Software Engineering",
+        title1: "Systems Engineering",
         subtitle1: "Universidad Libre de Pereira",
         description1:
-          "Graduated in Software Engineering from Universidad Libre de Pereira, with strong foundations in software architecture, web application development, and technical problem solving.",
+          "Graduated in Systemas Engineering from Universidad Libre de Pereira, with strong foundations in software architecture, web application development, and technical problem solving.",
         title2: "IT Director",
         subtitle2: "FH Velez Abogados",
         description2:
@@ -45,7 +45,7 @@ const resources = {
       titleS3: "Download CV",
       pageserv: {
         title1:
-          "Software Engineer building fullstack products for legal, education, and business teams.",
+          "Systems Engineer building fullstack products for legal, education, and business teams.",
         title2:
           "I currently lead IT strategy and execution, aligning technology with measurable business goals.",
         title3:
@@ -98,12 +98,12 @@ const resources = {
       titleI3: "puedes crearlo",
       titleI4: "puedes construirlo",
       titleI5:
-        "Ingeniero de Software enfocado en crear experiencias digitales de alto impacto, con liderazgo en estrategia TI, desarrollo fullstack y mentoria tecnica.",
+        "Ingeniero de Sistemas enfocado en crear experiencias digitales de alto impacto, con liderazgo en estrategia TI, desarrollo fullstack y mentoria tecnica.",
       titleI6: "Ver mi trabajo",
       titleI7: "Descargar CV",
       titleA: "Toda mi",
       titleA1: "carrera profesional",
-      titleA2: "Ingeniero de software",
+      titleA2: "Ingeniero de Sistemas",
       counters: {
         title1: "Anios de experiencia",
         title2: "Clientes satisfechos",
@@ -111,10 +111,10 @@ const resources = {
         title4: "Premios ganados",
       },
       timeline: {
-        title1: "Ingeniero de Software",
+        title1: "Ingeniero de Sistemas",
         subtitle1: "Universidad Libre de Pereira",
         description1:
-          "Graduado en Ingenieria de Software de la Universidad Libre de Pereira, con bases solidas en arquitectura de software, desarrollo de aplicaciones web y resolucion de problemas tecnicos.",
+          "Graduado en Ingenieria de Sistemas de la Universidad Libre de Pereira, con bases solidas en arquitectura de software, desarrollo de aplicaciones web y resolucion de problemas tecnicos.",
         title2: "Director de TI",
         subtitle2: "FH Velez Abogados",
         description2:
@@ -133,7 +133,7 @@ const resources = {
       titleS3: "Descargar CV",
       pageserv: {
         title1:
-          "Ingeniero de Software que construye productos fullstack para equipos legales, educativos y empresariales.",
+          "Ingeniero de Sistemas que construye productos fullstack para equipos legales, educativos y empresariales.",
         title2:
           "Lidero estrategia y ejecucion de TI, alineando tecnologia con objetivos de negocio medibles.",
         title3:
