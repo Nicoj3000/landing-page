@@ -183,7 +183,8 @@ export function IconCloud({ icons, images }: IconCloudProps) {
       onMouseMove={handleMouseMove}
       onMouseUp={() => setIsDragging(false)}
       onMouseLeave={() => setIsDragging(false)}
-      className="rounded-lg"
+      className="rounded-lg block max-w-full h-auto mx-auto"
+      style={{ width: "100%", maxWidth: 400, aspectRatio: "1 / 1" }}
       aria-label="Interactive 3D Icon Cloud"
       role="img"
     />
