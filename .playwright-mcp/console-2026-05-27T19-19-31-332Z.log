@@ -1,0 +1,778 @@
+[     729ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:38559
+[  516092ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  523885ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  524002ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+Import trace for requested module:
+./components/introduction.tsx
+./app/page.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  525035ms] [LOG] [Fast Refresh] done in 1150ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  525826ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+Import trace for requested module:
+./components/introduction.tsx
+./app/page.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  530447ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+Import trace for requested module:
+./components/introduction.tsx
+./app/page.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  530594ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/?_rsc=r3yhw:0
+[  530598ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/_next/static/webpack/7033675f9de92e14.webpack.hot-update.json:0
+[  530598ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:112
+[  530606ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/?_rsc=r3yhw:0
+[  530613ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/?_rsc=r3yhw:0
+[  530776ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/:0
+[  531047ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[  531125ms] ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+    at processResult (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:400590)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:402302)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:8645)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:5019)
+    at r.callback (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:4039)
+[  531122ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[  531127ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `---- @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  531196ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[  531402ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+Import trace for requested module:
+./components/introduction.tsx
+./app/page.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  531555ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+Import trace for requested module:
+./components/introduction.tsx
+./app/page.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  531568ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/_next/static/webpack/51f6321eacebd7c9.webpack.hot-update.json:0
+[  531569ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:347
+[  531573ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/favicon.ico:0
+[  531667ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/:0
+[  531776ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[  531781ms] ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+    at processResult (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:400590)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:402302)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:8645)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:5019)
+    at r.callback (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:4039)
+[  531783ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[  531783ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `---- @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  591553ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[  592685ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+Import trace for requested module:
+./components/introduction.tsx
+./app/page.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  593272ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[  593461ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+Import trace for requested module:
+./components/introduction.tsx
+./app/page.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  593491ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/_next/static/webpack/51f6321eacebd7c9.webpack.hot-update.json:0
+[  593494ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:347
+[  593680ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/:0
+[  593838ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[  593895ms] ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+    at processResult (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:400590)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:402302)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:8645)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:5019)
+    at r.callback (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:4039)
+[  593891ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[  593910ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `---- @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  604737ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[  604875ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+Import trace for requested module:
+./components/introduction.tsx
+./app/page.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  605243ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/_next/static/webpack/51f6321eacebd7c9.webpack.hot-update.json:0
+[  605243ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:347
+[  605295ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/:0
+[  605417ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[  605430ms] ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+    at processResult (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:400590)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:402302)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:8645)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:5019)
+    at r.callback (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:4039)
+[  605431ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[  605431ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `---- @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  611166ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[  611488ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+Import trace for requested module:
+./components/introduction.tsx
+./app/page.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  611650ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+Import trace for requested module:
+./components/introduction.tsx
+./app/page.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  611664ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/_next/static/webpack/51f6321eacebd7c9.webpack.hot-update.json:0
+[  611664ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:347
+[  611730ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/:0
+[  611859ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[  611868ms] ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+    at processResult (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:400590)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:402302)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:8645)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:5019)
+    at r.callback (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:4039)
+[  611873ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[  611874ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `---- @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  651656ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[  652006ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+Import trace for requested module:
+./components/introduction.tsx
+./app/page.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  652304ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+Import trace for requested module:
+./components/introduction.tsx
+./app/page.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  652342ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/_next/static/webpack/51f6321eacebd7c9.webpack.hot-update.json:0
+[  652345ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:347
+[  652545ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/:0
+[  652686ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[  652705ms] ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+    at processResult (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:400590)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:402302)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:8645)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:5019)
+    at r.callback (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:4039)
+[  652707ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[  652709ms] [ERROR] ./components/introduction.tsx
+Error: 
+  x You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :          ^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `----
+
+  x You're importing a component that needs useEffect. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  | Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  | 
+  | 
+   ,-[/Users/Nicoj3000/proyectos/landing-page/components/introduction.tsx:1:1]
+ 1 | import { useState, useEffect } from 'react';
+   :                    ^^^^^^^^^
+ 2 | import Image from 'next/image';
+ 3 | import { TypeAnimation } from 'react-type-animation';
+ 4 | import { useTranslation } from 'react-i18next';
+   `---- @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  678323ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[  679994ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[  681046ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/_next/static/webpack/51f6321eacebd7c9.webpack.hot-update.json:0
+[  681053ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:349
+[  681197ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/_next/static/css/app/layout.css?v=1779910252456:0
+[  681244ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/_next/static/chunks/main-app.js?v=1779910252456:0
+[  681244ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/_next/static/chunks/app-pages-internals.js:0
+[  684663ms] [WARNING] The resource http://localhost:3001/_next/static/media/a22b1dc24103c00d-s.p.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3001/:0

@@ -1,0 +1,68 @@
+<h2>✅ Optimizaciones aplicadas</h2>
+<p class="subtitle">Todo verificado. Build limpio, 0 errores en consola.</p>
+
+<div class="section">
+  <div style="display:flex;flex-direction:column;gap:0.55rem;margin-top:0.75rem">
+
+    <div style="display:flex;align-items:flex-start;gap:0.75rem;padding:0.65rem 1rem;border-radius:8px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2)">
+      <span style="color:#4ade80;margin-top:1px">✓</span>
+      <span><strong>3 CSS de Swiper eliminados</strong> de <code>layout.tsx</code> — imports muertos que cargaban en todas las páginas</span>
+    </div>
+
+    <div style="display:flex;align-items:flex-start;gap:0.75rem;padding:0.65rem 1rem;border-radius:8px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2)">
+      <span style="color:#4ade80;margin-top:1px">✓</span>
+      <span><strong><code>motion</code>, <code>swiper</code>, <code>next-themes</code> y 3 paquetes de tipos obsoletos</strong> eliminados de <code>package.json</code></span>
+    </div>
+
+    <div style="display:flex;align-items:flex-start;gap:0.75rem;padding:0.65rem 1rem;border-radius:8px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2)">
+      <span style="color:#4ade80;margin-top:1px">✓</span>
+      <span><strong><code>app/page.tsx</code> ahora es Server Component</strong> — <code>"use client"</code> removido del page, <code>introduction.tsx</code> tiene su propio boundary</span>
+    </div>
+
+    <div style="display:flex;align-items:flex-start;gap:0.75rem;padding:0.65rem 1rem;border-radius:8px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2)">
+      <span style="color:#4ade80;margin-top:1px">✓</span>
+      <span><strong><code>CoverParticles</code> lazy-loaded</strong> con <code>next/dynamic + ssr:false</code> en Home y Services — tsparticles ya no bloquea el render inicial</span>
+    </div>
+
+    <div style="display:flex;align-items:flex-start;gap:0.75rem;padding:0.65rem 1rem;border-radius:8px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2)">
+      <span style="color:#4ade80;margin-top:1px">✓</span>
+      <span><strong>Bug del dock corregido</strong> — <code>md:pb-10 → md:pb-36</code> en <code>ContainerPage</code>. "Mentoría Técnica" completamente visible.</span>
+    </div>
+
+  </div>
+</div>
+
+<div class="section" style="margin-top:1.75rem">
+  <h3>Paso 3: Planificar mejoras</h3>
+  <p class="subtitle" style="margin-top:0.4rem">¿Sobre qué querés enfocarte?</p>
+  <div class="options" data-multiselect style="margin-top:0.75rem">
+    <div class="option" data-choice="hero" onclick="toggleSelect(this)">
+      <div class="letter">A</div>
+      <div class="content">
+        <h3>Rediseño del Hero</h3>
+        <p>La foto circular + texto está bien, pero podría ser más impactante. Layout, tipografía, CTA más fuerte.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="skills-section" onclick="toggleSelect(this)">
+      <div class="letter">B</div>
+      <div class="content">
+        <h3>Sección de Skills/Tech Stack</h3>
+        <p>No existe todavía. Una sección visual con tus tecnologías (TypeScript, Next.js, Node, etc.) con íconos y niveles.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="about-me" onclick="toggleSelect(this)">
+      <div class="letter">C</div>
+      <div class="content">
+        <h3>Mejorar About Me</h3>
+        <p>El timeline está bien pero la página podría tener más personalidad — foto, bio, skills integrados.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="contact" onclick="toggleSelect(this)">
+      <div class="letter">D</div>
+      <div class="content">
+        <h3>Formulario de contacto real</h3>
+        <p>Ahora solo hay un email link. Un form funcional con Resend/Nodemailer convertiría mejor.</p>
+      </div>
+    </div>
+  </div>
+</div>

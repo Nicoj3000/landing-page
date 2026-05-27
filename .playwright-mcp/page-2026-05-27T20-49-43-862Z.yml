@@ -1,0 +1,100 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Home" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - img
+    - link "User" [ref=e7] [cursor=pointer]:
+      - /url: /about-me
+      - img
+    - link "My services" [ref=e9] [cursor=pointer]:
+      - /url: /services
+      - img
+    - link "Portfolio" [ref=e11] [cursor=pointer]:
+      - /url: /portfolio
+      - img
+    - link "Mail" [ref=e14] [cursor=pointer]:
+      - /url: mailto:nicoj3000its@gmail.com
+      - img
+  - banner [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - link "NicoX" [ref=e19] [cursor=pointer]:
+          - /url: /
+          - heading "NicoX" [level=1] [ref=e20]
+        - button "Es" [ref=e22] [cursor=pointer]:
+          - generic [ref=e23]: Es
+          - img [ref=e1932]
+          - img [ref=e25]
+      - generic [ref=e1933]:
+        - link [ref=e1934] [cursor=pointer]:
+          - /url: https://github.com/Nicoj3000
+          - img [ref=e1935]
+        - link [ref=e1936] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/nicolas-delgado-6b22372b7/
+          - img [ref=e1937]
+  - generic [ref=e29]:
+    - heading "Toda mi carrera profesional" [level=1] [ref=e30]
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - paragraph [ref=e33]:
+          - text: +
+          - generic [ref=e34]: "2"
+        - paragraph [ref=e35]: Años de experiencia
+      - generic [ref=e36]:
+        - paragraph [ref=e37]:
+          - text: +
+          - generic [ref=e38]: "4"
+        - paragraph [ref=e39]: Clientes satisfechos
+      - generic [ref=e40]:
+        - paragraph [ref=e41]:
+          - text: +
+          - generic [ref=e42]: "10"
+        - paragraph [ref=e43]: Proyectos completados
+      - generic [ref=e44]:
+        - paragraph [ref=e45]:
+          - text: +
+          - generic [ref=e46]: "8"
+        - paragraph [ref=e47]: Tecnologías
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - heading "Director de TI" [level=3] [ref=e52]
+        - generic [ref=e53]:
+          - time [ref=e54]: 2026 - Hoy
+          - generic [ref=e55]: FH Velez Abogados
+        - generic [ref=e56]: Desde enero de 2026 lidero el área de TI en FH Velez Abogados, definiendo estrategia tecnológica, coordinando implementaciones y mejorando la eficiencia operativa mediante soluciones digitales.
+      - generic [ref=e57]:
+        - heading "Monitor Talento Tech" [level=3] [ref=e58]
+        - generic [ref=e59]:
+          - time [ref=e60]: 2025 - Hoy
+          - generic [ref=e61]: Ministerio de Educación
+        - generic [ref=e62]: Apoyo procesos formativos como monitor en bootcamps, acompañando clases, reforzando fundamentos de programación y guiando a estudiantes en proyectos prácticos.
+      - generic [ref=e63]:
+        - heading "Desarrollador Fullstack" [level=3] [ref=e64]
+        - generic [ref=e65]:
+          - time [ref=e66]: 2023 - 2025
+          - generic [ref=e67]: Experiencia Profesional Previa
+        - generic [ref=e68]: Desarrollé plataformas web y soluciones de automatización para organizaciones como Senica SAS e Hidroconsultora, usando React, Next.js, Node.js, TypeScript, Python, SQL y MongoDB.
+      - generic [ref=e69]:
+        - heading "Ingeniero de Sistemas" [level=3] [ref=e70]
+        - generic [ref=e71]:
+          - time [ref=e72]: 2021 - 2025
+          - generic [ref=e73]: Universidad Libre de Pereira
+        - generic [ref=e74]: Graduado en Ingeniería de Sistemas de la Universidad Libre de Pereira, con bases sólidas en arquitectura de software, desarrollo de aplicaciones web y resolución de problemas técnicos.
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - heading "Mi stack tecnológico" [level=2] [ref=e79]
+          - paragraph [ref=e80]: Tecnologías que uso en mis proyectos
+        - img "Interactive 3D Icon Cloud" [ref=e82]
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - heading "Desde Colombia" [level=2] [ref=e85]
+          - paragraph [ref=e86]: Bogotá · Pereira · Medellín
+        - generic [ref=e87]:
+          - img [ref=e88]
+          - generic [ref=e1928]:
+            - generic [ref=e1929]: 📍 Colombia
+            - generic [ref=e1930]: Bogotá · Pereira · Medellín
+  - alert [ref=e1938]
+  - button "Volver arriba" [ref=e1939] [cursor=pointer]:
+    - img [ref=e1940]

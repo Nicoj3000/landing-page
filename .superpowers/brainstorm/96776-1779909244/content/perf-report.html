@@ -1,0 +1,86 @@
+<h2>Paso 2: Análisis de Performance</h2>
+<p class="subtitle">Build de producción analizado. Estos son los problemas reales, ordenados por impacto.</p>
+
+<div class="section">
+  <h3>🔴 Alto impacto</h3>
+  <div style="display:flex;flex-direction:column;gap:0.6rem;margin-top:0.75rem">
+
+    <div style="padding:0.9rem 1rem;border-radius:8px;background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.22)">
+      <div style="font-weight:600;color:#fca5a5;margin-bottom:0.3rem">CSS de Swiper cargando en TODAS las páginas — y Swiper no existe más</div>
+      <p style="font-size:0.86rem;color:rgba(255,255,255,0.6);margin:0">
+        <code style="background:rgba(255,255,255,0.1);padding:2px 5px;border-radius:4px">app/layout.tsx</code> importa 3 archivos CSS de Swiper globalmente.
+        Pero <code>SliderServices</code> fue refactorizado a un grid CSS — Swiper ya no se usa en ningún lugar del proyecto.
+        Son imports muertos que afectan el tiempo de carga de las 4 páginas.
+      </p>
+    </div>
+
+    <div style="padding:0.9rem 1rem;border-radius:8px;background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.22)">
+      <div style="font-weight:600;color:#fca5a5;margin-bottom:0.3rem">Paquete <code>motion</code> instalado pero nunca usado</div>
+      <p style="font-size:0.86rem;color:rgba(255,255,255,0.6);margin:0">
+        <code>package.json</code> tiene <strong>dos</strong> librerías de animación: <code>framer-motion@11</code> (usada en todo el código) y <code>motion@12</code> (cero imports en el proyecto).
+        <code>motion</code> es el rebrand de framer-motion — tener ambos es peso duplicado.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<div class="section" style="margin-top:1.25rem">
+  <h3>🟡 Impacto medio</h3>
+  <div style="display:flex;flex-direction:column;gap:0.6rem;margin-top:0.75rem">
+
+    <div style="padding:0.9rem 1rem;border-radius:8px;background:rgba(234,179,8,0.07);border:1px solid rgba(234,179,8,0.2)">
+      <div style="font-weight:600;color:#fde68a;margin-bottom:0.3rem"><code>app/page.tsx</code> tiene <code>"use client"</code> innecesario</div>
+      <p style="font-size:0.86rem;color:rgba(255,255,255,0.6);margin:0">
+        El page component de Home no usa hooks ni event handlers propios. Todos sus hijos ya declaran su propio <code>"use client"</code>.
+        Sacarlo permite que Next.js trate Home como Server Component, reduciendo el bundle del route.
+      </p>
+    </div>
+
+    <div style="padding:0.9rem 1rem;border-radius:8px;background:rgba(234,179,8,0.07);border:1px solid rgba(234,179,8,0.2)">
+      <div style="font-weight:600;color:#fde68a;margin-bottom:0.3rem">tsparticles no lazy-loaded — bloquea el render inicial</div>
+      <p style="font-size:0.86rem;color:rgba(255,255,255,0.6);margin:0">
+        <code>CoverParticles</code> ya tiene un buen patrón de init lazy, pero el <em>bundle de tsparticles</em> se incluye en el chunk de la página.
+        Con <code>next/dynamic</code> + <code>ssr: false</code> se puede diferir completamente del First Load JS.
+      </p>
+    </div>
+
+    <div style="padding:0.9rem 1rem;border-radius:8px;background:rgba(234,179,8,0.07);border:1px solid rgba(234,179,8,0.2)">
+      <div style="font-weight:600;color:#fde68a;margin-bottom:0.3rem">Bug confirmado: dock tapa contenido — <code>md:pb-10</code> insuficiente</div>
+      <p style="font-size:0.86rem;color:rgba(255,255,255,0.6);margin:0">
+        Fix: <code>container-page.tsx</code> cambiar <code>md:pb-10</code> → <code>md:pb-36</code>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<div class="section" style="margin-top:1.25rem">
+  <h3>🟢 Limpieza rápida</h3>
+  <div style="display:flex;flex-direction:column;gap:0.6rem;margin-top:0.75rem">
+    <div style="padding:0.75rem 1rem;border-radius:8px;background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.18)">
+      <div style="font-weight:600;color:#86efac;margin-bottom:0.2rem">Remover <code>@types/i18next</code> de devDependencies</div>
+      <p style="font-size:0.86rem;color:rgba(255,255,255,0.6);margin:0">i18next v23+ incluye sus propios tipos. Este paquete es obsoleto y puede causar conflictos de tipos.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:1.5rem">
+  <h3>¿Aplicamos todo junto ahora?</h3>
+  <div class="options" style="margin-top:0.75rem">
+    <div class="option" data-choice="apply-all" onclick="toggleSelect(this)">
+      <div class="letter">A</div>
+      <div class="content">
+        <h3>Sí, aplicar todas las optimizaciones</h3>
+        <p>Swiper CSS, motion package, use client, tsparticles lazy, pb fix, @types. Después pasamos a planificar mejoras.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="apply-critical" onclick="toggleSelect(this)">
+      <div class="letter">B</div>
+      <div class="content">
+        <h3>Solo las críticas + el bug</h3>
+        <p>Swiper CSS muerto, motion package, pb fix. Las otras son opcionales.</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+[     392ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/:0
+[     843ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[     948ms] Error: Module not found: Can't resolve 'cobe'
+  2 |
+  3 | import { useEffect, useRef } from "react"
+> 4 | import createGlobe, { type COBEOptions } from "cobe"
+    | ^
+  5 | import { useMotionValue, useSpring } from "framer-motion"
+  6 | import { cn } from "@/lib/utils"
+  7 |
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./components/skills-section.tsx
+./app/page.tsx
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at getNotFoundError (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/build/webpack/plugins/wellknown-errors-plugin/parseNotFoundError.js:124:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getModuleBuildError (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/build/webpack/plugins/wellknown-errors-plugin/webpackModuleError.js:104:27)
+    at async (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/build/webpack/plugins/wellknown-errors-plugin/index.js:29:49)
+    at async (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/build/webpack/plugins/wellknown-errors-plugin/index.js:27:21)
+[     944ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[     952ms] [ERROR] ./components/magicui/globe.tsx:4:1
+Module not found: Can't resolve 'cobe'
+  2 |
+  3 | import { useEffect, useRef } from "react"
+> 4 | import createGlobe, { type COBEOptions } from "cobe"
+    | ^
+  5 | import { useMotionValue, useSpring } from "framer-motion"
+  6 | import { cn } from "@/lib/utils"
+  7 |
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./components/skills-section.tsx
+./app/page.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   14794ms] [ERROR] ./components/magicui/globe.tsx:4:1
+Module not found: Can't resolve 'cobe'
+  2 |
+  3 | import { useEffect, useRef } from "react"
+> 4 | import createGlobe, { type COBEOptions } from "cobe"
+    | ^
+  5 | import { useMotionValue, useSpring } from "framer-motion"
+  6 | import { cn } from "@/lib/utils"
+  7 |
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./components/skills-section.tsx
+./app/page.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   14807ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[   16011ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[   17082ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:347

@@ -1,0 +1,46 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Home" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - img
+    - link "User" [ref=e7] [cursor=pointer]:
+      - /url: /about-me
+      - img
+    - link "My services" [ref=e9] [cursor=pointer]:
+      - /url: /services
+      - img
+    - link "Portfolio" [ref=e11] [cursor=pointer]:
+      - /url: /portfolio
+      - img
+    - link "Mail" [ref=e14] [cursor=pointer]:
+      - /url: mailto:nicoj3000its@gmail.com
+      - img
+  - banner [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - link "NicoX" [ref=e19] [cursor=pointer]:
+          - /url: /
+          - heading "NicoX" [level=1] [ref=e20]
+        - button "En" [ref=e63] [cursor=pointer]:
+          - generic [ref=e23]: En
+          - img [ref=e25]
+          - img [ref=e27]
+      - generic [ref=e29]:
+        - link [ref=e30] [cursor=pointer]:
+          - /url: https://github.com/Nicoj3000
+          - img [ref=e31]
+        - link [ref=e33] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/nicolas-delgado-6b22372b7/
+          - img [ref=e34]
+  - generic [ref=e39]:
+    - img "Profile pic" [ref=e41]
+    - generic [ref=e42]:
+      - heading "If you can think it, you can program it|" [level=1] [ref=e64]:
+        - text: If you can think it,
+        - generic [ref=e65]: you can program it|
+      - paragraph [ref=e45]: Systems Engineer focused on building high-impact digital experiences, with leadership in IT strategy, fullstack development, and technical mentoring.
+      - generic [ref=e46]:
+        - link "See my work" [ref=e66] [cursor=pointer]:
+          - /url: /portfolio
+        - button "Download CV" [ref=e67] [cursor=pointer]
+  - alert [ref=e49]

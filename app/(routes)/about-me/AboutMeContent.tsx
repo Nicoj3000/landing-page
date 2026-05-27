@@ -3,6 +3,7 @@
 import ContainerPage from "@/components/container-page";
 import CounterServices from "@/components/counter-services";
 import { CoverParticles } from "@/components/cover-particles";
+import SkillsSection from "@/components/skills-section";
 import TimeLine from "@/components/time-line";
 import TransitionPage from "@/components/transition-page";
 import { useTranslation } from "react-i18next";
@@ -20,6 +21,7 @@ export default function AboutMeContent() {
         </h1>
         <CounterServices />
         <TimeLine />
+        <SkillsSection />
       </ContainerPage>
     </>
   );

@@ -1,0 +1,33 @@
+<h2>¿Cómo escalar el texto en pantallas grandes?</h2>
+<p class="subtitle">El breakpoint <code>2xl</code> (1536px) es el último. En 2K/4K el texto topa en 72px.</p>
+
+<div class="options" style="margin-top:1rem">
+
+  <div class="option" data-choice="breakpoints" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Custom breakpoints <code>3xl</code> / <code>4xl</code></h3>
+      <p>Agregamos <code>3xl: 1920px</code> y <code>4xl: 2560px</code> en <code>tailwind.config.ts</code>. Entonces podés usar <code>3xl:text-8xl</code>, <code>4xl:text-9xl</code> en el heading. Consistente con todo el proyecto, cambio mínimo.</p>
+      <div style="margin-top:0.75rem;padding:0.65rem;background:rgba(255,255,255,0.04);border-radius:6px;font-size:0.78rem;font-family:monospace;color:#8ca3ff">
+        text-7xl → 3xl:text-8xl → 4xl:text-[7.5rem]
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="clamp" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Tipografía fluida con <code>clamp()</code></h3>
+      <p>El texto escala automáticamente según el viewport, sin breakpoints. Perfecto para cualquier pantalla, incluyendo ultrawide. Más elegante pero reemplaza las clases de Tailwind por CSS directo.</p>
+      <div style="margin-top:0.75rem;padding:0.65rem;background:rgba(255,255,255,0.04);border-radius:6px;font-size:0.78rem;font-family:monospace;color:#8ca3ff">
+        font-size: clamp(2rem, 4.5vw, 8rem)
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-top:1.25rem;padding:0.9rem 1rem;border-radius:8px;background:rgba(99,122,255,0.08);border:1px solid rgba(99,122,255,0.2);font-size:0.86rem;color:rgba(255,255,255,0.65)">
+  <strong style="color:#8ca3ff">Recomendación:</strong> La A es más simple y queda consistente con el estilo actual del proyecto.
+  La B es más robusta si en el futuro agregás más texto en otros componentes.
+</div>

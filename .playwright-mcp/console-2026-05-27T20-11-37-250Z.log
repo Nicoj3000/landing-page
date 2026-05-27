@@ -1,0 +1,208 @@
+[    1868ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:38559
+[    2429ms] [WARNING] WebGL: INVALID_OPERATION: drawArrays: no buffer is bound to enabled attribute @ webpack-internal:///(app-pages-browser)/./node_modules/cobe/dist/index.esm.js:4
+[  307835ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  309193ms] [LOG] [Fast Refresh] done in 1370ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  314154ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  314644ms] [LOG] [Fast Refresh] done in 489ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  322245ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  322751ms] [LOG] [Fast Refresh] done in 507ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  605622ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  608139ms] [LOG] [Fast Refresh] done in 2521ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  611841ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  613223ms] [LOG] [Fast Refresh] done in 1382ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  791476ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  794246ms] [LOG] [Fast Refresh] done in 2771ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  800138ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  800739ms] [LOG] [Fast Refresh] done in 600ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  807900ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  808422ms] [LOG] [Fast Refresh] done in 521ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  818930ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  819560ms] [LOG] [Fast Refresh] done in 629ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  831768ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  832816ms] [LOG] [Fast Refresh] done in 1051ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[ 1043686ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[ 1045310ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[ 1045478ms] [LOG] [Fast Refresh] done in 167ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[ 1046927ms] [ERROR] ./components/magicui/dock.tsx:4:1
+Module not found: Can't resolve 'motion/react'
+  2 |
+  3 | import { cva, type VariantProps } from "class-variance-authority";
+> 4 | import {
+    | ^
+  5 |   motion,
+  6 |   MotionProps,
+  7 |   MotionValue,
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./components/navbar.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[ 1046928ms] [ERROR] ./app/layout.tsx:4:1
+Module not found: Can't resolve 'swiper/css'
+  2 | import { Urbanist } from "next/font/google";
+  3 | import "./globals.css";
+> 4 | import "swiper/css";
+    | ^
+  5 | import "swiper/css/pagination";
+  6 | import "swiper/css/scrollbar";
+  7 | import { Navbar } from "@/components/navbar";
+
+https://nextjs.org/docs/messages/module-not-found @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[ 1046928ms] [ERROR] ./app/layout.tsx:5:1
+Module not found: Can't resolve 'swiper/css/pagination'
+  3 | import "./globals.css";
+  4 | import "swiper/css";
+> 5 | import "swiper/css/pagination";
+    | ^
+  6 | import "swiper/css/scrollbar";
+  7 | import { Navbar } from "@/components/navbar";
+  8 | import Header from "@/components/header";
+
+https://nextjs.org/docs/messages/module-not-found @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[ 1046928ms] [ERROR] ./app/layout.tsx:6:1
+Module not found: Can't resolve 'swiper/css/scrollbar'
+  4 | import "swiper/css";
+  5 | import "swiper/css/pagination";
+> 6 | import "swiper/css/scrollbar";
+    | ^
+  7 | import { Navbar } from "@/components/navbar";
+  8 | import Header from "@/components/header";
+  9 | import { TooltipProvider } from "@/components/ui/tooltip";
+
+https://nextjs.org/docs/messages/module-not-found @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[ 1048306ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/?_rsc=r3yhw:0
+[ 1049159ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/:0
+[ 1049869ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[ 1050211ms] Error: Module not found: Can't resolve 'motion/react'
+  2 |
+  3 | import { cva, type VariantProps } from "class-variance-authority";
+> 4 | import {
+    | ^
+  5 |   motion,
+  6 |   MotionProps,
+  7 |   MotionValue,
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./components/navbar.tsx
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at getNotFoundError (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/build/webpack/plugins/wellknown-errors-plugin/parseNotFoundError.js:124:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getModuleBuildError (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/build/webpack/plugins/wellknown-errors-plugin/webpackModuleError.js:104:27)
+    at async (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/build/webpack/plugins/wellknown-errors-plugin/index.js:29:49)
+    at async (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/build/webpack/plugins/wellknown-errors-plugin/index.js:27:21)
+[ 1050097ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[ 1050167ms] [ERROR] ./components/magicui/dock.tsx:4:1
+Module not found: Can't resolve 'motion/react'
+  2 |
+  3 | import { cva, type VariantProps } from "class-variance-authority";
+> 4 | import {
+    | ^
+  5 |   motion,
+  6 |   MotionProps,
+  7 |   MotionValue,
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./components/navbar.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[ 1050167ms] [ERROR] ./app/layout.tsx:4:1
+Module not found: Can't resolve 'swiper/css'
+  2 | import { Urbanist } from "next/font/google";
+  3 | import "./globals.css";
+> 4 | import "swiper/css";
+    | ^
+  5 | import "swiper/css/pagination";
+  6 | import "swiper/css/scrollbar";
+  7 | import { Navbar } from "@/components/navbar";
+
+https://nextjs.org/docs/messages/module-not-found @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[ 1050167ms] [ERROR] ./app/layout.tsx:5:1
+Module not found: Can't resolve 'swiper/css/pagination'
+  3 | import "./globals.css";
+  4 | import "swiper/css";
+> 5 | import "swiper/css/pagination";
+    | ^
+  6 | import "swiper/css/scrollbar";
+  7 | import { Navbar } from "@/components/navbar";
+  8 | import Header from "@/components/header";
+
+https://nextjs.org/docs/messages/module-not-found @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[ 1050167ms] [ERROR] ./app/layout.tsx:6:1
+Module not found: Can't resolve 'swiper/css/scrollbar'
+  4 | import "swiper/css";
+  5 | import "swiper/css/pagination";
+> 6 | import "swiper/css/scrollbar";
+    | ^
+  7 | import { Navbar } from "@/components/navbar";
+  8 | import Header from "@/components/header";
+  9 | import { TooltipProvider } from "@/components/ui/tooltip";
+
+https://nextjs.org/docs/messages/module-not-found @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[ 1050217ms] [ERROR] ./components/magicui/dock.tsx:4:1
+Module not found: Can't resolve 'motion/react'
+  2 |
+  3 | import { cva, type VariantProps } from "class-variance-authority";
+> 4 | import {
+    | ^
+  5 |   motion,
+  6 |   MotionProps,
+  7 |   MotionValue,
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./components/navbar.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[ 1050217ms] [ERROR] ./app/layout.tsx:4:1
+Module not found: Can't resolve 'swiper/css'
+  2 | import { Urbanist } from "next/font/google";
+  3 | import "./globals.css";
+> 4 | import "swiper/css";
+    | ^
+  5 | import "swiper/css/pagination";
+  6 | import "swiper/css/scrollbar";
+  7 | import { Navbar } from "@/components/navbar";
+
+https://nextjs.org/docs/messages/module-not-found @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[ 1050217ms] [ERROR] ./app/layout.tsx:5:1
+Module not found: Can't resolve 'swiper/css/pagination'
+  3 | import "./globals.css";
+  4 | import "swiper/css";
+> 5 | import "swiper/css/pagination";
+    | ^
+  6 | import "swiper/css/scrollbar";
+  7 | import { Navbar } from "@/components/navbar";
+  8 | import Header from "@/components/header";
+
+https://nextjs.org/docs/messages/module-not-found @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[ 1050218ms] [ERROR] ./app/layout.tsx:6:1
+Module not found: Can't resolve 'swiper/css/scrollbar'
+  4 | import "swiper/css";
+  5 | import "swiper/css/pagination";
+> 6 | import "swiper/css/scrollbar";
+    | ^
+  7 | import { Navbar } from "@/components/navbar";
+  8 | import Header from "@/components/header";
+  9 | import { TooltipProvider } from "@/components/ui/tooltip";
+
+https://nextjs.org/docs/messages/module-not-found @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[ 1101485ms] [ERROR] ./components/magicui/dock.tsx:4:1
+Module not found: Can't resolve 'motion/react'
+  2 |
+  3 | import { cva, type VariantProps } from "class-variance-authority";
+> 4 | import {
+    | ^
+  5 |   motion,
+  6 |   MotionProps,
+  7 |   MotionValue,
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./components/navbar.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[ 1101491ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[ 1104821ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[ 1105748ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/_next/static/webpack/51f6321eacebd7c9.webpack.hot-update.json:0
+[ 1105748ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:349
+[ 1107084ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:38559

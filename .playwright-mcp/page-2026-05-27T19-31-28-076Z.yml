@@ -1,0 +1,43 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - link "Home" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - img [ref=e6]
+    - link "User" [ref=e10] [cursor=pointer]:
+      - /url: /about-me
+      - img [ref=e11]
+    - link "My services" [ref=e15] [cursor=pointer]:
+      - /url: /services
+      - img [ref=e16]
+    - link "Portfolio" [ref=e19] [cursor=pointer]:
+      - /url: /portfolio
+      - img [ref=e20]
+    - link "Mail" [ref=e25] [cursor=pointer]:
+      - /url: mailto:nicoj3000its@gmail.com
+      - img [ref=e26]
+  - banner [ref=e30]:
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - link "NicoX" [ref=e33] [cursor=pointer]:
+          - /url: /
+          - heading "NicoX" [level=1] [ref=e34]
+        - button "Es" [ref=e36]:
+          - text: Es
+          - img [ref=e38]
+          - img [ref=e40]
+      - generic [ref=e42]:
+        - link [ref=e43] [cursor=pointer]:
+          - /url: https://github.com/Nicoj3000
+          - img [ref=e44]
+        - link [ref=e46] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/nicolas-delgado-6b22372b7/
+          - img [ref=e47]
+  - generic [ref=e52]:
+    - img "Profile pic" [ref=e54]
+    - generic [ref=e55]:
+      - heading "Si puedes pensarlo," [level=1] [ref=e56]: Si puedes pensarlo,
+      - paragraph [ref=e57]: Ingeniero de Sistemas enfocado en crear experiencias digitales de alto impacto, con liderazgo en estrategia TI, desarrollo fullstack y mentoría técnica.
+      - generic [ref=e58]:
+        - link "Ver mi trabajo" [ref=e59] [cursor=pointer]:
+          - /url: /portfolio
+        - button "Descargar CV" [ref=e60]

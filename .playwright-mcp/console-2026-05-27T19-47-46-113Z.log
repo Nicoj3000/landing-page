@@ -1,0 +1,100 @@
+[     844ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:38559
+[  728762ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  731479ms] [ERROR] ./node_modules/motion/dist/es/motion/lib/react.mjs
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs'
+
+Import trace for requested module:
+./node_modules/motion/dist/es/motion/lib/react.mjs
+./components/magicui/dock.tsx
+./components/navbar.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  757176ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  757733ms] [ERROR] ./node_modules/motion/dist/es/motion/lib/react.mjs
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs'
+
+Import trace for requested module:
+./node_modules/motion/dist/es/motion/lib/react.mjs
+./components/magicui/dock.tsx
+./components/navbar.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  769257ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  769497ms] [ERROR] ./node_modules/motion/dist/es/motion/lib/react.mjs
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs'
+
+Import trace for requested module:
+./node_modules/motion/dist/es/motion/lib/react.mjs
+./components/magicui/dock.tsx
+./components/navbar.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  813561ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  814106ms] [ERROR] ./node_modules/motion/dist/es/motion/lib/react.mjs
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs'
+
+Import trace for requested module:
+./node_modules/motion/dist/es/motion/lib/react.mjs
+./components/magicui/dock.tsx
+./components/navbar.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  814639ms] [ERROR] ./node_modules/motion/dist/es/motion/lib/react.mjs
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs'
+
+Import trace for requested module:
+./node_modules/motion/dist/es/motion/lib/react.mjs
+./components/magicui/dock.tsx
+./components/navbar.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  814725ms] [ERROR] ./node_modules/motion/dist/es/motion/lib/react.mjs
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs'
+
+Import trace for requested module:
+./node_modules/motion/dist/es/motion/lib/react.mjs
+./components/magicui/dock.tsx
+./components/navbar.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  814853ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/?_rsc=r3yhw:0
+[  814951ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/?_rsc=r3yhw:0
+[  815282ms] [ERROR] ./node_modules/motion/dist/es/motion/lib/react.mjs
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs' @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  815886ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/:0
+[  816515ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[  816602ms] ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs'
+    at processResult (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:400590)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:402302)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:8645)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:5353)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:401715)
+    at eval (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:13:28858)
+    at Array.<anonymous> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/build/webpack/plugins/profiling-plugin.js:179:29)
+    at runCallbacks (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:1:167958)
+    at ReadFileContext.<anonymous> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:1:170085)
+    at ReadFileContext.callback (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:1:268941)
+    at FSReqCallback.readFileAfterOpen [as oncomplete] (node:fs:300:13)
+    at FSReqCallback.callbackTrampoline (node:internal/async_hooks:130:17)
+[  816590ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[  816595ms] [ERROR] ./node_modules/motion/dist/es/motion/lib/react.mjs
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs' @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  925832ms] [ERROR] ./node_modules/motion/dist/es/motion/lib/react.mjs
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs'
+
+Import trace for requested module:
+./node_modules/motion/dist/es/motion/lib/react.mjs
+./components/magicui/dock.tsx
+./components/navbar.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  925854ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[  926721ms] [ERROR] ./node_modules/motion/dist/es/motion/lib/react.mjs
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs'
+
+Import trace for requested module:
+./node_modules/motion/dist/es/motion/lib/react.mjs
+./components/magicui/dock.tsx
+./components/navbar.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  931475ms] [ERROR] ./node_modules/motion/dist/es/motion/lib/react.mjs
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs'
+
+Import trace for requested module:
+./node_modules/motion/dist/es/motion/lib/react.mjs
+./components/magicui/dock.tsx
+./components/navbar.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  931477ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[  931806ms] [ERROR] ./node_modules/motion/dist/es/motion/lib/react.mjs
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs'
+
+Import trace for requested module:
+./node_modules/motion/dist/es/motion/lib/react.mjs
+./components/magicui/dock.tsx
+./components/navbar.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62

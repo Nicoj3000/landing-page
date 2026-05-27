@@ -1,0 +1,73 @@
+<h2>Globe + Icon Cloud — ¿Cómo los organizo?</h2>
+<p class="subtitle">Propuesta de ubicación y layout dentro del proyecto existente.</p>
+
+<div class="section">
+  <h3>Estructura de archivos</h3>
+  <div style="padding:1rem;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-family:monospace;font-size:0.82rem;line-height:1.9;margin-top:0.75rem">
+    <span style="color:#6d86ff">components/</span><br>
+    &nbsp;&nbsp;<span style="color:#6d86ff">magicui/</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ade80">globe.tsx</span> <span style="color:rgba(255,255,255,0.3)">← nuevo</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ade80">icon-cloud.tsx</span> <span style="color:rgba(255,255,255,0.3)">← nuevo</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;dock.tsx<br>
+    &nbsp;&nbsp;<span style="color:#4ade80">skills-section.tsx</span> <span style="color:rgba(255,255,255,0.3)">← usa ambos</span><br>
+  </div>
+</div>
+
+<div class="section" style="margin-top:1.5rem">
+  <h3>¿Dónde aparecen?</h3>
+
+  <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem">
+    <div style="padding:1rem;border-radius:8px;background:rgba(99,122,255,0.08);border:1px solid rgba(99,122,255,0.25)">
+      <div style="font-weight:600;color:#8ca3ff;margin-bottom:0.3rem">About Me — nueva sección al final de la página</div>
+      <div style="font-size:0.85rem;color:rgba(255,255,255,0.6)">
+        Después del timeline: sección "Mi Stack" con dos columnas —
+        <strong style="color:#fff">Icon Cloud</strong> (tus tecnologías en 3D) a la izquierda y
+        <strong style="color:#fff">Globe</strong> (con marcadores en tus ciudades/proyectos) a la derecha.
+        Layout limpio, visual y profesional.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:1.5rem">
+  <h3>Mockup del layout en About Me</h3>
+  <div class="mockup" style="margin-top:0.75rem">
+    <div class="mockup-header">About Me — scroll down → sección stack</div>
+    <div class="mockup-body" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;padding:1.5rem;min-height:200px">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px dashed rgba(255,255,255,0.15);border-radius:12px;padding:1.5rem;gap:0.75rem">
+        <div style="width:120px;height:120px;border-radius:50%;border:2px dashed rgba(109,134,255,0.4);display:flex;align-items:center;justify-content:center;position:relative">
+          <div style="width:12px;height:12px;border-radius:50%;background:#6d86ff;position:absolute;top:10px;left:30px"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:#8ca3ff;position:absolute;bottom:20px;right:20px"></div>
+          <div style="width:10px;height:10px;border-radius:50%;background:#3f5cff;position:absolute;top:40px;right:10px"></div>
+          <span style="font-size:0.65rem;color:rgba(255,255,255,0.4)">Icon Cloud</span>
+        </div>
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.4)">TypeScript · React · Next.js<br>Node · Python · MongoDB…</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px dashed rgba(255,255,255,0.15);border-radius:12px;padding:1.5rem;gap:0.75rem">
+        <div style="width:120px;height:120px;border-radius:50%;border:1px solid rgba(109,134,255,0.3);background:radial-gradient(circle at 35% 35%,rgba(63,92,255,0.3),transparent 60%);display:flex;align-items:center;justify-content:center">
+          <span style="font-size:0.65rem;color:rgba(255,255,255,0.4)">Globe WebGL</span>
+        </div>
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.4)">Colombia · proyectos globales</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:1.5rem">
+  <div class="options">
+    <div class="option" data-choice="yes" onclick="toggleSelect(this)">
+      <div class="letter">A</div>
+      <div class="content">
+        <h3>Perfecto, implementalo así</h3>
+        <p>About Me, dos columnas, Icon Cloud + Globe. Seguimos.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="other" onclick="toggleSelect(this)">
+      <div class="letter">B</div>
+      <div class="content">
+        <h3>Quiero algo diferente</h3>
+        <p>Contame qué cambiarías del layout o la ubicación.</p>
+      </div>
+    </div>
+  </div>
+</div>

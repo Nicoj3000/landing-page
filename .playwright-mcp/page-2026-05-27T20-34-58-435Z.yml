@@ -1,0 +1,58 @@
+- generic [active]:
+  - alert [ref=e1]
+  - dialog [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - heading "Build Error" [level=1] [ref=e7]
+        - paragraph [ref=e8]: Failed to compile
+        - generic [ref=e9]:
+          - text: Next.js (14.2.13) is outdated
+          - link "(learn more)" [ref=e11] [cursor=pointer]:
+            - /url: https://nextjs.org/docs/messages/version-staleness
+      - generic [ref=e12]:
+        - generic [ref=e13]:
+          - link "./components/magicui/globe.tsx:4:1" [ref=e14] [cursor=pointer]:
+            - text: ./components/magicui/globe.tsx:4:1
+            - img [ref=e15]
+          - generic [ref=e19]:
+            - generic [ref=e20]: "Module not found: Can't resolve 'cobe'"
+            - generic [ref=e21]: 2 |
+            - generic [ref=e22]: 3 |
+            - text: import
+            - generic [ref=e23]: "{ useEffect"
+            - text: ","
+            - generic [ref=e24]: "useRef }"
+            - text: from "react" >
+            - generic [ref=e25]: 4 |
+            - text: import
+            - generic [ref=e26]: createGlobe
+            - text: ","
+            - generic [ref=e27]: "{ type"
+            - text: COBEOptions
+            - generic [ref=e28]: "}"
+            - text: from "cobe"
+            - generic [ref=e29]: "|"
+            - text: ^
+            - generic [ref=e30]: 5 |
+            - text: import
+            - generic [ref=e31]: "{ useMotionValue"
+            - text: ","
+            - generic [ref=e32]: "useSpring }"
+            - text: from "framer-motion"
+            - generic [ref=e33]: 6 |
+            - text: import
+            - generic [ref=e34]: "{ cn }"
+            - text: from "@/lib/utils"
+            - generic [ref=e35]: 7 |
+            - generic [ref=e36]:
+              - link "https://nextjs.org/docs/messages/module-not-found" [ref=e37] [cursor=pointer]:
+                - /url: https://nextjs.org/docs/messages/module-not-found
+              - text: "Import trace for requested module:"
+            - link "./components/skills-section.tsx" [ref=e38] [cursor=pointer]:
+              - text: ./components/skills-section.tsx
+              - img [ref=e39]
+            - link "./app/page.tsx" [ref=e43] [cursor=pointer]:
+              - text: ./app/page.tsx
+              - img [ref=e44]
+        - contentinfo [ref=e48]:
+          - paragraph [ref=e49]: This error occurred during the build process and can only be dismissed by fixing the error.

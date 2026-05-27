@@ -1,0 +1,58 @@
+<h2>Hero — ¿Qué dirección querés?</h2>
+<p class="subtitle">Antes de ver layouts, definamos el tono. El hero es lo primero que ve cualquier recruiter o cliente.</p>
+
+<div class="cards" style="margin-top:1rem">
+
+  <div class="card" data-choice="bold" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:linear-gradient(135deg,#05070d 0%,#0d1326 100%);padding:1.2rem;font-family:sans-serif;min-height:160px;display:flex;flex-direction:column;justify-content:center">
+      <div style="font-size:0.65rem;color:#6d86ff;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem">Nicolás Delgado</div>
+      <div style="font-size:1.5rem;font-weight:800;color:#fff;line-height:1.1;margin-bottom:0.5rem">Ingeniero<br>Fullstack <span style="color:#3f5cff">·</span></div>
+      <div style="font-size:0.7rem;color:rgba(255,255,255,0.45);margin-bottom:0.9rem">TypeScript · Next.js · Node.js</div>
+      <div style="display:flex;gap:0.5rem">
+        <div style="background:#3f5cff;color:#fff;font-size:0.65rem;padding:0.3rem 0.7rem;border-radius:6px;font-weight:600">Ver trabajo</div>
+        <div style="border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);font-size:0.65rem;padding:0.3rem 0.7rem;border-radius:6px">Descargar CV</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Bold & Directo</h3>
+      <p>Nombre + título grande sin animación. Stack visible arriba. Jerárquico, fácil de leer en 3 segundos. Más serio/profesional.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="personal" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:linear-gradient(135deg,#05070d 0%,#0d1326 100%);padding:1.2rem;font-family:sans-serif;min-height:160px;display:flex;align-items:center;gap:1rem">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#3f5cff,#8ca3ff);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:800;color:#fff">N</div>
+      <div>
+        <div style="font-size:0.65rem;color:rgba(255,255,255,0.5);margin-bottom:0.15rem">Hola, soy</div>
+        <div style="font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:0.2rem">Nicolás Delgado</div>
+        <div style="font-size:0.7rem;color:#8ca3ff;margin-bottom:0.6rem">Fullstack · Arquitectura TI · Mentoría</div>
+        <div style="font-size:0.65rem;color:rgba(255,255,255,0.5);line-height:1.4;margin-bottom:0.7rem">Construyo productos digitales de alto impacto y lidero equipos hacia soluciones escalables.</div>
+        <div style="display:flex;gap:0.5rem">
+          <div style="background:#3f5cff;color:#fff;font-size:0.6rem;padding:0.25rem 0.6rem;border-radius:5px">Trabajemos juntos</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Personal & Cercano</h3>
+      <p>"Hola soy Nicolás" + foto prominente. CTA más conversacional. Genera confianza. Ideal si buscás clientes freelance.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="animated" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:linear-gradient(135deg,#05070d 0%,#0d1326 100%);padding:1.2rem;font-family:sans-serif;min-height:160px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+      <div style="font-size:0.65rem;color:#6d86ff;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.6rem;border:1px solid rgba(109,134,255,0.3);padding:0.2rem 0.6rem;border-radius:20px">Disponible para proyectos</div>
+      <div style="font-size:1.2rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:0.3rem">Si podés pensarlo,</div>
+      <div style="font-size:1.2rem;font-weight:800;background:linear-gradient(90deg,#8ca3ff,#3f5cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.6rem">podés construirlo ✦</div>
+      <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);margin-bottom:0.9rem;max-width:200px">Ingeniero Fullstack · Director TI · Mentor</div>
+      <div style="display:flex;gap:0.5rem">
+        <div style="background:#3f5cff;color:#fff;font-size:0.6rem;padding:0.25rem 0.65rem;border-radius:5px">Ver proyectos</div>
+        <div style="border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);font-size:0.6rem;padding:0.25rem 0.65rem;border-radius:5px">CV</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Centrado & Statement</h3>
+      <p>Layout centrado, frase impacto grande, badge de disponibilidad. Más creativo/personal. La TypeAnimation actual encaja bien acá.</p>
+    </div>
+  </div>
+
+</div>

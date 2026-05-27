@@ -1,0 +1,29 @@
+[    1501ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/about-me:0
+[    1751ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[    1887ms] ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs'
+    at processResult (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:400590)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:402302)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:8645)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:5353)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:401715)
+    at eval (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:13:28858)
+    at Array.<anonymous> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/build/webpack/plugins/profiling-plugin.js:179:29)
+    at runCallbacks (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:1:167958)
+    at ReadFileContext.<anonymous> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:1:170085)
+    at ReadFileContext.callback (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:1:268941)
+    at FSReqCallback.readFileAfterOpen [as oncomplete] (node:fs:300:13)
+    at FSReqCallback.callbackTrampoline (node:internal/async_hooks:130:17)
+[    1853ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[    1859ms] [ERROR] ./node_modules/motion/dist/es/motion/lib/react.mjs
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs' @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   29938ms] [ERROR] ./node_modules/motion/dist/es/motion/lib/react.mjs
+Error: ENOENT: no such file or directory, open '/Users/Nicoj3000/proyectos/landing-page/node_modules/motion/dist/es/motion/lib/react.mjs'
+
+Import trace for requested module:
+./node_modules/motion/dist/es/motion/lib/react.mjs
+./components/magicui/dock.tsx
+./components/navbar.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   29960ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[   32968ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/_next/static/webpack/51f6321eacebd7c9.webpack.hot-update.json:0
+[   32971ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:349
