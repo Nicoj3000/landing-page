@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { TypeAnimation } from 'react-type-animation';
 import { useTranslation } from 'react-i18next';
@@ -31,6 +31,7 @@ const Introduction = () => {
               alt="Profile pic"
               width={460}
               height={460}
+              priority
               className="h-[210px] w-[210px] rounded-full object-cover object-top sm:h-[260px] sm:w-[260px] md:h-[300px] md:w-[300px] lg:h-[320px] lg:w-[320px] xl:h-[350px] xl:w-[350px] 2xl:h-[380px] 2xl:w-[380px]"
             />
           </div>
@@ -55,7 +56,7 @@ const Introduction = () => {
               className="block bg-gradient-to-r from-[#8ca3ff] to-[#3f5cff] bg-clip-text font-bold text-transparent lg:text-5xl xl:whitespace-nowrap xl:text-6xl 2xl:text-7xl"
             />
           </h1>
-          <p className="mx-auto mb-4 mt-4 text-base leading-relaxed text-slate-300 sm:text-lg md:mx-0 lg:text-xl xl:text-2xl 2xl:text-[30px]">
+          <p className="mx-auto mb-4 mt-4 text-base leading-relaxed text-slate-300 [text-wrap:pretty] sm:text-lg md:mx-0 lg:text-xl xl:text-2xl 2xl:text-[30px]">
             {t('titleI5')}
           </p>
           <div className="flex items-center justify-center gap-4 md:justify-start md:gap-6 xl:gap-8">

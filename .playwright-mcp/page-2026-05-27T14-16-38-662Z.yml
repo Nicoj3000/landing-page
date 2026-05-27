@@ -1,0 +1,72 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Home" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - img
+    - link "User" [ref=e7] [cursor=pointer]:
+      - /url: /about-me
+      - img
+    - link "My services" [ref=e9] [cursor=pointer]:
+      - /url: /services
+      - img
+    - link "Portfolio" [ref=e11] [cursor=pointer]:
+      - /url: /portfolio
+      - img
+    - link "Mail" [ref=e14] [cursor=pointer]:
+      - /url: mailto:nicoj3000its@gmail.com
+      - img
+  - banner [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - link "NicoX" [ref=e19] [cursor=pointer]:
+          - /url: /
+          - heading "NicoX" [level=1] [ref=e20]
+        - button "Es" [ref=e22] [cursor=pointer]:
+          - generic [ref=e23]: Es
+          - img [ref=e25]
+          - img [ref=e27]
+      - generic [ref=e29]:
+        - link [ref=e30] [cursor=pointer]:
+          - /url: https://github.com/Nicoj3000
+          - img [ref=e31]
+        - link [ref=e33] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/nicolas-delgado-6b22372b7/
+          - img [ref=e34]
+  - generic [ref=e36]:
+    - heading "Mis últimos proyectos completados" [level=1] [ref=e37]
+    - generic [ref=e39]:
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - heading "Project Dashboard" [level=3] [ref=e42]
+          - paragraph [ref=e43]: Dashboard de gestión personal con React, TypeScript y Node.js. Seguimiento de tareas, finanzas y hábitos en un solo lugar.
+        - img "Project Dashboard" [ref=e45]
+        - generic [ref=e46]:
+          - link "Github" [ref=e47] [cursor=pointer]:
+            - /url: https://github.com/Nicoj3000/Project-Dashboard
+          - link "Live demo" [ref=e48] [cursor=pointer]:
+            - /url: https://dashboard-nicodev.netlify.app/
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - heading "PythonWebFlask" [level=3] [ref=e51]
+          - paragraph [ref=e52]: Aplicación web full-stack con Python, Flask y MySQL. CRUD completo con autenticación de usuarios y panel de administración.
+        - img "PythonWebFlask" [ref=e54]
+        - link "Github" [ref=e56] [cursor=pointer]:
+          - /url: https://github.com/Nicoj3000/project-python-flask-mysql
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - heading "App Egresados ULP" [level=3] [ref=e59]
+          - paragraph [ref=e60]: Sistema de gestión de graduados para la Universidad Libre de Pereira. Registro, seguimiento y análisis de egresados institucionales.
+        - img "App Egresados ULP" [ref=e62]
+        - link "Live demo" [ref=e64] [cursor=pointer]:
+          - /url: https://db-ulp-egresados.vercel.app/
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - heading "Rental Cars" [level=3] [ref=e67]
+          - paragraph [ref=e68]: Plataforma de alquiler de vehículos premium en Pereira. Catálogo interactivo, reservas en línea y gestión de flota.
+        - img "Rental Cars" [ref=e70]
+        - generic [ref=e71]:
+          - link "Github" [ref=e72] [cursor=pointer]:
+            - /url: https://github.com/Nicoj3000/RentalCars
+          - link "Live demo" [ref=e73] [cursor=pointer]:
+            - /url: https://rental-cars-eosin.vercel.app/
+  - alert [ref=e74]

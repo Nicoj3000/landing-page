@@ -10,8 +10,8 @@ export default function ContactCvModal({ buttonText }: Props) {
 
   const handleDownload = () => {
     const file = i18n.language.startsWith("es")
-      ? "/Hoja de vida Español.pdf"
-      : "/Hoja de vida Ingles.pdf";
+      ? "/hoja-de-vida-es.pdf"
+      : "/hoja-de-vida-en.pdf";
     const link = document.createElement("a");
     link.href = file;
     link.download = file.split("/").pop() || "";
@@ -21,13 +21,11 @@ export default function ContactCvModal({ buttonText }: Props) {
   };
 
   return (
-    <>
-      <button
-        className="my-2 w-fit cursor-pointer rounded-xl border border-[#4e66ff]/30 bg-[#3f5cff] px-6 py-3 text-sm font-medium text-white transition-all duration-200 hover:bg-[#526cff] hover:shadow-[0_12px_28px_-16px_rgba(63,92,255,0.8)]"
-        onClick={handleDownload}
-      >
-        {buttonText}
-      </button>
-    </>
+    <button
+      className="my-2 w-fit cursor-pointer rounded-xl border border-[#4e66ff]/30 bg-[#3f5cff] px-6 py-3 text-sm font-medium text-white transition-all duration-200 hover:bg-[#526cff] hover:shadow-[0_12px_28px_-16px_rgba(63,92,255,0.8)]"
+      onClick={handleDownload}
+    >
+      {buttonText}
+    </button>
   );
 }

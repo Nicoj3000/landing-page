@@ -6,11 +6,7 @@ import {
   Speech,
   Laptop,
   Server,
-  Github,
-  Linkedin,
   Mail,
-  Phone,
-  Youtube,
   Target,
 } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,40 +34,6 @@ export const socialNetworks = [
 
 ];
 
-interface NavItem {
-  id: number;
-  link: string;
-  title: string;
-  icon: React.ElementType; // Ensures `icon` is a valid React component
-}
-
-export const itemsNavbar: NavItem[] = [
-  {
-    id: 1,
-    title: "Home",
-    icon: HomeIcon, // Pass the component, not JSX
-    link: "/",
-  },
-  {
-    id: 2,
-    title: "User",
-    icon: UserRound, // Pass the component, not JSX
-    link: "/about-me",
-  },
-  {
-    id: 3,
-    title: "Book",
-    icon: BookText, // Pass the component, not JSX
-    link: "/services",
-  },
-  {
-    id: 4,
-    title: "Target",
-    icon: CodeSquare, // Pass the component, not JSX
-    link: "/portfolio",
-  },
-  
-];
 
 export const DATA = {
   name: "Nicoj Landing Page",
@@ -92,7 +54,7 @@ export const DATA = {
         icon: BookText,
       },
       Portafolio: {
-        name: "Youtube",
+        name: "Portfolio",
         url: "/portfolio",
         icon: CodeSquare
       },
@@ -158,7 +120,7 @@ export const dataCounter = [
   },
   {
     id: 3,
-    endCounter: 0,
+    endCounter: 8,
     text: "counters.title4",
     lineRight: false,
     lineRightMobile: false,
@@ -203,22 +165,23 @@ export const dataPortfolio = [
   {
     id: 1,
     title: "Project Dashboard",
+    description: "Dashboard de gestión personal con React, TypeScript y Node.js. Seguimiento de tareas, finanzas y hábitos en un solo lugar.",
     image: "/image-1.jpg",
     urlGithub: "https://github.com/Nicoj3000/Project-Dashboard",
     urlDemo: "https://dashboard-nicodev.netlify.app/",
   },
-
   {
     id: 3,
     title: "PythonWebFlask",
+    description: "Aplicación web full-stack con Python, Flask y MySQL. CRUD completo con autenticación de usuarios y panel de administración.",
     image: "/image-3.jpg",
     urlGithub: "https://github.com/Nicoj3000/project-python-flask-mysql",
     urlDemo: "#",
-
   },
   {
     id: 4,
     title: "App Egresados ULP",
+    description: "Sistema de gestión de graduados para la Universidad Libre de Pereira. Registro, seguimiento y análisis de egresados institucionales.",
     image: "/image-4.jpg",
     urlGithub: "",
     urlDemo: "https://db-ulp-egresados.vercel.app/",
@@ -226,9 +189,10 @@ export const dataPortfolio = [
   {
     id: 5,
     title: "Rental Cars",
+    description: "Plataforma de alquiler de vehículos premium en Pereira. Catálogo interactivo, reservas en línea y gestión de flota.",
     image: "/image-5.jpg",
     urlGithub: "https://github.com/Nicoj3000/RentalCars",
     urlDemo: "https://rental-cars-eosin.vercel.app/",
-  }
+  },
 ];
 

@@ -1,0 +1,254 @@
+[    4796ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:38559
+[   29918ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[   30641ms] [LOG] [Fast Refresh] done in 724ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[   43326ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[   43684ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[   43709ms] [LOG] [Fast Refresh] done in 25ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[   44236ms] [LOG] [Fast Refresh] done in 553ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[   56145ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[   56389ms] [ERROR] ./components/slider-services.tsx
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/slider-services.tsx
+./app/(routes)/services/page.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[   57175ms] [LOG] [Fast Refresh] done in 1031ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[   57401ms] [ERROR] ./components/slider-services.tsx
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/slider-services.tsx
+./app/(routes)/services/page.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[   57489ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/portfolio?_rsc=18037:0
+[   57662ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/portfolio:0
+[   57952ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[   57994ms] ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+
+Caused by:
+    Syntax Error
+    at processResult (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:400590)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:402302)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:8645)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:5019)
+    at r.callback (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:4039)
+[   57997ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[   58324ms] [ERROR] ./components/slider-services.tsx
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/slider-services.tsx
+./app/(routes)/services/page.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   58443ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/_next/static/webpack/51f6321eacebd7c9.webpack.hot-update.json:0
+[   58444ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:347
+[   58611ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/portfolio:0
+[   58791ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[   58889ms] ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+
+Caused by:
+    Syntax Error
+    at processResult (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:400590)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:402302)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:8645)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:5019)
+    at r.callback (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:4039)
+[   59044ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[   59167ms] [ERROR] ./components/slider-services.tsx
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/slider-services.tsx
+./app/(routes)/services/page.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   59339ms] [ERROR] ./components/slider-services.tsx
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/slider-services.tsx
+./app/(routes)/services/page.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   59367ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/favicon.ico:0
+[   59372ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/_next/static/webpack/51f6321eacebd7c9.webpack.hot-update.json:0
+[   59372ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:347
+[   59459ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/portfolio:0
+[   59600ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[   59606ms] ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+
+Caused by:
+    Syntax Error
+    at processResult (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:400590)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:402302)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:8645)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:5019)
+    at r.callback (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:4039)
+[   59608ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[   59609ms] [ERROR] ./components/slider-services.tsx
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+Caused by:
+    Syntax Error @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   59851ms] [ERROR] ./components/slider-services.tsx
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+Caused by:
+    Syntax Error @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   63065ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[   63749ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[   64407ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:347
+[   64987ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:38559
+[  223928ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  227129ms] [LOG] [Fast Refresh] done in 3199ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  230285ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  231508ms] [LOG] [Fast Refresh] done in 1222ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  233415ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  235596ms] [LOG] [Fast Refresh] done in 2181ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  378485ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:38559

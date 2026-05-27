@@ -1,0 +1,71 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Home" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - img
+    - link "User" [ref=e7] [cursor=pointer]:
+      - /url: /about-me
+      - img
+    - link "My services" [ref=e9] [cursor=pointer]:
+      - /url: /services
+      - img
+    - link "Youtube" [ref=e11] [cursor=pointer]:
+      - /url: /portfolio
+      - img
+    - link "Mail" [ref=e14] [cursor=pointer]:
+      - /url: mailto:nicoj3000its@gmail.com
+      - img
+  - banner [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - link "NicoX" [ref=e19] [cursor=pointer]:
+          - /url: /
+          - heading "NicoX" [level=1] [ref=e20]
+        - generic [ref=e22] [cursor=pointer]:
+          - generic [ref=e23]: Es
+          - img [ref=e25]
+          - img [ref=e27]
+      - generic [ref=e29]:
+        - link [ref=e30] [cursor=pointer]:
+          - /url: https://github.com/Nicoj3000
+          - img [ref=e31]
+        - link [ref=e33] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/nicolas-delgado-6b22372b7/
+          - img [ref=e34]
+  - generic [ref=e37]:
+    - generic [ref=e38]:
+      - heading "Mis servicios" [level=1] [ref=e39]
+      - generic [ref=e40]:
+        - paragraph [ref=e41]: Ingeniero de Sistemas que construye productos fullstack para equipos legales, educativos y empresariales.
+        - paragraph [ref=e42]: Lidero estrategia y ejecucion de TI, alineando tecnologia con objetivos de negocio medibles.
+        - paragraph [ref=e43]: "Stack principal: TypeScript, React, Next.js, Node.js, SQL, MongoDB y Python."
+        - paragraph [ref=e44]: Disenio arquitectura escalable, APIs limpias y codigo mantenible para crecimiento a largo plazo.
+        - paragraph [ref=e45]: Tambien mentoreo desarrolladores y equipos para mejorar calidad de codigo y velocidad de entrega.
+      - button "Descargar CV" [ref=e47] [cursor=pointer]
+    - generic [ref=e48]:
+      - article [ref=e49]:
+        - img [ref=e51]
+        - generic [ref=e53]:
+          - heading "Desarrollo web" [level=3] [ref=e54]
+          - paragraph [ref=e55]: Interfaces modernas con React y Next.js, optimizadas para rendimiento, UX y experiencia responsive en desktop, tablet y movil.
+      - article [ref=e56]:
+        - img [ref=e58]
+        - generic [ref=e61]:
+          - heading "Desarrollo Backend" [level=3] [ref=e62]
+          - paragraph [ref=e63]: Sistemas backend con Node.js, arquitectura API-first, autenticacion segura e integraciones robustas orientadas a escalabilidad.
+      - article [ref=e64]:
+        - img [ref=e66]
+        - generic [ref=e70]:
+          - heading "Entrega de Producto Fullstack" [level=3] [ref=e71]
+          - paragraph [ref=e72]: Implementacion end-to-end desde la idea hasta el despliegue, con frontend orientado a UX y backend estable.
+      - article [ref=e73]:
+        - img [ref=e75]
+        - generic [ref=e79]:
+          - heading "Estrategia y Arquitectura TI" [level=3] [ref=e80]
+          - paragraph [ref=e81]: Roadmap tecnico, decisiones de arquitectura y mejora de procesos para reducir riesgo y acelerar entregas.
+      - article [ref=e82]:
+        - img [ref=e84]
+        - generic [ref=e88]:
+          - heading "Mentoria Tecnica" [level=3] [ref=e89]
+          - paragraph [ref=e90]: Mentoria para desarrolladores y equipos en calidad de codigo, resolucion de problemas y estructura de proyectos.
+  - alert [ref=e91]

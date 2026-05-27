@@ -1,19 +1,16 @@
 import { ChevronDown } from 'lucide-react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const LanguageSelector: React.FC = () => {
+const LanguageSelector = () => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [, setLanguage] = useState(i18n.language); // Estado local para forzar la actualización
 
   const changeLanguage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    i18n.changeLanguage(event.target.value).then(() => {
-      setLanguage(event.target.value); // Actualiza el estado local para forzar la actualización
-    });
-    setIsOpen(false); // Cierra el menú desplegable después de seleccionar un idioma
+    i18n.changeLanguage(event.target.value);
+    setIsOpen(false);
   };
 
   const toggleDropdown = () => {
@@ -28,16 +25,19 @@ const LanguageSelector: React.FC = () => {
 
   return (
     <div className="relative">
-      <legend
-        className="mt-1 flex cursor-pointer items-center text-2xl font-bold text-white select-none md:text-3xl"
+      <button
+        type="button"
+        className="mt-1 flex cursor-pointer items-center text-2xl font-bold text-white select-none md:text-3xl bg-transparent border-0 p-0"
         onClick={toggleDropdown}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
       >
         <span className="mr-2">{currentLanguage}</span>
         <span className="mr-2">
           <FontAwesomeIcon icon={faEarthAmericas} />
         </span>
         <ChevronDown className="w-4 h-4 ml-1" />
-      </legend>
+      </button>
       {isOpen && (
         <div className="absolute left-0 z-50 mt-2 w-[160px] rounded-lg border border-white/20 bg-black/90 p-2 shadow-lg backdrop-blur-sm">
           <label

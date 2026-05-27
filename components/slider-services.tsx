@@ -3,6 +3,7 @@
 import { serviceData } from "@/data";
 import { useTranslation } from "react-i18next";
 import ContactCvModal from "./ContactCvModal";
+import { motion } from "framer-motion";
 
 const SliderServices = () => {
   const { t } = useTranslation();
@@ -21,9 +22,12 @@ const SliderServices = () => {
           {t("titleS1")} {" "}
           <span className="font-bold text-secondary">{t("titleS2")}</span>
         </h1>
-        <div className="mb-5 space-y-3 break-words text-sm leading-relaxed text-slate-300 sm:text-base lg:text-[1.05rem]">
+        <div className="mb-5 space-y-2.5 break-words text-sm leading-relaxed text-slate-300 [text-wrap:pretty] sm:text-base lg:text-[1.05rem]">
           {serviceHighlights.map((key) => (
-            <p key={key}>{t(key)}</p>
+            <p key={key} className="flex gap-2">
+              <span className="mt-1 shrink-0 text-secondary">→</span>
+              <span>{t(key)}</span>
+            </p>
           ))}
         </div>
         <div className="mt-6">
@@ -32,10 +36,17 @@ const SliderServices = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-3">
-        {serviceData.map((item, index) => (
-          <article
+        {serviceData.map((item, index) => {
+          const isLast = index === serviceData.length - 1;
+          const isOddTotal = serviceData.length % 2 !== 0;
+          return (
+          <motion.article
             key={index}
-            className="transform-gpu will-change-transform flex min-h-[240px] flex-col gap-4 rounded-xl border border-white/12 bg-[#0d1326]/60 px-5 py-6 shadow-[0_0_0_0_rgba(44,88,255,0)] transition-all duration-200 hover:-translate-y-1 hover:border-secondary/70 hover:bg-[#121a32]/80 hover:shadow-[0_16px_36px_-24px_rgba(63,92,255,0.65)]"
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.45, delay: index * 0.08, ease: "easeOut" }}
+            className={`transform-gpu will-change-transform flex min-h-[240px] flex-col gap-4 rounded-xl border border-white/12 bg-[#0d1326]/60 px-5 py-6 shadow-[0_0_0_0_rgba(44,88,255,0)] transition-all duration-200 hover:-translate-y-1 hover:border-secondary/70 hover:bg-[#121a32]/80 hover:shadow-[0_16px_36px_-24px_rgba(63,92,255,0.65)]${isLast && isOddTotal ? " sm:col-span-2 sm:max-w-[calc(50%-8px)] sm:mx-auto 2xl:col-span-1 2xl:max-w-none 2xl:mx-0" : ""}`}
           >
             <div className="text-3xl text-[#6d86ff]">{item.icon}</div>
             <div className="min-w-0">
@@ -44,8 +55,9 @@ const SliderServices = () => {
                 {t(item.descriptionKey)}
               </p>
             </div>
-          </article>
-        ))}
+          </motion.article>
+          );
+        })}
       </div>
     </div>
   );

@@ -20,13 +20,13 @@ const resources = {
         title1: "Years of experience",
         title2: "Satisfied customers",
         title3: "Projects completed",
-        title4: "Awards won",
+        title4: "Technologies",
       },
       timeline: {
         title1: "Systems Engineering",
         subtitle1: "Universidad Libre de Pereira",
         description1:
-          "Graduated in Systemas Engineering from Universidad Libre de Pereira, with strong foundations in software architecture, web application development, and technical problem solving.",
+          "Graduated in Systems Engineering from Universidad Libre de Pereira, with strong foundations in software architecture, web application development, and technical problem solving.",
         title2: "IT Director",
         subtitle2: "FH Velez Abogados",
         description2:
@@ -54,10 +54,6 @@ const resources = {
           "I design scalable architecture, clean APIs, and maintainable codebases for long-term growth.",
         title5:
           "I also mentor developers and teams to improve code quality and delivery speed.",
-        title6:
-          "Every service is tailored to your stage: validation, MVP, optimization, or modernization.",
-        title7:
-          "Clear communication, measurable results, and production-ready solutions are my delivery standard.",
       },
       webdevelop: {
         title: "Web development",
@@ -86,8 +82,6 @@ const resources = {
       },
       titleP1: "My latest",
       titleP2: "completed projects",
-      titleT1: "Some comments",
-      titleT2: "from our clients",
     },
   },
   es: {
@@ -98,35 +92,35 @@ const resources = {
       titleI3: "puedes crearlo",
       titleI4: "puedes construirlo",
       titleI5:
-        "Ingeniero de Sistemas enfocado en crear experiencias digitales de alto impacto, con liderazgo en estrategia TI, desarrollo fullstack y mentoria tecnica.",
+        "Ingeniero de Sistemas enfocado en crear experiencias digitales de alto impacto, con liderazgo en estrategia TI, desarrollo fullstack y mentoría técnica.",
       titleI6: "Ver mi trabajo",
       titleI7: "Descargar CV",
       titleA: "Toda mi",
       titleA1: "carrera profesional",
       titleA2: "Ingeniero de Sistemas",
       counters: {
-        title1: "Anios de experiencia",
+        title1: "Años de experiencia",
         title2: "Clientes satisfechos",
         title3: "Proyectos completados",
-        title4: "Premios ganados",
+        title4: "Tecnologías",
       },
       timeline: {
         title1: "Ingeniero de Sistemas",
         subtitle1: "Universidad Libre de Pereira",
         description1:
-          "Graduado en Ingenieria de Sistemas de la Universidad Libre de Pereira, con bases solidas en arquitectura de software, desarrollo de aplicaciones web y resolucion de problemas tecnicos.",
+          "Graduado en Ingeniería de Sistemas de la Universidad Libre de Pereira, con bases sólidas en arquitectura de software, desarrollo de aplicaciones web y resolución de problemas técnicos.",
         title2: "Director de TI",
         subtitle2: "FH Velez Abogados",
         description2:
-          "Desde enero de 2026 lidero el area de TI en FH Velez Abogados, definiendo estrategia tecnologica, coordinando implementaciones y mejorando la eficiencia operativa mediante soluciones digitales.",
-        title3: "Monitor de Bootcamps Talento Tech",
-        subtitle3: "Ministerio de Educacion",
+          "Desde enero de 2026 lidero el área de TI en FH Velez Abogados, definiendo estrategia tecnológica, coordinando implementaciones y mejorando la eficiencia operativa mediante soluciones digitales.",
+        title3: "Monitor Talento Tech",
+        subtitle3: "Ministerio de Educación",
         description3:
-          "Apoyo procesos formativos como monitor en bootcamps, acompanando clases, reforzando fundamentos de programacion y guiando a estudiantes en proyectos practicos.",
+          "Apoyo procesos formativos como monitor en bootcamps, acompañando clases, reforzando fundamentos de programación y guiando a estudiantes en proyectos prácticos.",
         title4: "Desarrollador Fullstack",
         subtitle4: "Experiencia Profesional Previa",
         description4:
-          "Desarrolle plataformas web y soluciones de automatizacion para organizaciones como Senica SAS e Hidroconsultora, usando React, Next.js, Node.js, TypeScript, Python, SQL y MongoDB.",
+          "Desarrollé plataformas web y soluciones de automatización para organizaciones como Senica SAS e Hidroconsultora, usando React, Next.js, Node.js, TypeScript, Python, SQL y MongoDB.",
       },
       titleS1: "Mis",
       titleS2: "servicios",
@@ -135,47 +129,41 @@ const resources = {
         title1:
           "Ingeniero de Sistemas que construye productos fullstack para equipos legales, educativos y empresariales.",
         title2:
-          "Lidero estrategia y ejecucion de TI, alineando tecnologia con objetivos de negocio medibles.",
+          "Lidero estrategia y ejecución de TI, alineando tecnología con objetivos de negocio medibles.",
         title3:
           "Stack principal: TypeScript, React, Next.js, Node.js, SQL, MongoDB y Python.",
         title4:
-          "Disenio arquitectura escalable, APIs limpias y codigo mantenible para crecimiento a largo plazo.",
+          "Diseño arquitectura escalable, APIs limpias y código mantenible para crecimiento a largo plazo.",
         title5:
-          "Tambien mentoreo desarrolladores y equipos para mejorar calidad de codigo y velocidad de entrega.",
-        title6:
-          "Cada servicio se adapta a tu etapa: validacion, MVP, optimizacion o modernizacion.",
-        title7:
-          "Comunicacion clara, resultados medibles y soluciones listas para produccion son mi estandar de entrega.",
+          "También mentoreo desarrolladores y equipos para mejorar calidad de código y velocidad de entrega.",
       },
       webdevelop: {
         title: "Desarrollo web",
         description:
-          "Interfaces modernas con React y Next.js, optimizadas para rendimiento, UX y experiencia responsive en desktop, tablet y movil.",
+          "Interfaces modernas con React y Next.js, optimizadas para rendimiento, UX y experiencia responsive en desktop, tablet y móvil.",
       },
       backenddev: {
         title: "Desarrollo Backend",
         description:
-          "Sistemas backend con Node.js, arquitectura API-first, autenticacion segura e integraciones robustas orientadas a escalabilidad.",
+          "Sistemas backend con Node.js, arquitectura API-first, autenticación segura e integraciones robustas orientadas a escalabilidad.",
       },
       fullstack: {
         title: "Entrega de Producto Fullstack",
         description:
-          "Implementacion end-to-end desde la idea hasta el despliegue, con frontend orientado a UX y backend estable.",
+          "Implementación end-to-end desde la idea hasta el despliegue, con frontend orientado a UX y backend estable.",
       },
       itstrategy: {
         title: "Estrategia y Arquitectura TI",
         description:
-          "Roadmap tecnico, decisiones de arquitectura y mejora de procesos para reducir riesgo y acelerar entregas.",
+          "Roadmap técnico, decisiones de arquitectura y mejora de procesos para reducir riesgo y acelerar entregas.",
       },
       mentoring: {
-        title: "Mentoria Tecnica",
+        title: "Mentoría Técnica",
         description:
-          "Mentoria para desarrolladores y equipos en calidad de codigo, resolucion de problemas y estructura de proyectos.",
+          "Mentoría para desarrolladores y equipos en calidad de código, resolución de problemas y estructura de proyectos.",
       },
-      titleP1: "Mis ultimos",
+      titleP1: "Mis últimos",
       titleP2: "proyectos completados",
-      titleT1: "Algunos comentarios",
-      titleT2: "de nuestros clientes",
     },
   },
 };

@@ -1,0 +1,131 @@
+[     159ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[     450ms] [LOG] [Fast Refresh] done in 291ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[     888ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:38559
+[   98678ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  100396ms] [LOG] [Fast Refresh] done in 1725ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  103529ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  104082ms] [LOG] [Fast Refresh] done in 553ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  135115ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  137879ms] [LOG] [Fast Refresh] done in 2796ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  139765ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  140467ms] [LOG] [Fast Refresh] done in 702ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  144758ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  145464ms] [LOG] [Fast Refresh] done in 707ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  151233ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  151758ms] [LOG] [Fast Refresh] done in 525ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  187756ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  188907ms] [ERROR] ./components/slider-services.tsx
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/slider-services.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  189101ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  190148ms] [ERROR] ./components/slider-services.tsx
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/slider-services.tsx
+./app/(routes)/services/page.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  193009ms] [LOG] [Fast Refresh] done in 3909ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  193315ms] [LOG] [Fast Refresh] done in 4214ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  193528ms] [ERROR] ./components/slider-services.tsx
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/slider-services.tsx
+./app/(routes)/services/page.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  193690ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3002/services?_rsc=poo75:0
+[  193701ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3002/services?_rsc=poo75:0
+[  193710ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3002/services?_rsc=poo75:0
+[  193840ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3002/services:0
+[  194126ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[  194167ms] ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+
+Caused by:
+    Syntax Error
+    at processResult (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:400590)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/webpack/bundle5.js:28:402302)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:8645)
+    at <unknown> (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:5019)
+    at r.callback (file:///Users/Nicoj3000/proyectos/landing-page/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:4039)
+[  194165ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[  194168ms] [ERROR] ./components/slider-services.tsx
+Error: 
+  x Unexpected token `div`. Expected jsx identifier
+    ,-[/Users/Nicoj3000/proyectos/landing-page/components/slider-services.tsx:16:1]
+ 16 |   ];
+ 17 | 
+ 18 |   return (
+ 19 |     <div className="mx-auto grid w-full max-w-[1280px] items-start gap-10 xl:grid-cols-[minmax(360px,460px)_minmax(0,1fr)] xl:gap-12">
+    :      ^^^
+ 20 |       <div className="mb-4 max-w-[560px] lg:mb-0">
+ 21 |         <h1 className="mb-8 text-center text-3xl leading-tight sm:text-4xl md:mb-5 md:text-left xl:text-5xl">
+ 22 |           {t("titleS1")} {" "}
+    `----
+
+Caused by:
+    Syntax Error @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  201589ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[  202719ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[  203253ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/51f6321eacebd7c9.webpack.hot-update.json:0
+[  203256ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:349
+[  204074ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:38559
+[  207499ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  208230ms] [LOG] [Fast Refresh] done in 731ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  208397ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/146181e89992cd61.webpack.hot-update.json:0
+[  208819ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:38559

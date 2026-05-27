@@ -1,0 +1,21 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - heading "detectorIA" [level=1] [ref=e3]
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e8]:
+          - img [ref=e9]
+          - generic [ref=e12]: Foto 1
+        - generic [ref=e14]:
+          - img [ref=e15]
+          - generic [ref=e18]: Foto 2
+        - generic [ref=e20]:
+          - img [ref=e21]
+          - generic [ref=e24]: Foto 3
+      - button "Buscar" [disabled]:
+        - generic:
+          - img
+          - text: Buscar
+  - button "Open Next.js Dev Tools" [ref=e30] [cursor=pointer]:
+    - img [ref=e31]
+  - alert [ref=e34]

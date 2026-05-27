@@ -9,10 +9,6 @@
 
 
 
-html {
-  /* height: 100%; */
-}
-
 html,
 body {
   min-height: 100%;
@@ -22,6 +18,7 @@ body {
     radial-gradient(1100px 680px at 88% 90%, rgba(25, 35, 75, 0.45), transparent 55%),
     #05070d;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
 }
 

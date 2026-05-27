@@ -1,0 +1,83 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Home" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - img
+    - link "User" [ref=e7] [cursor=pointer]:
+      - /url: /about-me
+      - img
+    - link "My services" [ref=e9] [cursor=pointer]:
+      - /url: /services
+      - img
+    - link "Youtube" [ref=e11] [cursor=pointer]:
+      - /url: /portfolio
+      - img
+    - link "Mail" [ref=e14] [cursor=pointer]:
+      - /url: mailto:nicoj3000its@gmail.com
+      - img
+  - banner [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - link "NicoX" [ref=e19] [cursor=pointer]:
+          - /url: /
+          - heading "NicoX" [level=1] [ref=e20]
+        - generic [ref=e22] [cursor=pointer]:
+          - generic [ref=e23]: Es
+          - img [ref=e25]
+          - img [ref=e27]
+      - generic [ref=e29]:
+        - link [ref=e30] [cursor=pointer]:
+          - /url: https://github.com/Nicoj3000
+          - img [ref=e31]
+        - link [ref=e33] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/nicolas-delgado-6b22372b7/
+          - img [ref=e34]
+  - generic [ref=e36]:
+    - heading "Toda mi carrera profesional" [level=1] [ref=e37]
+    - generic [ref=e38]:
+      - generic [ref=e40]:
+        - paragraph [ref=e41]:
+          - text: +
+          - generic [ref=e42]: "0"
+        - paragraph [ref=e43]: Anios de experiencia
+      - generic [ref=e45]:
+        - paragraph [ref=e46]:
+          - text: +
+          - generic [ref=e47]: "0"
+        - paragraph [ref=e48]: Clientes satisfechos
+      - generic [ref=e50]:
+        - paragraph [ref=e51]:
+          - text: +
+          - generic [ref=e52]: "1"
+        - paragraph [ref=e53]: Proyectos completados
+      - generic [ref=e55]:
+        - paragraph [ref=e56]:
+          - text: +
+          - generic [ref=e57]: "0"
+        - paragraph [ref=e58]: Premios ganados
+    - generic [ref=e61]:
+      - generic [ref=e62]:
+        - heading "Director de TI" [level=3] [ref=e63]
+        - generic [ref=e64]:
+          - time [ref=e65]: 2026 - Hoy
+          - generic [ref=e66]: FH Velez Abogados
+        - generic [ref=e67]: Desde enero de 2026 lidero el area de TI en FH Velez Abogados, definiendo estrategia tecnologica, coordinando implementaciones y mejorando la eficiencia operativa mediante soluciones digitales.
+      - generic [ref=e68]:
+        - heading "Monitor de Bootcamps Talento Tech" [level=3] [ref=e69]
+        - generic [ref=e70]:
+          - time [ref=e71]: 2025 - Hoy
+          - generic [ref=e72]: Ministerio de Educacion
+        - generic [ref=e73]: Apoyo procesos formativos como monitor en bootcamps, acompanando clases, reforzando fundamentos de programacion y guiando a estudiantes en proyectos practicos.
+      - generic [ref=e74]:
+        - heading "Desarrollador Fullstack" [level=3] [ref=e75]
+        - generic [ref=e76]:
+          - time [ref=e77]: 2023 - 2025
+          - generic [ref=e78]: Experiencia Profesional Previa
+        - generic [ref=e79]: Desarrolle plataformas web y soluciones de automatizacion para organizaciones como Senica SAS e Hidroconsultora, usando React, Next.js, Node.js, TypeScript, Python, SQL y MongoDB.
+      - generic [ref=e80]:
+        - heading "Ingeniero de Sistemas" [level=3] [ref=e81]
+        - generic [ref=e82]:
+          - time [ref=e83]: 2021 - 2025
+          - generic [ref=e84]: Universidad Libre de Pereira
+        - generic [ref=e85]: Graduado en Ingenieria de Sistemas de la Universidad Libre de Pereira, con bases solidas en arquitectura de software, desarrollo de aplicaciones web y resolucion de problemas tecnicos.
+  - alert [ref=e86]

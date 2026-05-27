@@ -5,16 +5,20 @@ interface PortfolioBoxProps {
     data: {
         id: number,
         title: string
+        description: string
         image: string
         urlGithub: string
         urlDemo: string
     }
+    priority?: boolean
 }
 
 const PortfolioBox = (props: PortfolioBoxProps) => {
-    const { data } = props
-    const { title, image, urlDemo, urlGithub } = data
-    const demoBtnClass = urlGithub ? "" : "col-span-2";
+    const { data, priority = false } = props
+    const { title, description, image, urlDemo, urlGithub } = data
+    const hasDemo = Boolean(urlDemo) && urlDemo !== "#";
+    const hasGithub = Boolean(urlGithub);
+    const demoBtnClass = hasGithub ? "" : "col-span-2";
 
     return (
         <div
@@ -24,6 +28,7 @@ const PortfolioBox = (props: PortfolioBoxProps) => {
 
             <div className="mb-4">
                 <h3 className="line-clamp-1 text-lg font-semibold tracking-tight text-slate-100 sm:text-xl xl:text-[1.45rem]">{title}</h3>
+                <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-400 sm:text-sm">{description}</p>
             </div>
 
             <div className="relative mb-5 overflow-hidden rounded-xl border border-white/10 bg-[#090e1d]">
@@ -32,12 +37,13 @@ const PortfolioBox = (props: PortfolioBoxProps) => {
                     alt={title}
                     width={800}
                     height={450}
+                    priority={priority}
                     className="aspect-video w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                 />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-                {urlGithub && (
+                {hasGithub && (
                     <Link
                         href={urlGithub}
                         target="_blank"
@@ -47,13 +53,15 @@ const PortfolioBox = (props: PortfolioBoxProps) => {
                     </Link>
                 )}
 
-                <Link
-                    href={urlDemo}
-                    target="_blank"
-                    className={`rounded-lg bg-[#3f5cff] px-3 py-2 text-center text-sm font-medium text-white transition-colors duration-150 hover:bg-[#526cff] xl:px-4 xl:py-2.5 ${demoBtnClass}`}
-                >
-                    Live demo
-                </Link>
+                {hasDemo && (
+                    <Link
+                        href={urlDemo}
+                        target="_blank"
+                        className={`rounded-lg bg-[#3f5cff] px-3 py-2 text-center text-sm font-medium text-white transition-colors duration-150 hover:bg-[#526cff] xl:px-4 xl:py-2.5 ${demoBtnClass}`}
+                    >
+                        Live demo
+                    </Link>
+                )}
             </div>
         </div>
     );
