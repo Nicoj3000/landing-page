@@ -1,0 +1,52 @@
+# Configuración de CodeRabbit — https://docs.coderabbit.ai/reference/configuration
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+# Idioma de las reseñas. Cambiá a "en-US" si preferís el review en inglés.
+language: es-419
+
+tone_instructions: "Sé directo y técnico. Explicá el PORQUÉ de cada sugerencia, no solo el qué. Priorizá buenas prácticas sobre estilo."
+
+reviews:
+  # "chill" = feedback liviano | "assertive" = más detallado y exigente
+  profile: chill
+  high_level_summary: true
+  poem: false # apagado para mantener el repo profesional
+  request_changes_workflow: false # no bloquea el merge automáticamente
+
+  auto_review:
+    enabled: true
+    auto_incremental_review: true # revisa cada push nuevo al PR
+    drafts: false # no revisa PRs en borrador
+
+  # Excluye ruido del review (lockfiles, builds, deps)
+  path_filters:
+    - "!**/package-lock.json"
+    - "!**/pnpm-lock.yaml"
+    - "!**/yarn.lock"
+    - "!node_modules/**"
+    - "!.next/**"
+    - "!dist/**"
+    - "!build/**"
+
+  # Instrucciones específicas según el tipo de archivo
+  path_instructions:
+    - path: "**/*.{ts,tsx}"
+      instructions: >-
+        Verificá tipado estricto (evitá 'any'), uso correcto de hooks de React
+        (dependencias de useEffect/useMemo/useCallback) y que los componentes
+        cliente tengan 'use client' cuando lo necesiten.
+    - path: "components/**/*.tsx"
+      instructions: >-
+        Revisá accesibilidad (roles ARIA, alt en imágenes, foco de teclado) y
+        que no haya lógica de negocio mezclada en componentes de presentación.
+    - path: "app/**/*.tsx"
+      instructions: >-
+        Validá el uso correcto del App Router de Next.js: Server vs Client
+        Components, metadata, y que no se importen módulos de servidor en cliente.
+
+chat:
+  auto_reply: true
+
+knowledge_base:
+  web_search:
+    enabled: true
