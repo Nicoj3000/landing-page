@@ -1,0 +1,28 @@
+# Gemini Code Assist — config de revisión
+# Schema: https://docs.cloud.google.com/gemini/docs/code-review/customize-repo-review
+have_fun: false # sin poemas: repo profesional (CV)
+
+memory_config:
+  disabled: false # recuerda contexto del repo entre PRs
+
+code_review:
+  disable: false
+  # Mínima severidad para comentar. Bajá a LOW si querés feedback hasta de detalles menores.
+  comment_severity_threshold: MEDIUM
+  max_review_comments: -1 # sin límite: review completo
+
+  pull_request_opened:
+    help: false # no postea el mensaje de ayuda en cada PR
+    summary: true # sí queremos el resumen automático del PR
+    code_review: true # revisión automática al abrir el PR
+    include_drafts: false # no revisa PRs en borrador (no gasta de gusto)
+
+# Archivos que NO aportan al review (ruido / generados)
+ignore_patterns:
+  - "package-lock.json"
+  - "node_modules/**"
+  - ".next/**"
+  - "dist/**"
+  - "build/**"
+  - "**/*.min.js"
+  - "public/**"
