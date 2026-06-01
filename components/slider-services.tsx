@@ -41,7 +41,7 @@ const SliderServices = () => {
           const isOddTotal = serviceData.length % 2 !== 0;
           return (
           <motion.article
-            key={index}
+            key={item.titleKey}
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
