@@ -21,7 +21,7 @@ const techImages = [
   "https://cdn.simpleicons.org/mysql/4479a1",
   "https://cdn.simpleicons.org/supabase/3ecf8e",
   "https://cdn.simpleicons.org/docker/2496ed",
-  "https://cdn.simpleicons.org/amazonwebservices/ff9900",
+  "/icons/aws.svg",
   "https://cdn.simpleicons.org/vercel/ffffff",
   "https://cdn.simpleicons.org/netlify/00c7b7",
   "https://cdn.simpleicons.org/tailwindcss/06b6d4",

@@ -88,6 +88,8 @@ const resources = {
       titleGlobe3: "Bogotá · Pereira · Medellín",
       titleP1: "My latest",
       titleP2: "completed projects",
+      profilePicAlt: "Profile picture",
+      loading3D: "Loading 3D scene",
     },
   },
   es: {
@@ -176,6 +178,8 @@ const resources = {
       titleGlobe3: "Bogotá · Pereira · Medellín",
       titleP1: "Mis últimos",
       titleP2: "proyectos completados",
+      profilePicAlt: "Foto de perfil",
+      loading3D: "Cargando escena 3D",
     },
   },
 };
