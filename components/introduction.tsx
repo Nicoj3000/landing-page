@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { SplineScene } from '@/components/ui/splite';
 import { Card } from '@/components/ui/card';
 import { Spotlight } from '@/components/ui/spotlight';
+import { SPLINE_ROBOT_SCENE } from '@/utils/spline';
 import ContainerPage from './container-page';
 import ContactCvModal from './ContactCvModal';
 
@@ -83,13 +84,18 @@ const Introduction = () => {
                 </div>
               </motion.div>
 
-              {/* Right: interactive 3D scene (hover on desktop, tap-to-look on touch) */}
-              <div className="relative h-[300px] w-full sm:h-[360px] md:h-[460px] xl:h-[520px]">
-                <SplineScene
-                  scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                  className="h-full w-full"
-                  loadingLabel={t('loading3D')}
-                />
+              {/* Right: interactive 3D scene (hover on desktop, tap-to-look on touch).
+                  On mobile/tablet the scene is rendered larger and anchored to the
+                  top so the robot reads as a head-and-shoulders portrait instead of
+                  a small full-body shot. Reset to a normal fit at xl. */}
+              <div className="relative h-[300px] w-full overflow-hidden sm:h-[360px] md:h-[460px] xl:h-[520px] xl:overflow-visible">
+                <div className="absolute left-1/2 top-0 h-[175%] w-[175%] -translate-x-1/2 xl:static xl:h-full xl:w-full xl:translate-x-0">
+                  <SplineScene
+                    scene={SPLINE_ROBOT_SCENE}
+                    className="h-full w-full"
+                    loadingLabel={t('loading3D')}
+                  />
+                </div>
               </div>
             </div>
           </Card>
