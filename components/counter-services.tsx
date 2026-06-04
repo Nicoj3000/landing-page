@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 const CounterServices = () => {
     const { t } = useTranslation();
     return (
-        <div className="relative mx-auto my-10 grid max-w-5xl grid-cols-2 gap-3 sm:gap-5 md:my-12 md:flex md:gap-8 xl:my-14">
+        <div className="relative mx-auto my-10 grid max-w-[1180px] grid-cols-2 gap-3 sm:gap-5 md:my-12 md:flex md:gap-8 xl:my-14">
             {/* Línea vertical continua solo en mobile (entre las dos columnas) */}
             <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gray-100/50 md:hidden" />
 
