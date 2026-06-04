@@ -68,7 +68,7 @@ export default function SkillsSection() {
           <div className="flex h-full flex-col p-6 xl:p-7">
             <div className="mb-4 flex items-center gap-3">
               <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-secondary">
-                Stack
+                {t("stackEyebrow")}
               </span>
               <span className="h-px flex-1 bg-gradient-to-r from-secondary/40 to-transparent" />
             </div>
@@ -93,7 +93,7 @@ export default function SkillsSection() {
           <div className="flex h-full flex-col p-6 xl:p-7">
             <div className="mb-4 flex items-center gap-3">
               <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-secondary">
-                Location
+                {t("locationEyebrow")}
               </span>
               <span className="h-px flex-1 bg-gradient-to-r from-secondary/40 to-transparent" />
             </div>
@@ -106,8 +106,9 @@ export default function SkillsSection() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
               </span>
-              Disponible para colaborar de forma remota
+              {t("availableRemote")}
             </p>
+            <p className="mt-1 pl-4 text-xs text-slate-500">{t("titleGlobe3")}</p>
 
             <div className="relative mt-5 flex items-center justify-center aspect-square">
               <DottedMap
