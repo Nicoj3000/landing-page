@@ -81,7 +81,7 @@ export default function SkillsSection() {
             </p>
 
             <div className="relative mt-5 flex items-center justify-center aspect-square">
-              <IconCloud images={techImages} />
+              <IconCloud images={techImages} label={t("iconCloudLabel")} />
             </div>
           </div>
         </article>

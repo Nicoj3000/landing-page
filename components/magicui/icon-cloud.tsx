@@ -15,13 +15,15 @@ interface Icon {
 interface IconCloudProps {
   icons?: React.ReactNode[]
   images?: string[]
+  /** Accessible label for the canvas, already localized by the caller. */
+  label?: string
 }
 
 function easeOutCubic(t: number): number {
   return 1 - Math.pow(1 - t, 3)
 }
 
-export function IconCloud({ icons, images }: IconCloudProps) {
+export function IconCloud({ icons, images, label }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [iconPositions, setIconPositions] = useState<Icon[]>([])
   const [isDragging, setIsDragging] = useState(false)
@@ -185,7 +187,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
       onMouseLeave={() => setIsDragging(false)}
       className="rounded-lg block max-w-full h-auto mx-auto"
       style={{ width: "100%", maxWidth: 400, aspectRatio: "1 / 1" }}
-      aria-label="Interactive 3D Icon Cloud"
+      aria-label={label ?? "Interactive 3D icon cloud"}
       role="img"
     />
   )

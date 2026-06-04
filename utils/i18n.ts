@@ -92,6 +92,8 @@ const resources = {
       titleP2: "completed projects",
       profilePicAlt: "Profile picture",
       loading3D: "Loading 3D scene",
+      scrollToTop: "Back to top",
+      iconCloudLabel: "Interactive 3D icon cloud",
     },
   },
   es: {
@@ -184,6 +186,8 @@ const resources = {
       titleP2: "proyectos completados",
       profilePicAlt: "Foto de perfil",
       loading3D: "Cargando escena 3D",
+      scrollToTop: "Volver arriba",
+      iconCloudLabel: "Nube de íconos 3D interactiva",
     },
   },
 };
