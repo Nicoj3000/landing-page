@@ -58,4 +58,50 @@ main {
   :root {
     --radius: 0.5rem;
   }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ---------- 3D scene loader (Spline fallback) ---------- */
+.loader {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid rgba(99, 122, 255, 0.18);
+  border-top-color: #6d86ff;
+  animation: loader-spin 0.8s linear infinite;
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@layer components {
+  /* Reusable glassmorphism surface */
+  .glass {
+    @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl;
+  }
+  .glass-card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.04] shadow-[0_8px_40px_rgba(2,6,23,0.45)] backdrop-blur-xl;
+  }
+}
+
+/* ---------- Respect reduced motion (a11y) ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-spotlight,
+  .animate-float,
+  .loader {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
 }
