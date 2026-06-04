@@ -10,6 +10,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import I18nProvider from "@/components/I18nProvider";
 import { HtmlLangSync } from "@/components/html-lang-sync";
 import ScrollToTop from "@/components/scroll-to-top";
+import { PreloadResources } from "@/components/preload-resources";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -59,6 +60,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={urbanist.className}>
+        <PreloadResources />
         <I18nProvider>
           <HtmlLangSync />
           <TooltipProvider>
