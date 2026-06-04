@@ -6,6 +6,8 @@ const Spline = lazy(() => import('@splinetool/react-spline'))
 interface SplineSceneProps {
   scene: string
   className?: string
+  /** Accessible label for the loading state, already localized by the caller. */
+  loadingLabel?: string
 }
 
 // Distance (px) below which a touch is treated as a tap, not a scroll swipe.
@@ -13,7 +15,7 @@ const TAP_THRESHOLD = 12
 // How long the robot holds the glance before easing back to center.
 const GLANCE_MS = 1400
 
-export function SplineScene({ scene, className }: SplineSceneProps) {
+export function SplineScene({ scene, className, loadingLabel }: SplineSceneProps) {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const downRef = useRef<{ x: number; y: number } | null>(null)
   const timerRef = useRef<ReturnType<typeof setTimeout>>()
@@ -87,7 +89,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
       <Suspense
         fallback={
           <div className="flex h-full w-full items-center justify-center">
-            <span className="loader" aria-label="Loading 3D scene" />
+            <span className="loader" aria-label={loadingLabel ?? 'Loading 3D scene'} />
           </div>
         }
       >

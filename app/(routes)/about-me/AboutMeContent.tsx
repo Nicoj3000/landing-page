@@ -26,7 +26,7 @@ export default function AboutMeContent() {
           <div className="glass relative shrink-0 rounded-full p-1.5 shadow-[0_8px_40px_rgba(63,92,255,0.25)]">
             <Image
               src="/Foto-CV.png"
-              alt="Profile pic"
+              alt={t("profilePicAlt")}
               width={460}
               height={460}
               priority

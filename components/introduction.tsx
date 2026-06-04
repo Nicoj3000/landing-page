@@ -88,6 +88,7 @@ const Introduction = () => {
                 <SplineScene
                   scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
                   className="h-full w-full"
+                  loadingLabel={t('loading3D')}
                 />
               </div>
             </div>
