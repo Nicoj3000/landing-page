@@ -83,8 +83,8 @@ const Introduction = () => {
                 </div>
               </motion.div>
 
-              {/* Right: interactive 3D scene */}
-              <div className="pointer-events-none relative h-[300px] w-full sm:h-[360px] md:h-[460px] xl:h-[520px] xl:pointer-events-auto">
+              {/* Right: interactive 3D scene (hover on desktop, tap-to-look on touch) */}
+              <div className="relative h-[300px] w-full sm:h-[360px] md:h-[460px] xl:h-[520px]">
                 <SplineScene
                   scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
                   className="h-full w-full"
