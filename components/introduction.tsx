@@ -85,15 +85,19 @@ const Introduction = () => {
               </motion.div>
 
               {/* Right: interactive 3D scene (hover on desktop, tap-to-look on touch).
-                  On mobile/tablet the scene is rendered larger and anchored to the
-                  top so the robot reads as a head-and-shoulders portrait instead of
-                  a small full-body shot. Reset to a normal fit at xl. */}
-              <div className="relative h-[300px] w-full overflow-hidden sm:h-[360px] md:h-[460px] xl:h-[520px] xl:overflow-visible">
-                <div className="absolute left-1/2 top-0 h-[175%] w-[175%] -translate-x-1/2 xl:static xl:h-full xl:w-full xl:translate-x-0">
+                  The scene is rendered larger than its panel and anchored to the
+                  top so the robot reads as a head-and-shoulders portrait that fills
+                  the frame instead of a small full-body shot floating in empty space.
+                  Mobile/tablet zoom in hard (175%); desktop uses a gentler 120% so
+                  the robot has presence without losing the torso. Centered on every
+                  breakpoint via left-1/2 / -translate-x-1/2. */}
+              <div className="relative h-[300px] w-full overflow-hidden sm:h-[360px] md:h-[460px] xl:h-[520px]">
+                <div className="absolute left-1/2 top-0 h-[175%] w-[175%] -translate-x-1/2 xl:h-[120%] xl:w-[120%]">
                   <SplineScene
                     scene={SPLINE_ROBOT_SCENE}
                     className="h-full w-full"
                     loadingLabel={t('loading3D')}
+                    transparentBackground
                   />
                 </div>
               </div>
