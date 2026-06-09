@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { SplineScene } from '@/components/ui/splite';
 import { Card } from '@/components/ui/card';
 import { Spotlight } from '@/components/ui/spotlight';
@@ -14,6 +14,15 @@ import ContactCvModal from './ContactCvModal';
 const Introduction = () => {
   const { t, i18n } = useTranslation();
   const [language, setLanguage] = useState(i18n.language);
+  const prefersReducedMotion = useReducedMotion();
+  // SSR and the first client render always render the Spline path so the markup
+  // matches and hydration stays clean. Only after mounting do we know the real
+  // motion preference; reduced-motion users then swap to a static placeholder
+  // and the lazy Spline chunk never mounts (the 1.35MB scene is also skipped via
+  // the media-gated preload in PreloadResources).
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const showStaticHero = mounted && prefersReducedMotion;
 
   useEffect(() => {
     const handleLanguageChange = () => {
@@ -92,14 +101,25 @@ const Introduction = () => {
                   the robot has presence without losing the torso. Centered on every
                   breakpoint via left-1/2 / -translate-x-1/2. */}
               <div className="relative h-[300px] w-full overflow-hidden sm:h-[360px] md:h-[460px] xl:h-[520px]">
-                <div className="absolute left-1/2 top-0 h-[175%] w-[175%] -translate-x-1/2 xl:h-[120%] xl:w-[120%]">
-                  <SplineScene
-                    scene={SPLINE_ROBOT_SCENE}
-                    className="h-full w-full"
-                    loadingLabel={t('loading3D')}
-                    transparentBackground
-                  />
-                </div>
+                {showStaticHero ? (
+                  // Lightweight branded glow stands in for the auto-animating 3D
+                  // robot when the user prefers reduced motion. Purely decorative.
+                  <div
+                    aria-hidden
+                    className="flex h-full w-full items-center justify-center"
+                  >
+                    <div className="h-40 w-40 rounded-full bg-[radial-gradient(circle_at_50%_40%,rgba(140,163,255,0.55),rgba(63,92,255,0.22)_45%,transparent_70%)] blur-[2px] sm:h-52 sm:w-52 md:h-60 md:w-60" />
+                  </div>
+                ) : (
+                  <div className="absolute left-1/2 top-0 h-[175%] w-[175%] -translate-x-1/2 xl:h-[120%] xl:w-[120%]">
+                    <SplineScene
+                      scene={SPLINE_ROBOT_SCENE}
+                      className="h-full w-full"
+                      loadingLabel={t('loading3D')}
+                      transparentBackground
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </Card>
