@@ -94,10 +94,13 @@ const Introduction = () => {
               </motion.div>
 
               {/* Right: interactive 3D scene (hover on desktop, tap-to-look on touch).
-                  On mobile/tablet the scene is rendered larger and anchored to the
-                  top so the robot reads as a head-and-shoulders portrait instead of
-                  a small full-body shot. Reset to a normal fit at xl. */}
-              <div className="relative h-[300px] w-full overflow-hidden sm:h-[360px] md:h-[460px] xl:h-[520px] xl:overflow-visible">
+                  The scene is rendered larger than its panel and anchored to the
+                  top so the robot reads as a head-and-shoulders portrait that fills
+                  the frame instead of a small full-body shot floating in empty space.
+                  Mobile/tablet zoom in hard (175%); desktop uses a gentler 120% so
+                  the robot has presence without losing the torso. Centered on every
+                  breakpoint via left-1/2 / -translate-x-1/2. */}
+              <div className="relative h-[300px] w-full overflow-hidden sm:h-[360px] md:h-[460px] xl:h-[520px]">
                 {showStaticHero ? (
                   // Lightweight branded glow stands in for the auto-animating 3D
                   // robot when the user prefers reduced motion. Purely decorative.
@@ -108,11 +111,12 @@ const Introduction = () => {
                     <div className="h-40 w-40 rounded-full bg-[radial-gradient(circle_at_50%_40%,rgba(140,163,255,0.55),rgba(63,92,255,0.22)_45%,transparent_70%)] blur-[2px] sm:h-52 sm:w-52 md:h-60 md:w-60" />
                   </div>
                 ) : (
-                  <div className="absolute left-1/2 top-0 h-[175%] w-[175%] -translate-x-1/2 xl:static xl:h-full xl:w-full xl:translate-x-0">
+                  <div className="absolute left-1/2 top-0 h-[175%] w-[175%] -translate-x-1/2 xl:h-[120%] xl:w-[120%]">
                     <SplineScene
                       scene={SPLINE_ROBOT_SCENE}
                       className="h-full w-full"
                       loadingLabel={t('loading3D')}
+                      transparentBackground
                     />
                   </div>
                 )}
