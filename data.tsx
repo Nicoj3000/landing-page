@@ -172,11 +172,11 @@ export const dataPortfolio = [
   },
   {
     id: 3,
-    title: "PythonWebFlask",
-    description: "Aplicación web full-stack con Python, Flask y MySQL. CRUD completo con autenticación de usuarios y panel de administración.",
-    image: "/image-3.jpg",
-    urlGithub: "https://github.com/Nicoj3000/project-python-flask-mysql",
-    urlDemo: "#",
+    title: "Helios-9",
+    description: "Simulador de sistema solar en 3D con Three.js. Explora planetas, órbitas y fenómenos astronómicos en una experiencia interactiva.",
+    image: "/universe.jpg",
+    urlGithub: "https://github.com/Nicoj3000/Universe-3D",
+    urlDemo: "https://nickdev-universe.netlify.app/",
   },
   {
     id: 4,
