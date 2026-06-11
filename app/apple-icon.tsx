@@ -1,5 +1,9 @@
 import { ImageResponse } from "next/og";
 
+// Edge runtime required: the node runtime of @vercel/og mangles its bundled
+// font path on Windows ("Invalid URL" at dev time).
+export const runtime = "edge";
+
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 

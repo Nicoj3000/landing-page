@@ -1,5 +1,9 @@
 import { ImageResponse } from "next/og";
 
+// Edge runtime required: the node runtime of @vercel/og mangles its bundled
+// font path on Windows ("Invalid URL" at dev time).
+export const runtime = "edge";
+
 export const alt = "NicoX — Ingeniero de Sistemas Fullstack";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -17,7 +21,7 @@ export default function OpengraphImage() {
           justifyContent: "center",
           backgroundColor: "#05070d",
           backgroundImage:
-            "radial-gradient(900px 500px at 18% 6%, rgba(63, 92, 255, 0.28), transparent 55%), radial-gradient(800px 480px at 88% 90%, rgba(25, 35, 75, 0.5), transparent 58%)",
+            "radial-gradient(circle at 18% 6%, rgba(63, 92, 255, 0.28) 0%, transparent 45%), radial-gradient(circle at 88% 90%, rgba(25, 35, 75, 0.5) 0%, transparent 48%)",
           color: "#eef2ff",
           fontFamily: "sans-serif",
         }}
