@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -14,6 +15,7 @@ import { Dock, DockIcon } from "./magicui/dock";
 import { DATA } from "@/data";
 
 export function Navbar() {
+  const { t } = useTranslation();
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto mb-20 flex origin-bottom h-full max-h-14">
       {/* Background Blur */}
@@ -25,12 +27,12 @@ export function Navbar() {
         >
           {/* Navbar Items */}
           {DATA.navbar.map((item) => (
-            <DockIcon key={item.label}>
+            <DockIcon key={item.labelKey}>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link
                     href={item.href}
-                    aria-label={item.label}
+                    aria-label={t(item.labelKey)}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "size-12 rounded-full "
@@ -40,7 +42,7 @@ export function Navbar() {
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{item.label}</p>
+                  <p>{t(item.labelKey)}</p>
                 </TooltipContent>
               </Tooltip>
             </DockIcon>
@@ -54,7 +56,7 @@ export function Navbar() {
                 <TooltipTrigger asChild>
                   <Link
                     href={social.url}
-                    aria-label={social.name}
+                    aria-label={t(social.labelKey)}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "size-12 rounded-full hover:bg-accent hover:text-accent-foreground"
@@ -65,7 +67,7 @@ export function Navbar() {
                 </TooltipTrigger>
 
                 <TooltipContent>
-                  <p>{name}</p>
+                  <p>{t(social.labelKey)}</p>
                 </TooltipContent>
               </Tooltip>
             </DockIcon>
@@ -75,12 +77,12 @@ export function Navbar() {
           <Separator orientation="vertical" className="h-full" />
 
           {DATA.mail.map((item) => (
-            <DockIcon key={item.label}>
+            <DockIcon key={item.labelKey}>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link
                     href={item.href}
-                    aria-label={item.label}
+                    aria-label={t(item.labelKey)}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "size-12 rounded-full hover:bg-accent hover:text-accent-foreground"
@@ -90,7 +92,7 @@ export function Navbar() {
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{item.label}</p>
+                  <p>{t(item.labelKey)}</p>
                 </TooltipContent>
               </Tooltip>
             </DockIcon>

@@ -38,6 +38,10 @@ const resources = {
         subtitle4: "Previous Professional Experience",
         description4:
           "Built web platforms and automation solutions for organizations such as Senica SAS and Hidroconsultora, using React, Next.js, Node.js, TypeScript, Python, SQL, and MongoDB.",
+        date1: "2021 - 2025",
+        date2: "2026 - Now",
+        date3: "2025 - Now",
+        date4: "2023 - 2025",
       },
       titleS1: "My",
       titleS2: "services",
@@ -90,6 +94,23 @@ const resources = {
       availableRemote: "Available for remote collaboration",
       titleP1: "My latest",
       titleP2: "completed projects",
+      nav: {
+        home: "Home",
+        about: "About me",
+        services: "My services",
+        portfolio: "Portfolio",
+        mail: "Mail",
+      },
+      portfolio: {
+        project1:
+          "Personal management dashboard built with React, TypeScript and Node.js. Tasks, finances and habits tracked in one place.",
+        project3:
+          "3D solar system simulator built with Three.js. Explore planets, orbits and astronomical phenomena in an interactive experience.",
+        project4:
+          "Graduate management system for Universidad Libre de Pereira. Registration, tracking and analysis of institutional alumni.",
+        project5:
+          "Premium car rental platform in Pereira. Interactive catalog, online booking and fleet management.",
+      },
       profilePicAlt: "Profile picture",
       loading3D: "Loading 3D scene",
       scrollToTop: "Back to top",
@@ -132,6 +153,10 @@ const resources = {
         subtitle4: "Experiencia Profesional Previa",
         description4:
           "Desarrollé plataformas web y soluciones de automatización para organizaciones como Senica SAS e Hidroconsultora, usando React, Next.js, Node.js, TypeScript, Python, SQL y MongoDB.",
+        date1: "2021 - 2025",
+        date2: "2026 - Hoy",
+        date3: "2025 - Hoy",
+        date4: "2023 - 2025",
       },
       titleS1: "Mis",
       titleS2: "servicios",
@@ -184,6 +209,23 @@ const resources = {
       availableRemote: "Disponible para colaborar de forma remota",
       titleP1: "Mis últimos",
       titleP2: "proyectos completados",
+      nav: {
+        home: "Inicio",
+        about: "Sobre mí",
+        services: "Mis servicios",
+        portfolio: "Portafolio",
+        mail: "Correo",
+      },
+      portfolio: {
+        project1:
+          "Dashboard de gestión personal con React, TypeScript y Node.js. Seguimiento de tareas, finanzas y hábitos en un solo lugar.",
+        project3:
+          "Simulador de sistema solar en 3D con Three.js. Explora planetas, órbitas y fenómenos astronómicos en una experiencia interactiva.",
+        project4:
+          "Sistema de gestión de graduados para la Universidad Libre de Pereira. Registro, seguimiento y análisis de egresados institucionales.",
+        project5:
+          "Plataforma de alquiler de vehículos premium en Pereira. Catálogo interactivo, reservas en línea y gestión de flota.",
+      },
       profilePicAlt: "Foto de perfil",
       loading3D: "Cargando escena 3D",
       scrollToTop: "Volver arriba",

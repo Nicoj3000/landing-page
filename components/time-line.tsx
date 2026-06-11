@@ -40,7 +40,7 @@ const TimeLine = () => {
                 after:border-4 after:box-content after:border-slate-50
                 after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2
                 after:translate-y-1.5">
-                <time className="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">{data.date}</time>
+                <time className="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">{t(data.dateKey)}</time>
                 <div className="text-lg font-bold text-gray-300 lg:text-xl">{t(data.subtitleKey)}</div>
               </div>
               <div className="max-w-3xl text-sm leading-relaxed text-slate-400 [text-wrap:pretty] lg:text-base xl:text-lg">{t(data.descriptionKey)}</div>
