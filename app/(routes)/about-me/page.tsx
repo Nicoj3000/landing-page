@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Sobre mí | NicoX",
   description:
     "Conocé la trayectoria profesional de Nicolás Delgado: Director de TI, desarrollador fullstack y mentor técnico con más de 2 años de experiencia.",
+  alternates: {
+    canonical: "/about-me",
+  },
   openGraph: {
     title: "Sobre mí | NicoX",
     description:

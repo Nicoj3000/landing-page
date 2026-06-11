@@ -11,24 +11,26 @@ const Header = () => {
             <header>
                 <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-5 sm:px-7 md:px-10 2xl:max-w-[1560px] 2xl:px-14">
                 <div className="flex items-center space-x-4">
-                    <Link href='/'>
-                        <h1 className="my-2 text-4xl font-bold text-center md:text-left xl:text-5xl">
+                    <Link href='/' aria-label="NicoX — Inicio">
+                        <p className="my-2 text-4xl font-bold text-center md:text-left xl:text-5xl">
                             Nico
                             <span className="text-blue-700">X</span>
-                        </h1>
+                        </p>
                     </Link>
                     <LanguageSelector />
                 </div>
                     <div className="mr-1 flex items-center space-x-4 xl:space-x-5">
-                        {socialNetworks.map(({ logo, src, id }) => (
-                            <Link
+                        {socialNetworks.map(({ logo, src, id, name }) => (
+                            <a
                                 key={id}
                                 href={src}
                                 target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={name}
                                 className="text-slate-100 transition-all duration-200 hover:text-[#8ca3ff]"
                             >
                                 {logo}
-                            </Link>
+                            </a>
                         ))}
                     </div>
                 </div>
