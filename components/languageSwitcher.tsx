@@ -1,8 +1,6 @@
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Globe } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const LanguageSelector = () => {
   const { i18n } = useTranslation();
@@ -34,7 +32,7 @@ const LanguageSelector = () => {
       >
         <span className="mr-2">{currentLanguage}</span>
         <span className="mr-2">
-          <FontAwesomeIcon icon={faEarthAmericas} />
+          <Globe className="h-6 w-6" />
         </span>
         <ChevronDown className="w-4 h-4 ml-1" />
       </button>

@@ -9,29 +9,21 @@ import {
   Mail,
   Target,
 } from "lucide-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGithub,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
+import { GithubIcon, LinkedinIcon } from "@/components/icons";
+
 export const socialNetworks = [
-
-
   {
-    id: 4,
-    logo: <FontAwesomeIcon icon={faGithub} size="2x" />,
+    id: 1,
+    name: "GitHub",
+    logo: <GithubIcon size={30} />,
     src: "https://github.com/Nicoj3000",
   },
-
-  
-
   {
     id: 2,
-    logo: <FontAwesomeIcon icon={faLinkedin} size="2x" />,
+    name: "LinkedIn",
+    logo: <LinkedinIcon size={30} />,
     src: "https://www.linkedin.com/in/nicolas-delgado-6b22372b7/",
   },
-
-
 ];
 
 
