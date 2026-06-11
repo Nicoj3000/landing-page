@@ -10,7 +10,7 @@ import { Card } from '@/components/ui/card';
 import { Spotlight } from '@/components/ui/spotlight';
 import { SPLINE_ROBOT_SCENE } from '@/utils/spline';
 import ContainerPage from './container-page';
-import ContactCvModal from './ContactCvModal';
+import DownloadCvButton from './download-cv-button';
 
 const Introduction = () => {
   const { t, i18n } = useTranslation();
@@ -90,7 +90,7 @@ const Introduction = () => {
                   >
                     {t('titleI6')}
                   </Link>
-                  <ContactCvModal buttonText={t('titleI7')} />
+                  <DownloadCvButton buttonText={t('titleI7')} />
                 </div>
               </motion.div>
 

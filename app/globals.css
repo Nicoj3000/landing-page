@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.custom-margin {
-  margin-top: 40px; /* Ajusta el valor según sea necesario */
-  margin-right: 40px; /* Ajusta el valor según sea necesario */
-}
-
-
-
 html,
 body {
   min-height: 100%;
@@ -95,7 +88,6 @@ main {
     scroll-behavior: auto;
   }
   .animate-spotlight,
-  .animate-float,
   .loader {
     animation: none !important;
   }

@@ -2,7 +2,7 @@
 
 import { serviceData } from "@/data";
 import { useTranslation } from "react-i18next";
-import ContactCvModal from "./ContactCvModal";
+import DownloadCvButton from "./download-cv-button";
 import { motion } from "framer-motion";
 
 const SliderServices = () => {
@@ -31,7 +31,7 @@ const SliderServices = () => {
           ))}
         </div>
         <div className="mt-6">
-          <ContactCvModal buttonText={t("titleS3")} />
+          <DownloadCvButton buttonText={t("titleS3")} />
         </div>
       </div>
 
