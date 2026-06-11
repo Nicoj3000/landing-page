@@ -40,3 +40,8 @@ next-env.d.ts
 /.claude/
 /.superpowers/
 /audit-*.png
+
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/
