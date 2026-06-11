@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Portfolio | NicoX",
   description:
     "Proyectos destacados de Nicolás Delgado: aplicaciones fullstack, dashboards, plataformas web y soluciones empresariales.",
+  alternates: {
+    canonical: "/portfolio",
+  },
   openGraph: {
     title: "Portfolio | NicoX",
     description:

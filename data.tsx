@@ -9,29 +9,21 @@ import {
   Mail,
   Target,
 } from "lucide-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGithub,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
+import { GithubIcon, LinkedinIcon } from "@/components/icons";
+
 export const socialNetworks = [
-
-
   {
-    id: 4,
-    logo: <FontAwesomeIcon icon={faGithub} size="2x" />,
+    id: 1,
+    name: "GitHub",
+    logo: <GithubIcon size={30} />,
     src: "https://github.com/Nicoj3000",
   },
-
-  
-
   {
     id: 2,
-    logo: <FontAwesomeIcon icon={faLinkedin} size="2x" />,
+    name: "LinkedIn",
+    logo: <LinkedinIcon size={30} />,
     src: "https://www.linkedin.com/in/nicolas-delgado-6b22372b7/",
   },
-
-
 ];
 
 
@@ -39,26 +31,27 @@ export const DATA = {
   name: "Nicoj Landing Page",
   url: "https://nicoj3000.netlify.app/",
   description: "Landing page made by Nicoj.",
-  navbar: [{ href: "/", icon: HomeIcon, label: "Home" }],
-  mail:[{href: "mailto:nicoj3000its@gmail.com", icon: Mail, label: "Mail"}],
+  navbar: [{ href: "/", icon: HomeIcon, labelKey: "nav.home" }],
+  mail: [
+    { href: "mailto:nicoj3000its@gmail.com", icon: Mail, labelKey: "nav.mail" },
+  ],
   contact: {
     social: {
       User: {
-        name: "User",
+        labelKey: "nav.about",
         url: "/about-me",
         icon: UserRound,
       },
       Services: {
-        name: "My services",
+        labelKey: "nav.services",
         url: "/services",
         icon: BookText,
       },
       Portafolio: {
-        name: "Portfolio",
+        labelKey: "nav.portfolio",
         url: "/portfolio",
-        icon: CodeSquare
+        icon: CodeSquare,
       },
-      
     },
   },
 };
@@ -68,31 +61,29 @@ export const dataAboutPage = [
     id: 2,
     titleKey: "timeline.title2",
     subtitleKey: "timeline.subtitle2",
-    descriptionKey:
-      "timeline.description2",
-    date: "2026 - Hoy",
+    descriptionKey: "timeline.description2",
+    dateKey: "timeline.date2",
   },
   {
     id: 3,
     titleKey: "timeline.title3",
     subtitleKey: "timeline.subtitle3",
     descriptionKey: "timeline.description3",
-    date: "2025 - Hoy",
+    dateKey: "timeline.date3",
   },
   {
     id: 4,
     titleKey: "timeline.title4",
     subtitleKey: "timeline.subtitle4",
     descriptionKey: "timeline.description4",
-    date: "2023 - 2025",
+    dateKey: "timeline.date4",
   },
   {
     id: 1,
     titleKey: "timeline.title1",
     subtitleKey: "timeline.subtitle1",
-    descriptionKey:
-      "timeline.description1",
-    date: "2021 - 2025",
+    descriptionKey: "timeline.description1",
+    dateKey: "timeline.date1",
   },
 ];
 
@@ -165,7 +156,7 @@ export const dataPortfolio = [
   {
     id: 1,
     title: "Project Dashboard",
-    description: "Dashboard de gestión personal con React, TypeScript y Node.js. Seguimiento de tareas, finanzas y hábitos en un solo lugar.",
+    descriptionKey: "portfolio.project1",
     image: "/image-1.jpg",
     urlGithub: "https://github.com/Nicoj3000/Project-Dashboard",
     urlDemo: "https://dashboard-nicodev.netlify.app/",
@@ -173,7 +164,7 @@ export const dataPortfolio = [
   {
     id: 3,
     title: "Helios-9",
-    description: "Simulador de sistema solar en 3D con Three.js. Explora planetas, órbitas y fenómenos astronómicos en una experiencia interactiva.",
+    descriptionKey: "portfolio.project3",
     image: "/universe.jpg",
     urlGithub: "https://github.com/Nicoj3000/Universe-3D",
     urlDemo: "https://nickdev-universe.netlify.app/",
@@ -181,7 +172,7 @@ export const dataPortfolio = [
   {
     id: 4,
     title: "App Egresados ULP",
-    description: "Sistema de gestión de graduados para la Universidad Libre de Pereira. Registro, seguimiento y análisis de egresados institucionales.",
+    descriptionKey: "portfolio.project4",
     image: "/image-4.jpg",
     urlGithub: "",
     urlDemo: "https://db-ulp-egresados.vercel.app/",
@@ -189,7 +180,7 @@ export const dataPortfolio = [
   {
     id: 5,
     title: "Rental Cars",
-    description: "Plataforma de alquiler de vehículos premium en Pereira. Catálogo interactivo, reservas en línea y gestión de flota.",
+    descriptionKey: "portfolio.project5",
     image: "/image-5.jpg",
     urlGithub: "https://github.com/Nicoj3000/RentalCars",
     urlDemo: "https://rental-cars-eosin.vercel.app/",

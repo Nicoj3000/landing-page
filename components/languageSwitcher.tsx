@@ -1,12 +1,11 @@
-import { ChevronDown } from 'lucide-react';
-import { useState } from 'react';
+import { ChevronDown, Globe } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const LanguageSelector = () => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const changeLanguage = (event: React.ChangeEvent<HTMLInputElement>) => {
     i18n.changeLanguage(event.target.value);
@@ -17,6 +16,26 @@ const LanguageSelector = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!containerRef.current?.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
+
+    document.addEventListener('pointerdown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
+
   const capitalizeFirstLetter = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
@@ -24,7 +43,7 @@ const LanguageSelector = () => {
   const currentLanguage = i18n.language ? capitalizeFirstLetter(i18n.language) : 'En';
 
   return (
-    <div className="relative">
+    <div className="relative" ref={containerRef}>
       <button
         type="button"
         className="mt-1 flex cursor-pointer items-center text-2xl font-bold text-white select-none md:text-3xl bg-transparent border-0 p-0"
@@ -34,7 +53,7 @@ const LanguageSelector = () => {
       >
         <span className="mr-2">{currentLanguage}</span>
         <span className="mr-2">
-          <FontAwesomeIcon icon={faEarthAmericas} />
+          <Globe className="h-6 w-6" />
         </span>
         <ChevronDown className="w-4 h-4 ml-1" />
       </button>

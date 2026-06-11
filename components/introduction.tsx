@@ -3,13 +3,14 @@
 import { useState, useEffect } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { useTranslation } from 'react-i18next';
+import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 import { SplineScene } from '@/components/ui/splite';
 import { Card } from '@/components/ui/card';
 import { Spotlight } from '@/components/ui/spotlight';
 import { SPLINE_ROBOT_SCENE } from '@/utils/spline';
 import ContainerPage from './container-page';
-import ContactCvModal from './ContactCvModal';
+import DownloadCvButton from './download-cv-button';
 
 const Introduction = () => {
   const { t, i18n } = useTranslation();
@@ -83,13 +84,13 @@ const Introduction = () => {
                 </p>
 
                 <div className="flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 xl:justify-start xl:gap-6">
-                  <a
+                  <Link
                     href="/portfolio"
                     className="group my-2 inline-flex w-fit cursor-pointer items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(63,92,255,0.25)] xl:px-7 xl:py-3.5 xl:text-base"
                   >
                     {t('titleI6')}
-                  </a>
-                  <ContactCvModal buttonText={t('titleI7')} />
+                  </Link>
+                  <DownloadCvButton buttonText={t('titleI7')} />
                 </div>
               </motion.div>
 

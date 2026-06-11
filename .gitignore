@@ -38,4 +38,5 @@ next-env.d.ts
 # agent / local tooling artifacts
 /.playwright-mcp/
 /.claude/
+/.superpowers/
 /audit-*.png

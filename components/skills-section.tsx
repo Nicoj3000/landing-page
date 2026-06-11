@@ -1,5 +1,6 @@
 "use client"
 
+import ReactDOM from "react-dom"
 import { useTranslation } from "react-i18next"
 import { IconCloud } from "@/components/magicui/icon-cloud"
 import { DottedMap } from "@/components/ui/dotted-map"
@@ -50,6 +51,10 @@ const cardClass =
 
 export default function SkillsSection() {
   const { t } = useTranslation()
+
+  // The icon cloud fetches ~27 svgs from this CDN; opening the connection
+  // early shaves the TLS handshake off every first request.
+  ReactDOM.preconnect("https://cdn.simpleicons.org", { crossOrigin: "anonymous" })
 
   return (
     <motion.section

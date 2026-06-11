@@ -1,11 +1,13 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 interface PortfolioBoxProps {
     data: {
         id: number,
         title: string
-        description: string
+        descriptionKey: string
         image: string
         urlGithub: string
         urlDemo: string
@@ -15,7 +17,8 @@ interface PortfolioBoxProps {
 
 const PortfolioBox = (props: PortfolioBoxProps) => {
     const { data, priority = false } = props
-    const { title, description, image, urlDemo, urlGithub } = data
+    const { title, descriptionKey, image, urlDemo, urlGithub } = data
+    const { t } = useTranslation()
     const hasDemo = Boolean(urlDemo) && urlDemo !== "#";
     const hasGithub = Boolean(urlGithub);
     const demoBtnClass = hasGithub ? "" : "col-span-2";
@@ -28,7 +31,7 @@ const PortfolioBox = (props: PortfolioBoxProps) => {
 
             <div className="mb-4">
                 <h3 className="line-clamp-1 text-lg font-semibold tracking-tight text-slate-100 sm:text-xl xl:text-[1.45rem]">{title}</h3>
-                <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-400 sm:text-sm">{description}</p>
+                <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-400 sm:text-sm">{t(descriptionKey)}</p>
             </div>
 
             <div className="relative mb-5 overflow-hidden rounded-xl border border-white/10 bg-[#090e1d]">
@@ -44,23 +47,25 @@ const PortfolioBox = (props: PortfolioBoxProps) => {
 
             <div className="grid grid-cols-2 gap-3">
                 {hasGithub && (
-                    <Link
+                    <a
                         href={urlGithub}
                         target="_blank"
+                        rel="noopener noreferrer"
                         className="rounded-lg border border-white/20 bg-white/8 px-3 py-2 text-center text-sm font-medium text-slate-100 transition-colors duration-150 hover:bg-white/18 xl:px-4 xl:py-2.5"
                     >
                         Github
-                    </Link>
+                    </a>
                 )}
 
                 {hasDemo && (
-                    <Link
+                    <a
                         href={urlDemo}
                         target="_blank"
+                        rel="noopener noreferrer"
                         className={`rounded-lg bg-[#3f5cff] px-3 py-2 text-center text-sm font-medium text-white transition-colors duration-150 hover:bg-[#526cff] xl:px-4 xl:py-2.5 ${demoBtnClass}`}
                     >
                         Live demo
-                    </Link>
+                    </a>
                 )}
             </div>
         </div>

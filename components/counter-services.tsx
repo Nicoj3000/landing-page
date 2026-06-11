@@ -17,7 +17,7 @@ const CounterServices = () => {
                     className={lineRight ? "md:border-r md:border-gray-100/60 md:pr-8" : ""}
                 >
                     <p className="mb-2 flex text-2xl font-extrabold text-secondary sm:text-3xl lg:text-4xl xl:text-5xl">
-                        +<CountUp end={endCounter} start={0} duration={5} />
+                        +<CountUp end={endCounter} start={0} duration={3} enableScrollSpy scrollSpyOnce />
                     </p>
                     <p className="max-w-[120px] text-[11px] uppercase sm:text-xs lg:max-w-[140px] lg:text-sm">
                         {t(text)}

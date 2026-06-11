@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Servicios | NicoX",
   description:
     "Servicios de desarrollo web, backend, arquitectura TI y mentoría técnica ofrecidos por Nicolás Delgado, Ingeniero de Sistemas fullstack.",
+  alternates: {
+    canonical: "/services",
+  },
   openGraph: {
     title: "Servicios | NicoX",
     description:
