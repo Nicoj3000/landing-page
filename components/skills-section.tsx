@@ -1,18 +1,22 @@
 "use client"
 
+import { useMemo } from "react"
 import ReactDOM from "react-dom"
+import { useTheme } from "next-themes"
 import { useTranslation } from "react-i18next"
 import { IconCloud } from "@/components/magicui/icon-cloud"
 import { DottedMap } from "@/components/ui/dotted-map"
 import { motion } from "framer-motion"
 
-const techImages = [
+// Brand icons that ship in white (Next.js, Express, Vercel, GitHub) are
+// invisible on the light card, so their color slug follows the theme.
+const buildTechImages = (mono: string) => [
   "https://cdn.simpleicons.org/typescript/3178c6",
   "https://cdn.simpleicons.org/javascript/f7df1e",
   "https://cdn.simpleicons.org/react/61dafb",
-  "https://cdn.simpleicons.org/nextdotjs/ffffff",
+  `https://cdn.simpleicons.org/nextdotjs/${mono}`,
   "https://cdn.simpleicons.org/nodedotjs/339933",
-  "https://cdn.simpleicons.org/express/ffffff",
+  `https://cdn.simpleicons.org/express/${mono}`,
   "https://cdn.simpleicons.org/nestjs/e0234e",
   "https://cdn.simpleicons.org/python/3776ab",
   "https://cdn.simpleicons.org/django/092e20",
@@ -23,14 +27,14 @@ const techImages = [
   "https://cdn.simpleicons.org/supabase/3ecf8e",
   "https://cdn.simpleicons.org/docker/2496ed",
   "/icons/aws.svg",
-  "https://cdn.simpleicons.org/vercel/ffffff",
+  `https://cdn.simpleicons.org/vercel/${mono}`,
   "https://cdn.simpleicons.org/netlify/00c7b7",
   "https://cdn.simpleicons.org/tailwindcss/06b6d4",
   "https://cdn.simpleicons.org/sass/cc6699",
   "https://cdn.simpleicons.org/html5/e34f26",
   "https://cdn.simpleicons.org/css/1572b6",
   "https://cdn.simpleicons.org/git/f05032",
-  "https://cdn.simpleicons.org/github/ffffff",
+  `https://cdn.simpleicons.org/github/${mono}`,
   "https://cdn.simpleicons.org/vite/646cff",
   "https://cdn.simpleicons.org/figma/f24e1e",
   "https://cdn.simpleicons.org/linux/fcc624",
@@ -43,14 +47,18 @@ const colombiaMarkers = [
 ]
 
 const cardClass =
-  "group relative overflow-hidden rounded-2xl border border-white/10 " +
-  "bg-[linear-gradient(160deg,rgba(16,24,46,0.92),rgba(9,13,26,0.9))] " +
-  "backdrop-blur-sm shadow-[0_14px_32px_-24px_rgba(0,0,0,0.9)] " +
+  "card-surface group relative overflow-hidden rounded-2xl " +
   "transition-all duration-300 hover:-translate-y-1 hover:border-secondary/60 " +
   "hover:shadow-[0_20px_44px_-24px_rgba(63,92,255,0.45)]"
 
 export default function SkillsSection() {
   const { t } = useTranslation()
+  const { resolvedTheme } = useTheme()
+  const isLight = resolvedTheme === "light"
+  const techImages = useMemo(
+    () => buildTechImages(isLight ? "0f172a" : "ffffff"),
+    [isLight],
+  )
 
   // The icon cloud fetches ~27 svgs from this CDN; opening the connection
   // early shaves the TLS handshake off every first request.
@@ -77,11 +85,11 @@ export default function SkillsSection() {
               </span>
               <span className="h-px flex-1 bg-gradient-to-r from-secondary/40 to-transparent" />
             </div>
-            <h3 className="text-2xl font-bold tracking-tight text-slate-100 lg:text-3xl">
+            <h3 className="text-2xl font-bold tracking-tight text-foreground lg:text-3xl">
               {t("titleStack1")}{" "}
               <span className="text-secondary">{t("titleStack2")}</span>
             </h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate-400 [text-wrap:pretty] lg:text-[0.95rem]">
+            <p className="mt-2 text-sm leading-relaxed text-subtle-foreground [text-wrap:pretty] lg:text-[0.95rem]">
               {t("titleStack3")}
             </p>
 
@@ -102,23 +110,23 @@ export default function SkillsSection() {
               </span>
               <span className="h-px flex-1 bg-gradient-to-r from-secondary/40 to-transparent" />
             </div>
-            <h3 className="text-2xl font-bold tracking-tight text-slate-100 lg:text-3xl">
+            <h3 className="text-2xl font-bold tracking-tight text-foreground lg:text-3xl">
               {t("titleGlobe1")}{" "}
               <span className="text-secondary">{t("titleGlobe2")}</span>
             </h3>
-            <p className="mt-2 flex items-center gap-2 text-sm leading-relaxed text-slate-400 lg:text-[0.95rem]">
+            <p className="mt-2 flex items-center gap-2 text-sm leading-relaxed text-subtle-foreground lg:text-[0.95rem]">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
               </span>
               {t("availableRemote")}
             </p>
-            <p className="mt-1 pl-4 text-xs text-slate-500">{t("titleGlobe3")}</p>
+            <p className="mt-1 pl-4 text-xs text-subtle-foreground/80">{t("titleGlobe3")}</p>
 
             <div className="relative mt-5 flex items-center justify-center aspect-square">
               <DottedMap
                 markers={colombiaMarkers}
-                dotColor="rgba(255,255,255,0.55)"
+                dotColor={isLight ? "rgba(15,23,42,0.4)" : "rgba(255,255,255,0.55)"}
                 markerColor="#6d86ff"
                 dotRadius={0.4}
                 pulse

@@ -11,7 +11,17 @@ const config: Config = {
   	extend: {
   		colors: {
 			secondary: '#3f5cff',
-			darkBg: '#070b14'
+			darkBg: '#070b14',
+			background: 'rgb(var(--background) / <alpha-value>)',
+			foreground: 'rgb(var(--foreground) / <alpha-value>)',
+			'muted-foreground': 'rgb(var(--muted-foreground) / <alpha-value>)',
+			'subtle-foreground': 'rgb(var(--subtle-foreground) / <alpha-value>)',
+			card: {
+				DEFAULT: 'rgb(var(--card) / <alpha-value>)',
+				deep: 'rgb(var(--card-deep) / <alpha-value>)',
+				foreground: 'rgb(var(--foreground) / <alpha-value>)'
+			},
+			contrast: 'rgb(var(--contrast) / <alpha-value>)'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

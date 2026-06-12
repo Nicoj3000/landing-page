@@ -46,7 +46,7 @@ const LanguageSelector = () => {
     <div className="relative" ref={containerRef}>
       <button
         type="button"
-        className="mt-1 flex cursor-pointer items-center text-2xl font-bold text-white select-none md:text-3xl bg-transparent border-0 p-0"
+        className="mt-1 flex cursor-pointer items-center text-2xl font-bold text-foreground select-none md:text-3xl bg-transparent border-0 p-0"
         onClick={toggleDropdown}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
@@ -58,12 +58,12 @@ const LanguageSelector = () => {
         <ChevronDown className="w-4 h-4 ml-1" />
       </button>
       {isOpen && (
-        <div className="absolute left-0 z-50 mt-2 w-[160px] rounded-lg border border-white/20 bg-black/90 p-2 shadow-lg backdrop-blur-sm">
+        <div className="absolute left-0 z-50 mt-2 w-[160px] rounded-lg border border-contrast/20 bg-card/95 p-2 shadow-lg backdrop-blur-sm">
           <label
             htmlFor="en"
-            className="relative flex h-10 cursor-pointer items-center gap-2 rounded-lg px-3 font-medium transition-all duration-300 hover:bg-white/10 has-[:checked]:bg-white/10 has-[:checked]:text-blue-400 has-[:checked]:ring-2 has-[:checked]:ring-blue-500 select-none"
+            className="relative flex h-10 cursor-pointer items-center gap-2 rounded-lg px-3 font-medium transition-all duration-300 hover:bg-contrast/10 has-[:checked]:bg-contrast/10 has-[:checked]:text-blue-600 dark:has-[:checked]:text-blue-400 has-[:checked]:ring-2 has-[:checked]:ring-blue-500 select-none"
           >
-            <span className="text-white">English</span>
+            <span className="text-foreground">English</span>
             <input
               type="radio"
               name="language"
@@ -73,13 +73,13 @@ const LanguageSelector = () => {
               onChange={changeLanguage}
               checked={i18n.language === 'en'}
             />
-            <span className="absolute right-3 h-3 w-3 rounded-full border-2 border-white/30 transition-all duration-300 peer-checked/en:border-blue-400 peer-checked/en:bg-blue-400"></span>
+            <span className="absolute right-3 h-3 w-3 rounded-full border-2 border-contrast/30 transition-all duration-300 peer-checked/en:border-blue-400 peer-checked/en:bg-blue-400"></span>
           </label>
           <label
             htmlFor="es"
-            className="relative flex h-10 cursor-pointer items-center gap-2 rounded-lg px-3 font-medium transition-all duration-300 hover:bg-white/10 has-[:checked]:bg-white/10 has-[:checked]:text-blue-400 has-[:checked]:ring-2 has-[:checked]:ring-blue-500 select-none"
+            className="relative flex h-10 cursor-pointer items-center gap-2 rounded-lg px-3 font-medium transition-all duration-300 hover:bg-contrast/10 has-[:checked]:bg-contrast/10 has-[:checked]:text-blue-600 dark:has-[:checked]:text-blue-400 has-[:checked]:ring-2 has-[:checked]:ring-blue-500 select-none"
           >
-            <span className="text-white">Español</span>
+            <span className="text-foreground">Español</span>
             <input
               type="radio"
               name="language"
@@ -89,7 +89,7 @@ const LanguageSelector = () => {
               onChange={changeLanguage}
               checked={i18n.language === 'es'}
             />
-            <span className="absolute right-3 h-3 w-3 rounded-full border-2 border-white/30 transition-all duration-300 peer-checked/es:border-blue-400 peer-checked/es:bg-blue-400"></span>
+            <span className="absolute right-3 h-3 w-3 rounded-full border-2 border-contrast/30 transition-all duration-300 peer-checked/es:border-blue-400 peer-checked/es:bg-blue-400"></span>
           </label>
         </div>
       )}
