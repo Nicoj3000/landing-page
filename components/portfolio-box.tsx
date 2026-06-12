@@ -51,7 +51,7 @@ const PortfolioBox = (props: PortfolioBoxProps) => {
                         href={urlGithub}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="rounded-lg border border-white/20 bg-white/8 px-3 py-2 text-center text-sm font-medium text-slate-100 transition-colors duration-150 hover:bg-white/18 xl:px-4 xl:py-2.5"
+                        className="rounded-lg border border-white/20 bg-white/[0.08] px-3 py-2 text-center text-sm font-medium text-slate-100 transition-colors duration-150 hover:bg-white/[0.18] xl:px-4 xl:py-2.5"
                     >
                         Github
                     </a>
