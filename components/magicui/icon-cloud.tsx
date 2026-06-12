@@ -28,10 +28,13 @@ function easeOutCubic(t: number): number {
 export function IconCloud({ images, label }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [iconPositions, setIconPositions] = useState<Icon[]>([])
-  const [isDragging, setIsDragging] = useState(false)
-  const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 })
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const [targetRotation, setTargetRotation] = useState<{
+  // Pointer state lives in refs, not state: the rAF loop reads it every frame,
+  // and going through setState would re-render the component and tear down /
+  // restart the animation effect on every mousemove.
+  const isDraggingRef = useRef(false)
+  const lastMousePosRef = useRef({ x: 0, y: 0 })
+  const mousePosRef = useRef({ x: 0, y: 0 })
+  const targetRotationRef = useRef<{
     x: number; y: number; startX: number; startY: number
     distance: number; startTime: number; duration: number
   } | null>(null)
@@ -110,19 +113,19 @@ export function IconCloud({ images, label }: IconCloudProps) {
         const targetY = Math.atan2(icon.x, icon.z)
         const currentX = rotationRef.current.x, currentY = rotationRef.current.y
         const distance = Math.sqrt((targetX - currentX) ** 2 + (targetY - currentY) ** 2)
-        setTargetRotation({ x: targetX, y: targetY, startX: currentX, startY: currentY, distance, startTime: performance.now(), duration: Math.min(2000, Math.max(800, distance * 1000)) })
+        targetRotationRef.current = { x: targetX, y: targetY, startX: currentX, startY: currentY, distance, startTime: performance.now(), duration: Math.min(2000, Math.max(800, distance * 1000)) }
       }
     })
-    setIsDragging(true)
-    setLastMousePos({ x: e.clientX, y: e.clientY })
+    isDraggingRef.current = true
+    lastMousePosRef.current = { x: e.clientX, y: e.clientY }
   }
 
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const pos = toLogical(e)
-    if (pos) setMousePos(pos)
-    if (isDragging) {
-      rotationRef.current = { x: rotationRef.current.x + (e.clientY - lastMousePos.y) * 0.002, y: rotationRef.current.y + (e.clientX - lastMousePos.x) * 0.002 }
-      setLastMousePos({ x: e.clientX, y: e.clientY })
+    if (pos) mousePosRef.current = pos
+    if (isDraggingRef.current) {
+      rotationRef.current = { x: rotationRef.current.x + (e.clientY - lastMousePosRef.current.y) * 0.002, y: rotationRef.current.y + (e.clientX - lastMousePosRef.current.x) * 0.002 }
+      lastMousePosRef.current = { x: e.clientX, y: e.clientY }
     }
   }
 
@@ -140,15 +143,16 @@ export function IconCloud({ images, label }: IconCloudProps) {
       ctx.clearRect(0, 0, SIZE, SIZE)
       const centerX = SIZE / 2, centerY = SIZE / 2
       const maxDistance = Math.sqrt(centerX ** 2 + centerY ** 2)
-      const dx = mousePos.x - centerX, dy = mousePos.y - centerY
+      const dx = mousePosRef.current.x - centerX, dy = mousePosRef.current.y - centerY
       const speed = 0.003 + (Math.sqrt(dx ** 2 + dy ** 2) / maxDistance) * 0.01
 
+      const targetRotation = targetRotationRef.current
       if (targetRotation) {
         const progress = Math.min(1, (performance.now() - targetRotation.startTime) / targetRotation.duration)
         const ep = easeOutCubic(progress)
         rotationRef.current = { x: targetRotation.startX + (targetRotation.x - targetRotation.startX) * ep, y: targetRotation.startY + (targetRotation.y - targetRotation.startY) * ep }
-        if (progress >= 1) setTargetRotation(null)
-      } else if (!isDragging) {
+        if (progress >= 1) targetRotationRef.current = null
+      } else if (!isDraggingRef.current) {
         rotationRef.current = { x: rotationRef.current.x + (dy / SIZE) * speed, y: rotationRef.current.y + (dx / SIZE) * speed }
       }
 
@@ -173,7 +177,7 @@ export function IconCloud({ images, label }: IconCloudProps) {
     }
     animate()
     return () => { if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current) }
-  }, [images, iconPositions, isDragging, mousePos, targetRotation])
+  }, [iconPositions])
 
   return (
     <canvas
@@ -182,8 +186,8 @@ export function IconCloud({ images, label }: IconCloudProps) {
       height={SIZE}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
-      onMouseUp={() => setIsDragging(false)}
-      onMouseLeave={() => setIsDragging(false)}
+      onMouseUp={() => { isDraggingRef.current = false }}
+      onMouseLeave={() => { isDraggingRef.current = false }}
       className="rounded-lg block max-w-full h-auto mx-auto"
       style={{ width: "100%", maxWidth: SIZE, aspectRatio: "1 / 1" }}
       aria-label={label ?? "Interactive 3D icon cloud"}
