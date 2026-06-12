@@ -12,8 +12,11 @@ export class HomePage extends BasePage {
     super(page);
     this.heading = page.getByRole("heading", { level: 1 });
     // The button's accessible name flips between "Es"/"En" with the active
-    // language, so target it by position: it is the only button in the header.
-    this.languageButton = page.getByRole("banner").getByRole("button");
+    // language; match both names so the theme toggler (also a header button)
+    // is excluded.
+    this.languageButton = page
+      .getByRole("banner")
+      .getByRole("button", { name: /^(es|en)$/i });
     this.cvLink = page.getByRole("link", { name: /Download CV|Descargar CV/ });
   }
 
