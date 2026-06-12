@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useId, useState } from "react";
+import { useTheme } from "next-themes";
 import { loadSlim } from "@tsparticles/slim";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 
@@ -22,6 +23,7 @@ function getEngine(): Promise<void> {
 export const CoverParticles = () => {
   const id = useId();
   const [init, setInit] = useState(engineReady);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     if (engineReady) return;
@@ -30,9 +32,15 @@ export const CoverParticles = () => {
 
   if (!init) return null;
 
+  // White particles vanish on the light background, so the palette follows the
+  // theme. The key remounts the canvas on theme change — tsparticles does not
+  // deep-react to options updates.
+  const particleColor = resolvedTheme === "light" ? "#334155" : "#ffffff";
+
   return (
     <div className="w-[0px]">
       <Particles
+        key={particleColor}
         id={`tsparticles-${id}`}
         options={{
           fpsLimit: 60,
@@ -47,9 +55,9 @@ export const CoverParticles = () => {
             },
           },
           particles: {
-            color: { value: "#ffffff" },
+            color: { value: particleColor },
             links: {
-              color: "#ffffff",
+              color: particleColor,
               distance: 150,
               enable: true,
               opacity: 0.4,

@@ -25,16 +25,16 @@ const PortfolioBox = (props: PortfolioBoxProps) => {
 
     return (
         <div
-            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(160deg,rgba(16,24,46,0.92),rgba(9,13,26,0.9))] p-5 backdrop-blur-sm shadow-[0_14px_32px_-24px_rgba(0,0,0,0.9)] transition-all duration-300 hover:-translate-y-1 hover:border-secondary/60 hover:shadow-[0_20px_44px_-24px_rgba(63,92,255,0.45)]"
+            className="card-surface group relative overflow-hidden rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/60 hover:shadow-[0_20px_44px_-24px_rgba(63,92,255,0.45)]"
         >
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#7d96ff]/80 to-transparent" />
 
             <div className="mb-4">
-                <h3 className="line-clamp-1 text-lg font-semibold tracking-tight text-slate-100 sm:text-xl xl:text-[1.45rem]">{title}</h3>
-                <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-400 sm:text-sm">{t(descriptionKey)}</p>
+                <h3 className="line-clamp-1 text-lg font-semibold tracking-tight text-foreground sm:text-xl xl:text-[1.45rem]">{title}</h3>
+                <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-subtle-foreground sm:text-sm">{t(descriptionKey)}</p>
             </div>
 
-            <div className="relative mb-5 overflow-hidden rounded-xl border border-white/10 bg-[#090e1d]">
+            <div className="relative mb-5 overflow-hidden rounded-xl border border-contrast/10 bg-card-deep">
                 <Image
                     src={image}
                     alt={title}
@@ -51,7 +51,7 @@ const PortfolioBox = (props: PortfolioBoxProps) => {
                         href={urlGithub}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="rounded-lg border border-white/20 bg-white/[0.08] px-3 py-2 text-center text-sm font-medium text-slate-100 transition-colors duration-150 hover:bg-white/[0.18] xl:px-4 xl:py-2.5"
+                        className="rounded-lg border border-contrast/20 bg-contrast/[0.08] px-3 py-2 text-center text-sm font-medium text-foreground transition-colors duration-150 hover:bg-contrast/[0.18] xl:px-4 xl:py-2.5"
                     >
                         Github
                     </a>

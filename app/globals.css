@@ -2,14 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Light theme — RGB triplets so Tailwind opacity modifiers work (bg-card/60) */
+    --background: 244 246 251;
+    --foreground: 15 23 42;
+    --muted-foreground: 51 65 85;
+    --subtle-foreground: 71 85 105;
+    --card: 255 255 255;
+    --card-deep: 233 237 246;
+    /* Base color for translucent borders/overlays: dark on light, white on dark */
+    --contrast: 15 23 42;
+
+    --page-bg:
+      radial-gradient(1200px 700px at 18% 6%, rgba(63, 92, 255, 0.1), transparent 52%),
+      radial-gradient(1100px 680px at 88% 90%, rgba(63, 92, 255, 0.07), transparent 55%),
+      #f4f6fb;
+    --card-grad-from: rgba(255, 255, 255, 0.92);
+    --card-grad-to: rgba(238, 241, 248, 0.9);
+    --card-shadow: 0 14px 32px -24px rgba(15, 23, 42, 0.35);
+  }
+
+  .dark {
+    --background: 5 7 13;
+    --foreground: 238 242 255;
+    --muted-foreground: 203 213 225;
+    --subtle-foreground: 148 163 184;
+    --card: 13 19 38;
+    --card-deep: 9 14 29;
+    --contrast: 255 255 255;
+
+    --page-bg:
+      radial-gradient(1200px 700px at 18% 6%, rgba(63, 92, 255, 0.2), transparent 52%),
+      radial-gradient(1100px 680px at 88% 90%, rgba(25, 35, 75, 0.45), transparent 55%),
+      #05070d;
+    --card-grad-from: rgba(16, 24, 46, 0.92);
+    --card-grad-to: rgba(9, 13, 26, 0.9);
+    --card-shadow: 0 14px 32px -24px rgba(0, 0, 0, 0.9);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 html,
 body {
   min-height: 100%;
-  color: #eef2ff;
-  background:
-    radial-gradient(1200px 700px at 18% 6%, rgba(63, 92, 255, 0.2), transparent 52%),
-    radial-gradient(1100px 680px at 88% 90%, rgba(25, 35, 75, 0.45), transparent 55%),
-    #05070d;
+  color: rgb(var(--foreground));
+  background: var(--page-bg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -21,38 +64,17 @@ body {
 
 ::selection {
   background: rgba(99, 122, 255, 0.32);
-  color: #f8fbff;
+  color: rgb(var(--foreground));
 }
-
 
 main {
   background: transparent;
   min-height: 100dvh;
 }
 
-.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
-.swiper-pagination-horizontal.swiper-pagination-bullets
-  .swiper-pagination-bullet {
-  background-color: #6d86ff;
-  opacity: 0.42;
-}
-
-.swiper-pagination-bullet-active {
-  opacity: 1 !important;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-}
-
-@layer base {
-  :root {
-    --radius: 0.5rem;
-  }
-  html {
-    scroll-behavior: smooth;
   }
 }
 
@@ -75,11 +97,49 @@ main {
 @layer components {
   /* Reusable glassmorphism surface */
   .glass {
-    @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl;
+    @apply border border-contrast/10 bg-white/70 backdrop-blur-xl dark:bg-white/[0.04];
   }
   .glass-card {
-    @apply rounded-2xl border border-white/10 bg-white/[0.04] shadow-[0_8px_40px_rgba(2,6,23,0.45)] backdrop-blur-xl;
+    @apply rounded-2xl border border-contrast/10 bg-white/70 shadow-[0_8px_30px_rgba(15,23,42,0.1)] backdrop-blur-xl dark:bg-white/[0.04] dark:shadow-[0_8px_40px_rgba(2,6,23,0.45)];
   }
+
+  /* Gradient card surface (portfolio boxes, skills cards) — themed via tokens */
+  .card-surface {
+    border: 1px solid rgb(var(--contrast) / 0.1);
+    background: linear-gradient(160deg, var(--card-grad-from), var(--card-grad-to));
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  /* Hero heading gradients — inverted per theme for legibility */
+  .text-gradient-hero {
+    @apply bg-gradient-to-b from-slate-800 to-slate-500 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-400;
+  }
+  .text-gradient-accent {
+    @apply bg-gradient-to-r from-[#2742cc] to-[#3f5cff] bg-clip-text text-transparent dark:from-[#8ca3ff] dark:to-[#3f5cff];
+  }
+}
+
+/* ---------- Animated theme toggler (View Transitions API) ---------- */
+/* Disable the default cross-fade so the clip-path reveal is the only animation. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Scoped to AnimatedThemeToggler — the toggler sets the data-attribute and the
+   variables only while a theme toggle is in flight, so other view transitions
+   in the app are unaffected. */
+html[data-magicui-theme-vt="active"]::view-transition-group(root) {
+  animation-duration: var(--magicui-theme-toggle-vt-duration);
+}
+
+/* Pin the collapsed clip-path before the JS animation takes over, so Firefox
+   never paints the new theme unclipped between snapshot and ready.then(). */
+html[data-magicui-theme-vt="active"]::view-transition-new(root) {
+  clip-path: var(--magicui-theme-vt-clip-from);
 }
 
 /* ---------- Respect reduced motion (a11y) ---------- */

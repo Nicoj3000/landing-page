@@ -8,6 +8,7 @@ import I18nProvider from "@/components/I18nProvider";
 import { HtmlLangSync } from "@/components/html-lang-sync";
 import ScrollToTop from "@/components/scroll-to-top";
 import { PreloadResources } from "@/components/preload-resources";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -42,7 +43,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#05070d",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f6fb" },
+    { media: "(prefers-color-scheme: dark)", color: "#05070d" },
+  ],
 };
 
 export default function RootLayout({
@@ -51,18 +55,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <body className={urbanist.className}>
         <PreloadResources />
-        <I18nProvider>
-          <HtmlLangSync />
-          <TooltipProvider>
-            <Navbar />
-            <Header />
-            <main>{children}</main>
-            <ScrollToTop />
-          </TooltipProvider>
-        </I18nProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <I18nProvider>
+            <HtmlLangSync />
+            <TooltipProvider>
+              <Navbar />
+              <Header />
+              <main>{children}</main>
+              <ScrollToTop />
+            </TooltipProvider>
+          </I18nProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
