@@ -1,0 +1,114 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Icon from "@/components/Icon.astro";
+import SectionLabel from "@/components/SectionLabel.astro";
+import { getProjects } from "@/data/content";
+import type { Locale } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const projects = await getProjects();
+const external = t("a11y.externalLink");
+const host = (url?: string) => (url ? new URL(url).host : undefined);
+const action =
+  "inline-flex min-h-11 items-center gap-2 border border-line-strong px-4 font-mono text-sm text-fg transition-colors duration-(--duration-fast) hover:border-accent hover:text-accent";
+---
+
+<BaseLayout lang={lang} title={`${t("nav.portfolio")} | ${t("site.name")}`}>
+  <section class="container-page pt-10 sm:pt-16 lg:pt-20">
+    <div class="bg-blueprint pointer-events-none absolute inset-x-0 top-0 -z-10 h-[30rem]" aria-hidden="true"></div>
+    <SectionLabel index="01" label={t("section.portfolio")} />
+    <h1 class="mt-10 font-display text-[clamp(2.6rem,0.8rem+7vw,6.5rem)] font-semibold leading-[0.95] tracking-[-0.045em]">
+      <span class="block text-muted">{t("portfolio.titleLead")}</span>{" "}
+      <span class="block">{t("portfolio.titleEmphasis")}</span>
+    </h1>
+  </section>
+
+  <section class="container-page py-section" aria-label={t("nav.portfolio")}>
+    <div class="grid gap-x-6 gap-y-14 lg:grid-cols-2">
+      {
+        projects.map((project, i) => {
+          const title = project.data.title;
+          const first = i === 0;
+          // The first project leads; a lone trailing project also spans the row so the grid has no hole.
+          const wide = first || (i === projects.length - 1 && (projects.length - 1) % 2 === 1);
+          return (
+            <article
+              id={project.id}
+              data-project
+              class:list={["reveal group scroll-mt-28", wide && "lg:col-span-2 lg:grid lg:grid-cols-2 lg:items-end lg:gap-6"]}
+            >
+              <div class="project-frame relative overflow-hidden border border-line-strong bg-sunken">
+                <Picture
+                  src={project.data.image}
+                  alt={`${t("portfolio.imageAlt")} ${title}`}
+                  formats={["avif", "webp"]}
+                  widths={[480, 720, 1080]}
+                  sizes="(min-width: 1024px) 590px, 100vw"
+                  loading={first ? "eager" : "lazy"}
+                  decoding="async"
+                  class="block aspect-video h-auto w-full object-cover transition-transform duration-(--duration-slow) ease-(--ease-out-expo) group-hover:scale-[1.03]"
+                />
+              </div>
+              <div class:list={["mt-5 flex flex-col gap-4", wide && "lg:mt-0"]}>
+                <p class="flex items-center justify-between gap-3 font-mono text-sm text-muted">
+                  <span class="tabular-nums"><span class="text-accent">{String(i + 1).padStart(2, "0")}</span> / {String(projects.length).padStart(2, "0")}</span>
+                  <span class="truncate">{host(project.data.demoUrl)}</span>
+                </p>
+                <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
+                <p class="max-w-[56ch] text-muted">{project.data.description[lang]}</p>
+                {
+                  project.data.tags.length > 0 && (
+                    <ul class="flex flex-wrap gap-2" aria-label={t("skills.count")}>
+                      {project.data.tags.map((tag) => (
+                        <li data-tag class="border border-line px-2.5 py-1 font-mono text-xs text-muted">
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                  )
+                }
+                <div class="flex flex-wrap gap-3">
+                  {
+                    project.data.repoUrl && (
+                      <a
+                        href={project.data.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${t("portfolio.repoOf")} ${title} ${external}`}
+                        class={action}
+                      >
+                        <Icon name="github" size={18} />
+                        {t("portfolio.repo")}
+                      </a>
+                    )
+                  }
+                  {
+                    project.data.demoUrl && (
+                      <a
+                        href={project.data.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${t("portfolio.demoOf")} ${title} ${external}`}
+                        class={action}
+                      >
+                        <Icon name="arrow-up-right" size={18} />
+                        {t("portfolio.demo")}
+                      </a>
+                    )
+                  }
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </section>
+</BaseLayout>
