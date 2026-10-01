@@ -1,27 +1,28 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const PORT = Number(process.env.PORT ?? 4321);
+const CI = !!process.env.CI;
 
 export default defineConfig({
   testDir: "./tests",
-  // Legacy Next.js suite; rewritten in T6.
-  testIgnore: ["**/home/**"],
+  // tests/build specs inspect an explicit BUILD_DIR and skip themselves (with the
+  // reason in the report) when it is unset; `npm run test:build` runs them.
   timeout: 30_000,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  reporter: process.env.CI ? "github" : "list",
+  forbidOnly: CI,
+  retries: CI ? 2 : 0,
+  reporter: CI ? [["github"], ["html", { open: "never" }]] : "list",
   use: {
     baseURL: `http://localhost:${PORT}`,
     trace: "on-first-retry",
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
-    command: // --ignore-lock keeps Astro's dev server in the foreground when launched by
-    // an agent/CI (it would otherwise auto-background and Playwright would see
-    // the process exit).
-    `npx astro dev --port ${PORT} --ignore-lock`,
+    // --ignore-lock is REQUIRED: without a TTY, Astro 7's `astro dev` detaches into a
+    // background daemon and exits 0, so Playwright would see its server process die.
+    // The flag keeps it in the foreground (and skips the lock-file check).
+    command: `npx astro dev --port ${PORT} --ignore-lock`,
     url: `http://localhost:${PORT}`,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: !CI,
     timeout: 120_000,
   },
 });

@@ -92,7 +92,7 @@ const path = Astro.url.pathname;
     <SiteHeader {lang} {path} />
     <DockNav {lang} {path} />
 
-    <main id="main" class="relative" transition:name="page">
+    <main id="main" tabindex="-1" class="relative focus:outline-none" transition:name="page">
       <slot />
     </main>
 
