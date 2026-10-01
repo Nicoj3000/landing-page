@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nicoj3000.netlify.app/sitemap.xml
+Sitemap: https://nicoj3000.netlify.app/sitemap-index.xml
