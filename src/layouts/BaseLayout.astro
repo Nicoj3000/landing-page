@@ -1,0 +1,88 @@
+---
+import { ClientRouter } from "astro:transitions";
+import { Font } from "astro:assets";
+import "@/styles/global.css";
+import DockNav from "@/components/DockNav.astro";
+import LangSwitch from "@/components/LangSwitch.astro";
+import Seo from "@/components/Seo.astro";
+import type { Locale } from "@/i18n/ui";
+import { localizedPath, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: Locale;
+  title: string;
+  description?: string;
+}
+
+const { lang, title, description } = Astro.props;
+const t = useTranslations(lang);
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang={lang} data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <Seo title={title} description={description ?? t("site.description")} {lang} {path} />
+
+    <!--
+      No-flash theme. Runs synchronously before first paint. Preference lives in
+      localStorage "theme" (light | dark | system); the resolved value is written
+      to <html data-theme>. Re-applied after every View Transitions swap, since
+      the router replaces <html> attributes with the incoming document's.
+    -->
+    <script is:inline>
+      (() => {
+        const apply = () => {
+          let pref = "system";
+          try {
+            pref = localStorage.getItem("theme") || "system";
+          } catch {}
+          if (pref !== "light" && pref !== "dark") pref = "system";
+          const resolved =
+            pref === "system"
+              ? matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light"
+              : pref;
+          const root = document.documentElement;
+          root.dataset.theme = resolved;
+          root.dataset.themePref = pref;
+        };
+        apply();
+        document.addEventListener("astro:after-swap", apply);
+      })();
+    </script>
+
+    <!-- Only the critical display + body families are preloaded; mono loads on demand. -->
+    <Font cssVariable="--af-display" preload={[{ subset: "latin", style: "normal" }]} />
+    <Font cssVariable="--af-body" preload={[{ subset: "latin", style: "normal" }]} />
+    <Font cssVariable="--af-mono" />
+
+    <ClientRouter />
+  </head>
+  <body class="font-sans">
+    <a class="skip-link" href="#main">{t("a11y.skipToContent")}</a>
+
+    <header class="container-page flex items-center justify-between py-5">
+      <a href={localizedPath("/", lang)} class="font-display text-lg font-semibold tracking-tight">
+        {t("site.name")}
+      </a>
+      <slot name="header" />
+      <LangSwitch {lang} {path} />
+    </header>
+
+    <main id="main" class="container-page min-h-[60dvh] pb-32">
+      <slot />
+    </main>
+
+    <footer class="container-page pb-28 pt-10 label-mono">
+      <slot name="footer">© {new Date().getFullYear()} {t("site.name")}</slot>
+    </footer>
+
+    <DockNav {lang} {path} />
+  </body>
+</html>

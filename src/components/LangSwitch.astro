@@ -1,0 +1,29 @@
+---
+import { LOCALES, LOCALE_LABEL, type Locale } from "@/i18n/ui";
+import { localizedPath } from "@/i18n/utils";
+
+interface Props {
+  lang: Locale;
+  path: string;
+}
+
+const { lang, path } = Astro.props;
+---
+
+<ul class="flex items-center gap-2 font-mono text-xs">
+  {
+    LOCALES.map((locale) => (
+      <li>
+        <a
+          href={localizedPath(path, locale)}
+          hreflang={locale}
+          lang={locale}
+          aria-current={locale === lang ? "true" : undefined}
+          class="rounded-xs px-1.5 py-1 text-muted hover:text-fg aria-[current=true]:text-accent"
+        >
+          {LOCALE_LABEL[locale]}
+        </a>
+      </li>
+    ))
+  }
+</ul>

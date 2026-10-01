@@ -1,0 +1,42 @@
+---
+import type { Locale } from "@/i18n/ui";
+import { localizedPath, stripLocale, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: Locale;
+  path: string;
+}
+
+const { lang, path } = Astro.props;
+const t = useTranslations(lang);
+const current = stripLocale(path);
+
+const items = [
+  { href: "/", key: "nav.home" },
+  { href: "/about-me", key: "nav.about" },
+  { href: "/services", key: "nav.services" },
+  { href: "/portfolio", key: "nav.portfolio" },
+] as const;
+---
+
+<!-- Placeholder: the final dock (icons, magnification) lands in T3/T5. -->
+<nav
+  aria-label={t("nav.label")}
+  class="fixed inset-x-0 bottom-4 z-50 mx-auto w-fit max-w-[calc(100%-2rem)] rounded-pill border border-line-strong bg-raised/90 px-2 py-1.5 shadow-dock backdrop-blur"
+>
+  <ul class="flex items-center gap-1">
+    {
+      items.map(({ href, key }) => (
+        <li>
+          <a
+            href={localizedPath(href, lang)}
+            aria-current={current === href ? "page" : undefined}
+            class="block rounded-pill px-3 py-1.5 font-mono text-xs text-muted transition-colors duration-(--duration-fast) hover:text-fg aria-[current=page]:bg-accent aria-[current=page]:text-on-accent"
+          >
+            {t(key)}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
