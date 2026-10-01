@@ -22,6 +22,8 @@ const sync = () => {
 
 // A view transition applies the theme on a later frame; rapid clicks chain from the queued value.
 let queued: ThemePreference | null = null;
+// The transition that currently owns `data-theme-vt` (only the latest one may clear it).
+let running: ViewTransition | null = null;
 
 const cycle = (button: HTMLElement) => {
   const next = ORDER[(ORDER.indexOf(queued ?? currentPref()) + 1) % ORDER.length] ?? "system";
@@ -46,7 +48,10 @@ const cycle = (button: HTMLElement) => {
   const root = document.documentElement;
   root.setAttribute("data-theme-vt", "");
 
+  // Overlapping transitions would fight over the pseudo-element animation and the flag.
+  running?.skipTransition();
   const transition = document.startViewTransition(apply);
+  running = transition;
   void transition.ready
     .then(() =>
       root.animate(
@@ -55,7 +60,11 @@ const cycle = (button: HTMLElement) => {
       ),
     )
     .catch(() => {});
-  void transition.finished.finally(() => root.removeAttribute("data-theme-vt"));
+  void transition.finished.finally(() => {
+    if (running !== transition) return;
+    running = null;
+    root.removeAttribute("data-theme-vt");
+  });
 };
 
 // Delegated: the button node is replaced on every ClientRouter navigation.

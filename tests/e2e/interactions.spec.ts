@@ -54,7 +54,10 @@ test.describe("counters", () => {
     await page.goto("/about-me");
     await page.locator('[data-counter-to="10"]').scrollIntoViewIfNeeded();
     await page.waitForTimeout(400);
+    await expect(page.locator('[data-counter-to="10"]')).toHaveText("10");
     const values = await seen(page, "10");
+    // Non-vacuous: the observer did record the counter, and only ever its final value.
+    expect(values.length).toBeGreaterThan(0);
     expect(values.every((v) => v === "10")).toBe(true);
     await context.close();
   });

@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "build": "astro build",
     "test:e2e": "playwright test",
-    "test:i18n": "playwright test tests/unit"
+    "test:i18n": "playwright test tests/unit",
+    "test:build": "node scripts/test-build.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

@@ -1,20 +1,13 @@
-import { existsSync, readFileSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { expect, test } from "@playwright/test";
+import { BUILD_DIR, SITE, SKIP_REASON } from "./build-dir";
 
 /**
  * Checks canonical / hreflang shapes in the BUILT html (where Astro.url.pathname
  * carries the `.html` suffix of `build.format: "file"`, unlike the dev server).
- *
- * Run it against a build directory:
- *   npx astro build --outDir /tmp/dist-check
- *   BUILD_DIR=/tmp/dist-check npx playwright test tests/unit/build-output.spec.ts
- *
- * Skipped when the directory does not exist (default: ./dist), so the regular
- * suite never needs a build.
+ * Needs an explicit BUILD_DIR; see ./build-dir.ts and `npm run test:build`.
  */
-const BUILD_DIR = resolve(process.env.BUILD_DIR ?? "dist");
-const SITE = "https://nicoj3000.netlify.app";
 
 const PAGES = [
   { file: "index.html", es: "/", en: "/en" },
@@ -31,11 +24,11 @@ const hrefs = (html: string, pattern: RegExp): string[] =>
   [...html.matchAll(pattern)].map((m) => m[1] ?? "");
 
 test.describe("built html: canonical / hreflang / lang switch", () => {
-  test.skip(!existsSync(BUILD_DIR), `no build at ${BUILD_DIR} (see file header)`);
+  test.skip(BUILD_DIR === undefined, SKIP_REASON);
 
   for (const page of PAGES) {
     test(`${page.file}`, () => {
-      const html = readFileSync(join(BUILD_DIR, page.file), "utf8");
+      const html = readFileSync(join(BUILD_DIR as string, page.file), "utf8");
       const isEn = page.file === "en.html" || page.file.startsWith("en/");
       const self = `${SITE}${isEn ? page.en : page.es}`;
 

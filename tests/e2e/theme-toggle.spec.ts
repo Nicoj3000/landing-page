@@ -72,6 +72,57 @@ test.describe("theme toggle", () => {
     await expectPref(page, "dark");
   });
 
+  test("overlapping transitions: the previous one is skipped and only the latest clears the flag", async ({ page }) => {
+    // Fake View Transitions whose `finished` we resolve by hand, to control the overlap.
+    await page.addInitScript(() => {
+      const w = window as unknown as { __skipped: number; __finish: Array<() => void> };
+      w.__skipped = 0;
+      w.__finish = [];
+      document.startViewTransition = ((callback: () => void) => {
+        callback();
+        let finish = () => {};
+        const finished = new Promise<void>((resolve) => (finish = resolve));
+        w.__finish.push(finish);
+        return { ready: new Promise<void>(() => {}), finished, updateCallbackDone: Promise.resolve(), skipTransition: () => (w.__skipped += 1) };
+      }) as unknown as typeof document.startViewTransition;
+    });
+    await page.goto("/");
+    const html = page.locator("html");
+    await toggle(page).click(); // light
+    await toggle(page).click(); // dark
+    await expectPref(page, "dark");
+    await expect(html).toHaveAttribute("data-theme", "dark");
+    await expect(html).toHaveAttribute("data-theme-vt", "");
+    expect(await page.evaluate(() => (window as unknown as { __skipped: number }).__skipped)).toBe(1);
+
+    // The stale transition ending must not drop the flag while the latest still runs.
+    await page.evaluate(() => (window as unknown as { __finish: Array<() => void> }).__finish[0]?.());
+    await page.waitForTimeout(50);
+    await expect(html).toHaveAttribute("data-theme-vt", "");
+
+    await page.evaluate(() => (window as unknown as { __finish: Array<() => void> }).__finish[1]?.());
+    await expect(html).not.toHaveAttribute("data-theme-vt", /.*/);
+  });
+
+  test("a real double click ends in a consistent state with the flag removed", async ({ page }) => {
+    await page.goto("/");
+    await toggle(page).dblclick();
+    const html = page.locator("html");
+    await expect(html).not.toHaveAttribute("data-theme-vt", /.*/, { timeout: 3000 });
+    // The browser may swallow the second click while the transition overlay is up;
+    // either way theme, preference, storage and the button label must agree.
+    const state = await page.evaluate(() => ({
+      pref: document.documentElement.dataset.themePref,
+      theme: document.documentElement.dataset.theme,
+      stored: localStorage.getItem("theme"),
+      label: document.querySelector("[data-theme-toggle]")?.getAttribute("aria-label"),
+    }));
+    expect(["light", "dark"]).toContain(state.pref);
+    expect(state.theme).toBe(state.pref);
+    expect(state.stored).toBe(state.pref);
+    expect(state.label).toMatch(state.pref === "light" ? /claro/i : /oscuro/i);
+  });
+
   test("animates with a view transition when motion is allowed", async ({ page }) => {
     await page.addInitScript(() => {
       const w = window as unknown as { __vt: number };
