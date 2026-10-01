@@ -1,0 +1,28 @@
+---
+import { ICONS, type IconName } from "@/lib/icons";
+
+interface Props {
+  name: IconName;
+  /** Pixel size of the square icon box. */
+  size?: number;
+  class?: string;
+}
+
+const { name, size = 20, class: className } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  width={size}
+  height={size}
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.75"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+  class={className}
+  set:html={ICONS[name]}
+/>

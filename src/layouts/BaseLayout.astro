@@ -3,18 +3,21 @@ import { ClientRouter } from "astro:transitions";
 import { Font } from "astro:assets";
 import "@/styles/global.css";
 import DockNav from "@/components/DockNav.astro";
-import LangSwitch from "@/components/LangSwitch.astro";
+import SiteFooter from "@/components/SiteFooter.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
 import Seo from "@/components/Seo.astro";
 import type { Locale } from "@/i18n/ui";
-import { localizedPath, useTranslations } from "@/i18n/utils";
+import { useTranslations } from "@/i18n/utils";
 
 interface Props {
   lang: Locale;
   title: string;
   description?: string;
+  /** Error pages: no canonical/hreflang, robots noindex. */
+  noindex?: boolean;
 }
 
-const { lang, title, description } = Astro.props;
+const { lang, title, description, noindex = false } = Astro.props;
 const t = useTranslations(lang);
 const path = Astro.url.pathname;
 ---
@@ -27,7 +30,7 @@ const path = Astro.url.pathname;
     <meta name="color-scheme" content="dark light" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="32x32 48x48" />
-    <Seo title={title} description={description ?? t("site.description")} {lang} {path} />
+    <Seo title={title} description={description ?? t("site.description")} {lang} {path} {noindex} />
 
     <!--
       No-flash theme. Runs synchronously before first paint. Preference lives in
@@ -78,22 +81,13 @@ const path = Astro.url.pathname;
   <body class="font-sans">
     <a class="skip-link" href="#main">{t("a11y.skipToContent")}</a>
 
-    <header class="container-page flex items-center justify-between py-5">
-      <a href={localizedPath("/", lang)} class="font-display text-lg font-semibold tracking-tight">
-        {t("site.name")}
-      </a>
-      <slot name="header" />
-      <LangSwitch {lang} {path} />
-    </header>
+    <SiteHeader {lang} {path} />
+    <DockNav {lang} {path} />
 
-    <main id="main" class="container-page min-h-[60dvh] pb-32">
+    <main id="main" class="relative" transition:name="page">
       <slot />
     </main>
 
-    <footer class="container-page pb-28 pt-10 label-mono">
-      <slot name="footer">© {new Date().getFullYear()} {t("site.name")}</slot>
-    </footer>
-
-    <DockNav {lang} {path} />
+    <SiteFooter {lang} />
   </body>
 </html>

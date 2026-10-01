@@ -1,0 +1,36 @@
+---
+import type { Locale } from "@/i18n/ui";
+import { getCounters } from "@/data/content";
+import { useTranslations } from "@/i18n/utils";
+import SectionLabel from "./SectionLabel.astro";
+
+interface Props {
+  lang: Locale;
+  index: string;
+}
+
+const { lang, index } = Astro.props;
+const t = useTranslations(lang);
+const counters = await getCounters();
+---
+
+<!--
+  The final numbers are server-rendered (no-JS, reduced motion, SEO). The
+  counters island (src/scripts/counters.ts) only replays a count-up when the
+  strip scrolls into view.
+-->
+<section aria-labelledby="numbers-label" class="container-page py-section">
+  <SectionLabel id="numbers-label" {index} label={t("section.numbers")} />
+  <dl class="mt-8 grid grid-cols-2 border-y border-line lg:grid-cols-4">
+    {
+      counters.map((counter, i) => (
+        <div class:list={["flex flex-col-reverse justify-end gap-3 border-line p-5 sm:p-8", i % 2 === 1 && "border-l", i >= 2 && "border-t lg:border-t-0", i >= 1 && "lg:border-l"]}>
+          <dt class="label-mono">{counter.data.label[lang]}</dt>
+          <dd class="font-display text-[clamp(3rem,2rem+5vw,6rem)] font-semibold leading-none tracking-tighter tabular-nums">
+            <span data-counter data-counter-to={counter.data.value}>{counter.data.value}</span>
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+</section>

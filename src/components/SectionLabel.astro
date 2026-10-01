@@ -1,0 +1,16 @@
+---
+interface Props {
+  index: string;
+  label: string;
+  id?: string;
+}
+
+const { index, label, id } = Astro.props;
+---
+
+<p class="flex items-center gap-3 font-mono text-sm text-muted" {id}>
+  <span class="text-accent tabular-nums">{index}</span>
+  <span aria-hidden="true" class="text-line-strong">/</span>
+  <span>{label}</span>
+  <span aria-hidden="true" class="h-px flex-1 bg-line"></span>
+</p>

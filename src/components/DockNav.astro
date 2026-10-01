@@ -1,6 +1,9 @@
 ---
 import type { Locale } from "@/i18n/ui";
+import type { IconName } from "@/lib/icons";
+import { NAV_ITEMS } from "@/data/site";
 import { localizedPath, stripLocale, useTranslations } from "@/i18n/utils";
+import Icon from "./Icon.astro";
 
 interface Props {
   lang: Locale;
@@ -11,29 +14,34 @@ const { lang, path } = Astro.props;
 const t = useTranslations(lang);
 const current = stripLocale(path);
 
-const items = [
-  { href: "/", key: "nav.home" },
-  { href: "/about-me", key: "nav.about" },
-  { href: "/services", key: "nav.services" },
-  { href: "/portfolio", key: "nav.portfolio" },
-] as const;
+const ICON_FOR: Record<string, IconName> = {
+  "/": "home",
+  "/about-me": "user",
+  "/services": "briefcase",
+  "/portfolio": "folder",
+};
 ---
 
-<!-- Placeholder: the final dock (icons, magnification) lands in T3/T5. -->
+<!--
+  One landmark, two presentations: a bottom tab bar below `lg` (thumb reach,
+  four equal 44px+ targets, labels wrap instead of overflowing at 360px) and a
+  floating top pill from `lg` up, centered between the logo and the actions.
+-->
 <nav
   aria-label={t("nav.label")}
-  class="fixed inset-x-0 bottom-4 z-50 mx-auto w-fit max-w-[calc(100%-2rem)] rounded-pill border border-line-strong bg-raised/90 px-2 py-1.5 shadow-dock backdrop-blur"
+  class="dock fixed inset-x-3 bottom-3 z-50 mx-auto max-w-md lg:inset-x-0 lg:bottom-auto lg:top-5 lg:w-fit lg:max-w-none"
 >
-  <ul class="flex items-center gap-1">
+  <ul class="grid grid-cols-4 gap-1 rounded-lg border border-line-strong bg-raised/90 p-1.5 shadow-dock backdrop-blur-md lg:flex lg:items-center lg:rounded-pill">
     {
-      items.map(({ href, key }) => (
+      NAV_ITEMS.map(({ href, key }) => (
         <li>
           <a
             href={localizedPath(href, lang)}
             aria-current={current === href ? "page" : undefined}
-            class="block rounded-pill px-3 py-1.5 font-mono text-xs text-muted transition-colors duration-(--duration-fast) hover:text-fg aria-[current=page]:bg-accent aria-[current=page]:text-on-accent"
+            class="flex min-h-12 flex-col items-center justify-center gap-0.5 rounded-md px-1 text-center font-mono text-xs leading-tight text-muted transition-colors duration-(--duration-fast) hover:text-fg aria-[current=page]:bg-accent aria-[current=page]:text-on-accent lg:min-h-10 lg:flex-row lg:rounded-pill lg:px-4 lg:text-sm"
           >
-            {t(key)}
+            <Icon name={ICON_FOR[href] ?? "home"} size={18} class="lg:hidden" />
+            <span>{t(key)}</span>
           </a>
         </li>
       ))

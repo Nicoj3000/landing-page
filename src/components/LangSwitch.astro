@@ -1,6 +1,6 @@
 ---
 import { LOCALES, LOCALE_LABEL, type Locale } from "@/i18n/ui";
-import { localizedPath } from "@/i18n/utils";
+import { localizedPath, useTranslations } from "@/i18n/utils";
 
 interface Props {
   lang: Locale;
@@ -8,9 +8,10 @@ interface Props {
 }
 
 const { lang, path } = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<ul class="flex items-center gap-2 font-mono text-xs">
+<ul class="flex items-center rounded-pill border border-line p-0.5 font-mono text-xs" aria-label={t("lang.label")}>
   {
     LOCALES.map((locale) => (
       <li>
@@ -18,10 +19,11 @@ const { lang, path } = Astro.props;
           href={localizedPath(path, locale)}
           hreflang={locale}
           lang={locale}
+          aria-label={LOCALE_LABEL[locale]}
           aria-current={locale === lang ? "true" : undefined}
-          class="rounded-xs px-1.5 py-1 text-muted hover:text-fg aria-[current=true]:text-accent"
+          class="flex min-h-9 min-w-9 items-center justify-center rounded-pill px-2 text-muted transition-colors duration-(--duration-fast) hover:text-fg aria-[current=true]:bg-fg aria-[current=true]:text-bg"
         >
-          {LOCALE_LABEL[locale]}
+          {locale.toUpperCase()}
         </a>
       </li>
     ))

@@ -30,6 +30,8 @@
   --focus: #c8f03c;
   --shadow-color: 0 0 0;
   --shadow-alpha: 0.5;
+  --grain-opacity: 0.05;
+  --dot: #3a3f48;
 }
 
 :root[data-theme="light"] {
@@ -46,6 +48,8 @@
   --focus: #4f6700;
   --shadow-color: 20 22 26;
   --shadow-alpha: 0.14;
+  --grain-opacity: 0.07;
+  --dot: #b9b4a5;
 }
 
 /* ---------- Tailwind theme ---------- */
@@ -77,6 +81,8 @@
   --text-3xl: clamp(1.953rem, 1.5rem + 2vw, 2.441rem);
   --text-4xl: clamp(2.441rem, 1.7rem + 3.4vw, 3.815rem);
   --text-display: clamp(3rem, 1.5rem + 7.5vw, 8.5rem);
+  /* Hero headline: sized so the longest role ("puedes construirlo") fits the container at 1 line from ~900px. */
+  --text-hero: clamp(2.6rem, 0.6rem + 8.4vw, 7.75rem);
   --leading-tight: 1.05;
   --leading-snug: 1.25;
   --leading-body: 1.6;
@@ -112,6 +118,7 @@
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
 
   --breakpoint-3xl: 120rem;
+  --container-wide: 96rem;
 }
 
 /* ---------- Base ---------- */
@@ -155,6 +162,17 @@
     outline: 2px solid var(--focus);
     outline-offset: 3px;
     border-radius: var(--radius-xs);
+  }
+
+  /* Fine film grain over the page; ink-on-paper texture, ignored by pointer and AT. */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   /* Cross-document + client-router transitions respect user motion settings */
@@ -208,4 +226,81 @@
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-label);
   color: var(--fg-muted);
+}
+
+/* ---------- Blueprint grid (cheap CSS background) ---------- */
+@utility bg-blueprint {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 10%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 10%, transparent 75%);
+}
+
+/* ---------- Page + theme view transitions ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(page) {
+    animation: vt-page-out var(--duration-base) var(--ease-standard) both;
+  }
+  ::view-transition-new(page) {
+    animation: vt-page-in var(--duration-slow) var(--ease-out-expo) both;
+  }
+}
+
+@keyframes vt-page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes vt-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/*
+ * Theme toggle reveal (src/scripts/theme-toggle.ts): the new snapshot is
+ * clipped with a growing circle from the button, so the default cross-fade is
+ * disabled and the named page/header groups are flattened into the root
+ * snapshot while it runs.
+ */
+html[data-theme-vt]::view-transition-old(root),
+html[data-theme-vt]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+html[data-theme-vt]::view-transition-old(root) {
+  z-index: 1;
+}
+html[data-theme-vt]::view-transition-new(root) {
+  z-index: 2;
+}
+html[data-theme-vt] [data-astro-transition-scope] {
+  view-transition-name: none !important;
+}
+
+/* ---------- Scroll-driven reveal (progressive enhancement) ---------- */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    translate: 0 1.5rem;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 4% entry 38%;
+    }
+  }
 }
