@@ -1,0 +1,19 @@
+{
+  "order": 4,
+  "title": {
+    "es": "Ingeniero de Sistemas",
+    "en": "Systems Engineering"
+  },
+  "subtitle": {
+    "es": "Universidad Libre de Pereira",
+    "en": "Universidad Libre de Pereira"
+  },
+  "description": {
+    "es": "Graduado en Ingeniería de Sistemas de la Universidad Libre de Pereira, con bases sólidas en arquitectura de software, desarrollo de aplicaciones web y resolución de problemas técnicos.",
+    "en": "Graduated in Systems Engineering from Universidad Libre de Pereira, with strong foundations in software architecture, web application development, and technical problem solving."
+  },
+  "date": {
+    "es": "2021 - 2025",
+    "en": "2021 - 2025"
+  }
+}

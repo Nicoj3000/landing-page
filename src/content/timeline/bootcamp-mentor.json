@@ -1,0 +1,19 @@
+{
+  "order": 2,
+  "title": {
+    "es": "Monitor Talento Tech",
+    "en": "Bootcamp Mentor"
+  },
+  "subtitle": {
+    "es": "Ministerio de Educación",
+    "en": "Ministry of Education Talento Tech"
+  },
+  "description": {
+    "es": "Apoyo procesos formativos como monitor en bootcamps, acompañando clases, reforzando fundamentos de programación y guiando a estudiantes en proyectos prácticos.",
+    "en": "I support bootcamp classes as a mentor, guiding students in practical exercises, reinforcing programming fundamentals, and helping them build real-world projects."
+  },
+  "date": {
+    "es": "2025 - Hoy",
+    "en": "2025 - Now"
+  }
+}

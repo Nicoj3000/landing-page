@@ -1,0 +1,14 @@
+{
+  "order": 2,
+  "title": "Helios-9",
+  "description": {
+    "es": "Simulador de sistema solar en 3D con Three.js. Explora planetas, órbitas y fenómenos astronómicos en una experiencia interactiva.",
+    "en": "3D solar system simulator built with Three.js. Explore planets, orbits and astronomical phenomena in an interactive experience."
+  },
+  "image": "../../assets/images/universe.jpg",
+  "repoUrl": "https://github.com/Nicoj3000/Universe-3D",
+  "demoUrl": "https://nickdev-universe.netlify.app/",
+  "tags": [
+    "Three.js"
+  ]
+}

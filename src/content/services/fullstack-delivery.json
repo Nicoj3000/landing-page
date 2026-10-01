@@ -1,0 +1,12 @@
+{
+  "order": 3,
+  "icon": "code-square",
+  "title": {
+    "es": "Entrega de Producto Fullstack",
+    "en": "Fullstack Product Delivery"
+  },
+  "description": {
+    "es": "Implementación end-to-end desde la idea hasta el despliegue, con frontend orientado a UX y backend estable.",
+    "en": "End-to-end implementation from idea to deployment, with UX-focused frontend, stable backend, and iterative delivery."
+  }
+}

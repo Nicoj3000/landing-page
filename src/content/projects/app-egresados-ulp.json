@@ -1,0 +1,11 @@
+{
+  "order": 3,
+  "title": "App Egresados ULP",
+  "description": {
+    "es": "Sistema de gestión de graduados para la Universidad Libre de Pereira. Registro, seguimiento y análisis de egresados institucionales.",
+    "en": "Graduate management system for Universidad Libre de Pereira. Registration, tracking and analysis of institutional alumni."
+  },
+  "image": "../../assets/images/image-4.jpg",
+  "demoUrl": "https://db-ulp-egresados.vercel.app/",
+  "tags": []
+}

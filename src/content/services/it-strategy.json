@@ -1,0 +1,12 @@
+{
+  "order": 4,
+  "icon": "target",
+  "title": {
+    "es": "Estrategia y Arquitectura TI",
+    "en": "IT Strategy and Architecture"
+  },
+  "description": {
+    "es": "Roadmap técnico, decisiones de arquitectura y mejora de procesos para reducir riesgo y acelerar entregas.",
+    "en": "Technical roadmap, architecture decisions, and process improvements to reduce risk and accelerate delivery."
+  }
+}

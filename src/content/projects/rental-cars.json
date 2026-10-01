@@ -1,0 +1,12 @@
+{
+  "order": 4,
+  "title": "Rental Cars",
+  "description": {
+    "es": "Plataforma de alquiler de vehículos premium en Pereira. Catálogo interactivo, reservas en línea y gestión de flota.",
+    "en": "Premium car rental platform in Pereira. Interactive catalog, online booking and fleet management."
+  },
+  "image": "../../assets/images/image-5.jpg",
+  "repoUrl": "https://github.com/Nicoj3000/RentalCars",
+  "demoUrl": "https://rental-cars-eosin.vercel.app/",
+  "tags": []
+}

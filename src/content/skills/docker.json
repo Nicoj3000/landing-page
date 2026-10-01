@@ -1,0 +1,7 @@
+{
+  "order": 20,
+  "name": "Docker",
+  "icon": "docker",
+  "category": "infra",
+  "tone": "brand"
+}

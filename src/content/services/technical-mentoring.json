@@ -1,0 +1,12 @@
+{
+  "order": 5,
+  "icon": "speech",
+  "title": {
+    "es": "Mentoría Técnica",
+    "en": "Technical Mentoring"
+  },
+  "description": {
+    "es": "Mentoría para desarrolladores y equipos en calidad de código, resolución de problemas y estructura de proyectos.",
+    "en": "Mentoring for developers and teams in code quality, problem solving, and project structure with practical best practices."
+  }
+}

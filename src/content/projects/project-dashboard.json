@@ -1,0 +1,16 @@
+{
+  "order": 1,
+  "title": "Project Dashboard",
+  "description": {
+    "es": "Dashboard de gestión personal con React, TypeScript y Node.js. Seguimiento de tareas, finanzas y hábitos en un solo lugar.",
+    "en": "Personal management dashboard built with React, TypeScript and Node.js. Tasks, finances and habits tracked in one place."
+  },
+  "image": "../../assets/images/image-1.jpg",
+  "repoUrl": "https://github.com/Nicoj3000/Project-Dashboard",
+  "demoUrl": "https://dashboard-nicodev.netlify.app/",
+  "tags": [
+    "React",
+    "TypeScript",
+    "Node.js"
+  ]
+}

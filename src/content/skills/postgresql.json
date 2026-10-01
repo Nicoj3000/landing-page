@@ -1,0 +1,7 @@
+{
+  "order": 17,
+  "name": "PostgreSQL",
+  "icon": "postgresql",
+  "category": "data",
+  "tone": "brand"
+}

@@ -1,0 +1,12 @@
+{
+  "order": 1,
+  "icon": "laptop",
+  "title": {
+    "es": "Desarrollo web",
+    "en": "Web development"
+  },
+  "description": {
+    "es": "Interfaces modernas con React y Next.js, optimizadas para rendimiento, UX y experiencia responsive en desktop, tablet y móvil.",
+    "en": "Modern interfaces with React and Next.js, optimized for performance, UX, and responsive behavior on desktop, tablet, and mobile."
+  }
+}
