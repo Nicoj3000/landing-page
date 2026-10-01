@@ -31,6 +31,10 @@ const t = useTranslations(Astro.props.lang);
   <Icon name="monitor" class="theme-icon theme-icon-system" />
 </button>
 
+<script>
+  import "@/scripts/theme-toggle";
+</script>
+
 <style is:global>
   .theme-toggle > .theme-icon {
     grid-area: 1 / 1;
