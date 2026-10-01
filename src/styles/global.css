@@ -304,3 +304,28 @@ html[data-theme-vt] [data-astro-transition-scope] {
     }
   }
 }
+
+/* ---------- Availability dot ---------- */
+.status-dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  flex: none;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-theme] .status-dot {
+    animation: status-pulse 2.4s ease-out infinite;
+  }
+}
+
+@keyframes status-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0.6rem transparent;
+  }
+}

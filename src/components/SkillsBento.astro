@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getSkills } from "@/data/content";
+import type { Locale, UiKey } from "@/i18n/ui";
+import { SKILL_ICONS } from "@/lib/icons";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: Locale;
+}
+
+type Category = CollectionEntry<"skills">["data"]["category"];
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const skills = await getSkills();
+
+// Asymmetric bento: wide frontend + narrow tooling, three mid tiles, one full-width infra strip.
+const LAYOUT: ReadonlyArray<{ category: Category; span: string }> = [
+  { category: "frontend", span: "lg:col-span-4" },
+  { category: "tools", span: "lg:col-span-2" },
+  { category: "language", span: "lg:col-span-2" },
+  { category: "backend", span: "lg:col-span-2" },
+  { category: "data", span: "lg:col-span-2" },
+  { category: "infra", span: "md:col-span-2 lg:col-span-6" },
+];
+---
+
+<div data-skills class="grid gap-3 md:grid-cols-2 lg:grid-cols-6">
+  {
+    LAYOUT.map(({ category, span }) => {
+      const items = skills.filter((skill) => skill.data.category === category);
+      return (
+        <section data-category={category} class:list={["bento reveal flex flex-col gap-5 border border-line bg-raised/60 p-5 sm:p-6", span]}>
+          <h3 class="flex items-baseline justify-between gap-3 font-mono text-sm font-normal tracking-normal text-muted">
+            <span class="text-fg">{t(`skills.category.${category}` as UiKey)}</span>
+            <span class="tabular-nums">
+              {items.length} {t("skills.count")}
+            </span>
+          </h3>
+          <ul class="flex flex-wrap gap-2">
+            {items.map((skill) => (
+              <li
+                data-skill={skill.data.icon}
+                class="flex min-h-11 items-center gap-2.5 rounded-pill border border-line bg-bg px-3.5 py-1.5 text-sm transition-colors duration-(--duration-fast) hover:border-accent"
+              >
+                <span class="size-5 shrink-0 text-fg [&>svg]:size-full" set:html={SKILL_ICONS[skill.data.icon]} />
+                <span>{skill.data.name}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })
+  }
+</div>

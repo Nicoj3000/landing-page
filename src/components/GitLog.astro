@@ -1,0 +1,37 @@
+---
+import { getTimeline } from "@/data/content";
+import type { Locale } from "@/i18n/ui";
+import { commitHash } from "@/lib/commit-hash";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const entries = await getTimeline();
+const year = (date: string) => date.match(/\d{4}/)?.[0];
+---
+
+<!-- Career timeline rendered as `git log --oneline`: ids are deterministic hashes of the entry id. -->
+<div>
+  <p aria-hidden="true" class="font-mono text-sm text-muted"><span class="text-accent">$</span> git log --oneline --graph</p>
+  <ol data-timeline class="mt-8 ml-1.5 border-l border-line-strong">
+    {
+      entries.map((entry, i) => (
+        <li class="reveal relative pb-12 pl-8 last:pb-0 sm:pl-12">
+          <span
+            aria-hidden="true"
+            class:list={["absolute -left-[0.4rem] top-1.5 size-3 rounded-full border-2 border-bg", i === 0 ? "bg-accent" : "bg-line-strong"]}
+          />
+          <p class="flex flex-wrap items-baseline gap-x-3 font-mono text-sm text-muted">
+            <span data-commit class="text-accent">{commitHash(entry.id)}</span>
+            <time datetime={year(entry.data.date[lang])}>{entry.data.date[lang]}</time>
+          </p>
+          <h3 class="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">{entry.data.title[lang]}</h3>
+          <p class="mt-1 font-mono text-sm text-muted">{entry.data.subtitle[lang]}</p>
+          <p class="mt-4 max-w-[62ch] text-muted">{entry.data.description[lang]}</p>
+        </li>
+      ))
+    }
+  </ol>
+</div>

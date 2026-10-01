@@ -44,5 +44,9 @@ const rawIcons = import.meta.glob<string>("/src/assets/icons/*.svg", {
 });
 
 export const SKILL_ICONS: Record<string, string> = Object.fromEntries(
-  Object.entries(rawIcons).map(([path, svg]) => [path.split("/").pop()!.replace(/\.svg$/, ""), svg]),
+  Object.entries(rawIcons).map(([path, svg]) => [
+    path.split("/").pop()!.replace(/\.svg$/, ""),
+    // Decorative: the skill name is always rendered next to the icon.
+    svg.replace("<svg ", '<svg aria-hidden="true" focusable="false" '),
+  ]),
 );

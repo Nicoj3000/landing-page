@@ -89,13 +89,6 @@ const btn =
     opacity: 0;
   }
 
-  .status-dot {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 999px;
-    background: var(--accent);
-  }
-
   /* Rotating role. Static (first role only) without JS and under reduced motion;
      animated only once the theme script has run (html[data-theme]) AND motion is allowed. */
   .hero-roles {
@@ -117,9 +110,6 @@ const btn =
       animation: hero-role-cycle 12s var(--ease-standard) infinite backwards;
       animation-delay: calc(var(--i) * 3s);
     }
-    html[data-theme] .status-dot {
-      animation: status-pulse 2.4s ease-out infinite;
-    }
   }
 
   @keyframes hero-role-cycle {
@@ -136,15 +126,6 @@ const btn =
     100% {
       opacity: 0;
       translate: 0 -0.3em;
-    }
-  }
-
-  @keyframes status-pulse {
-    0% {
-      box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent);
-    }
-    100% {
-      box-shadow: 0 0 0 0.6rem transparent;
     }
   }
 </style>

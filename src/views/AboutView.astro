@@ -1,0 +1,90 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ColombiaMap from "@/components/ColombiaMap.astro";
+import CounterStrip from "@/components/CounterStrip.astro";
+import GitLog from "@/components/GitLog.astro";
+import Portrait from "@/components/Portrait.astro";
+import SectionLabel from "@/components/SectionLabel.astro";
+import SkillsBento from "@/components/SkillsBento.astro";
+import type { Locale } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const cities = t("location.cities").split(" · ");
+---
+
+<BaseLayout lang={lang} title={`${t("nav.about")} | ${t("site.name")}`}>
+  <section class="container-page pt-10 sm:pt-16 lg:pt-20">
+    <div class="bg-blueprint pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem]" aria-hidden="true"></div>
+    <SectionLabel index="01" label={t("section.about")} />
+    <div class="mt-10 grid gap-12 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-8">
+        <h1 class="font-display text-[clamp(2.6rem,0.8rem+7vw,6.5rem)] font-semibold leading-[0.95] tracking-[-0.045em]">
+          <span class="block text-muted">{t("about.titleLead")}</span>{" "}
+          <span class="block">{t("about.titleEmphasis")}</span>
+        </h1>
+        <p class="mt-10 max-w-[46ch] text-lg text-muted sm:text-xl">{t("hero.summary")}</p>
+      </div>
+      <div class="lg:col-span-3 lg:col-start-10">
+        <Portrait {lang} />
+      </div>
+    </div>
+  </section>
+
+  <CounterStrip {lang} index="02" />
+
+  <section aria-labelledby="timeline-label" class="container-page pb-section">
+    <SectionLabel id="timeline-label" index="03" label={t("section.timeline")} />
+    <div class="mt-10 lg:grid lg:grid-cols-12">
+      <div class="lg:col-span-10 lg:col-start-2">
+        <GitLog {lang} />
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="stack-label" class="container-page pb-section">
+    <SectionLabel id="stack-label" index="04" label={t("section.stack")} />
+    <h2 class="mt-6 max-w-[16ch] text-4xl">
+      {t("stack.titleLead")} {t("stack.titleEmphasis")}
+    </h2>
+    <p class="mt-4 text-muted">{t("stack.subtitle")}</p>
+    <div class="mt-10">
+      <SkillsBento {lang} />
+    </div>
+  </section>
+
+  <section data-location aria-labelledby="location-label" class="container-page pb-section">
+    <SectionLabel id="location-label" index="05" label={t("section.location")} />
+    <div class="mt-10 grid items-center gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-6">
+        <h2 class="text-4xl">
+          {t("location.titleLead")} {t("location.titleEmphasis")}
+        </h2>
+        <ul class="mt-8 flex flex-col border-t border-line font-mono text-sm">
+          {
+            cities.map((city, i) => (
+              <li class="flex items-center justify-between gap-4 border-b border-line py-3">
+                <span class="text-fg">{city}</span>
+                <span class="text-muted tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-6 flex items-center gap-3 text-muted">
+          <span aria-hidden="true" class="status-dot"></span>
+          {t("location.availableRemote")}
+        </p>
+      </div>
+      <div class="mx-auto w-full max-w-sm lg:col-span-5 lg:col-start-8">
+        <div class="border border-line-strong bg-sunken p-4">
+          <ColombiaMap />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
