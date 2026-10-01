@@ -16,7 +16,7 @@ const t = useTranslations(lang);
 const services = await getServices();
 ---
 
-<BaseLayout lang={lang} title={`${t("nav.services")} | ${t("site.name")}`}>
+<BaseLayout lang={lang} page="services">
   <section class="container-page pt-10 sm:pt-16 lg:pt-20">
     <div class="bg-blueprint pointer-events-none absolute inset-x-0 top-0 -z-10 h-[30rem]" aria-hidden="true"></div>
     <SectionLabel index="01" label={t("section.services")} />

@@ -18,7 +18,13 @@ export default defineConfig({
   // The dev toolbar overlaps the bottom dock and intercepts pointer events in e2e.
   devToolbar: { enabled: false },
   // Status pages are noindex; keep them out of the sitemap too.
-  integrations: [sitemap({ filter: (page) => !/\/(404|error)\/?$/.test(page) })],
+  integrations: [
+    sitemap({
+      filter: (page) => !/\/(404|error)\/?$/.test(page),
+      // Emits <xhtml:link> es-CO / en-US alternates for each page pair.
+      i18n: { defaultLocale: "es", locales: { es: "es-CO", en: "en-US" } },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
     // Ignore the legacy postcss.config.mjs (Tailwind 3 / Next) until T7 deletes it.

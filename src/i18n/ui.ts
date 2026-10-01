@@ -101,6 +101,12 @@ const es = {
   "site.name": "Nicolás Delgado",
   "site.description":
     "Ingeniero de Sistemas enfocado en crear experiencias digitales de alto impacto, con liderazgo en estrategia TI, desarrollo fullstack y mentoría técnica.",
+  "seo.about.description":
+    "Trayectoria de Nicolás Delgado como Ingeniero de Sistemas: línea de tiempo profesional, stack tecnológico y experiencia en desarrollo fullstack y estrategia TI.",
+  "seo.services.description":
+    "Servicios de desarrollo web, backend, entrega fullstack, estrategia TI y mentoría técnica para llevar tu producto digital del diseño a producción.",
+  "seo.portfolio.description":
+    "Proyectos completados de Nicolás Delgado: aplicaciones web fullstack, paneles de control y plataformas, con sus tecnologías, repositorios y demos.",
 } as const;
 
 export type UiKey = keyof typeof es;
@@ -193,6 +199,12 @@ const en: Record<UiKey, string> = {
   "site.name": "Nicolás Delgado",
   "site.description":
     "Systems Engineer focused on building high-impact digital experiences, with leadership in IT strategy, fullstack development, and technical mentoring.",
+  "seo.about.description":
+    "Nicolás Delgado's career as a Systems Engineer: professional timeline, tech stack and experience in fullstack development and IT strategy.",
+  "seo.services.description":
+    "Web development, backend, fullstack delivery, IT strategy and technical mentoring services to take your digital product from design to production.",
+  "seo.portfolio.description":
+    "Completed projects by Nicolás Delgado: fullstack web apps, dashboards and platforms, with their tech stacks, repositories and live demos.",
 };
 
 export const ui: Record<Locale, Record<UiKey, string>> = { es, en };

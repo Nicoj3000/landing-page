@@ -18,7 +18,7 @@ const t = useTranslations(lang);
 const cities = t("location.cities").split(" · ");
 ---
 
-<BaseLayout lang={lang} title={`${t("nav.about")} | ${t("site.name")}`}>
+<BaseLayout lang={lang} page="about">
   <section class="container-page pt-10 sm:pt-16 lg:pt-20">
     <div class="bg-blueprint pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem]" aria-hidden="true"></div>
     <SectionLabel index="01" label={t("section.about")} />

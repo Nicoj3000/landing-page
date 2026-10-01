@@ -8,17 +8,23 @@ import SiteHeader from "@/components/SiteHeader.astro";
 import Seo from "@/components/Seo.astro";
 import type { Locale } from "@/i18n/ui";
 import { useTranslations } from "@/i18n/utils";
+import { pageMeta, type PageId } from "@/lib/seo";
 
 interface Props {
   lang: Locale;
-  title: string;
+  /** Page owning the metadata and OG card (status pages pass "home" plus their own title). */
+  page: PageId;
+  title?: string;
   description?: string;
   /** Error pages: no canonical/hreflang, robots noindex. */
   noindex?: boolean;
 }
 
-const { lang, title, description, noindex = false } = Astro.props;
+const { lang, page, noindex = false } = Astro.props;
 const t = useTranslations(lang);
+const meta = pageMeta(lang, page);
+const title = Astro.props.title ?? meta.title;
+const description = Astro.props.description ?? meta.description;
 const path = Astro.url.pathname;
 ---
 
@@ -32,7 +38,7 @@ const path = Astro.url.pathname;
     <link rel="icon" href="/favicon.ico" sizes="32x32 48x48" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <Seo title={title} description={description ?? t("site.description")} {lang} {path} {noindex} />
+    <Seo {title} {description} {lang} {path} {page} {noindex} />
 
     <!--
       No-flash theme. Runs synchronously before first paint. Preference lives in

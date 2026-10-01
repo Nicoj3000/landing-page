@@ -18,7 +18,7 @@ const copy: Record<Props["kind"], { title: UiKey; body: UiKey; code: string }> =
 const { title, body, code } = copy[kind];
 ---
 
-<BaseLayout lang={lang} title={`${t(title)} | ${t("site.name")}`} noindex>
+<BaseLayout lang={lang} page="home" title={`${t(title)} | ${t("site.name")}`} noindex>
   <section class="container-page relative pb-section pt-16 sm:pt-24">
     <div class="bg-blueprint pointer-events-none absolute inset-x-0 top-0 -z-10 h-[30rem]" aria-hidden="true"></div>
     <p data-status-code aria-hidden="true" class="status-code font-display text-[clamp(7rem,3rem+28vw,24rem)] font-bold leading-[0.8] tracking-[-0.06em]">

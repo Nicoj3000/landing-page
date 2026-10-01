@@ -2,6 +2,9 @@ import type { Locale } from "@/i18n/ui";
 import type { UiKey } from "@/i18n/ui";
 
 export const SITE = {
+  /** Short brand used for og:site_name, the manifest and WebSite JSON-LD. */
+  brand: "NicoX",
+  url: "https://nicoj3000.netlify.app",
   mail: "nicoj3000its@gmail.com",
   github: "https://github.com/Nicoj3000",
   linkedin: "https://www.linkedin.com/in/nicolas-delgado-6b22372b7/",
