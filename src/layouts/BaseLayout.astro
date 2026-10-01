@@ -20,12 +20,13 @@ const path = Astro.url.pathname;
 ---
 
 <!doctype html>
-<html lang={lang} data-theme="dark">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark light" />
-    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32 48x48" />
     <Seo title={title} description={description ?? t("site.description")} {lang} {path} />
 
     <!--
@@ -36,24 +37,34 @@ const path = Astro.url.pathname;
     -->
     <script is:inline>
       (() => {
-        const apply = () => {
+        const dark = matchMedia("(prefers-color-scheme: dark)");
+        const readPref = () => {
           let pref = "system";
           try {
             pref = localStorage.getItem("theme") || "system";
           } catch {}
-          if (pref !== "light" && pref !== "dark") pref = "system";
-          const resolved =
-            pref === "system"
-              ? matchMedia("(prefers-color-scheme: dark)").matches
-                ? "dark"
-                : "light"
-              : pref;
+          return pref === "light" || pref === "dark" ? pref : "system";
+        };
+        const apply = () => {
+          const pref = readPref();
+          const resolved = pref === "system" ? (dark.matches ? "dark" : "light") : pref;
           const root = document.documentElement;
           root.dataset.theme = resolved;
           root.dataset.themePref = pref;
         };
         apply();
         document.addEventListener("astro:after-swap", apply);
+        // Follow OS changes live, but only while the preference is "system".
+        dark.addEventListener("change", () => {
+          if (readPref() === "system") apply();
+        });
+        // Single entry point for the toggle island: persists, then re-resolves.
+        window.__setTheme = (pref) => {
+          try {
+            localStorage.setItem("theme", pref);
+          } catch {}
+          apply();
+        };
       })();
     </script>
 

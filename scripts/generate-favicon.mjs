@@ -1,0 +1,35 @@
+// Rasterizes public/favicon.svg into a multi-size public/favicon.ico (32 + 48 px,
+// PNG-encoded entries). The full icon set (apple-touch, manifest) lands with the SEO task.
+// Usage: node scripts/generate-favicon.mjs
+import { readFileSync, writeFileSync } from "node:fs";
+import sharp from "sharp";
+
+const svg = readFileSync(new URL("../public/favicon.svg", import.meta.url));
+const sizes = [32, 48];
+const pngs = await Promise.all(
+  sizes.map((size) => sharp(svg, { density: 384 }).resize(size, size).png({ compressionLevel: 9 }).toBuffer()),
+);
+
+// ICO container: ICONDIR (6 bytes) + one ICONDIRENTRY (16 bytes) per image + image data.
+const header = Buffer.alloc(6);
+header.writeUInt16LE(0, 0); // reserved
+header.writeUInt16LE(1, 2); // type: icon
+header.writeUInt16LE(sizes.length, 4);
+
+let offset = header.length + 16 * sizes.length;
+const entries = sizes.map((size, i) => {
+  const entry = Buffer.alloc(16);
+  entry.writeUInt8(size, 0); // width
+  entry.writeUInt8(size, 1); // height
+  entry.writeUInt16LE(1, 4); // color planes
+  entry.writeUInt16LE(32, 6); // bits per pixel
+  entry.writeUInt32LE(pngs[i].length, 8);
+  entry.writeUInt32LE(offset, 12);
+  offset += pngs[i].length;
+  return entry;
+});
+
+writeFileSync(
+  new URL("../public/favicon.ico", import.meta.url),
+  Buffer.concat([header, ...entries, ...pngs]),
+);

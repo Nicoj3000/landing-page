@@ -16,9 +16,26 @@ export function useTranslations(lang: Locale) {
   };
 }
 
+/**
+ * Canonical shape of a pathname, independent of build format: no `.html`
+ * suffix, no trailing `index`, no trailing slash ("/about-me.html" ->
+ * "/about-me", "/en/index.html" -> "/en"). The one place every URL consumer
+ * (canonical, hreflang, language switch, aria-current) normalizes through.
+ */
+export function normalizePathname(pathname: string): string {
+  const parts = pathname.split("/").filter(Boolean);
+  const last = parts.at(-1);
+  if (last !== undefined) {
+    const stem = last.replace(/\.html$/, "");
+    if (stem === "index") parts.pop();
+    else parts[parts.length - 1] = stem;
+  }
+  return parts.length === 0 ? "/" : `/${parts.join("/")}`;
+}
+
 /** Removes the locale prefix: "/en/about-me" -> "/about-me", "/en" -> "/". */
 export function stripLocale(pathname: string): string {
-  const parts = pathname.split("/").filter(Boolean);
+  const parts = normalizePathname(pathname).split("/").filter(Boolean);
   if (isLocale(parts[0])) parts.shift();
   return parts.length === 0 ? "/" : `/${parts.join("/")}`;
 }

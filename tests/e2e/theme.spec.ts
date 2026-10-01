@@ -16,6 +16,47 @@ const themeAtParse = (page: import("@playwright/test").Page) =>
   );
 
 test.describe("no-flash theme", () => {
+  test("server html carries no theme default: only the inline script decides", async ({
+    request,
+  }) => {
+    const html = await (await request.get("/")).text();
+    const htmlTag = html.match(/<html[^>]*>/)?.[0] ?? "";
+    expect(htmlTag).not.toContain("data-theme");
+  });
+
+  test("with JavaScript disabled the page falls back to the dark token set", async ({
+    browser,
+  }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false, colorScheme: "light" });
+    const page = await context.newPage();
+    await page.goto("/");
+    const bg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+    // #0a0c0f: the default (no data-theme) token set is dark.
+    expect(bg).toBe("rgb(10, 12, 15)");
+    await context.close();
+  });
+
+  test("system preference changes are followed live while the preference is system", async ({
+    page,
+  }) => {
+    await page.emulateMedia({ colorScheme: "dark" });
+    await page.goto("/");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    await page.emulateMedia({ colorScheme: "light" });
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+    await page.emulateMedia({ colorScheme: "dark" });
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  });
+
+  test("an explicit stored preference ignores system preference changes", async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "dark" });
+    await page.addInitScript(() => localStorage.setItem("theme", "dark"));
+    await page.goto("/");
+    await page.emulateMedia({ colorScheme: "light" });
+    await page.waitForTimeout(150);
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  });
+
   test("system preference dark resolves to dark before paint", async ({ page }) => {
     await page.emulateMedia({ colorScheme: "dark" });
     await page.addInitScript(recordThemeAtParse);

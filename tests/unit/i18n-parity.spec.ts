@@ -2,10 +2,12 @@ import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { expect, test } from "@playwright/test";
-// Legacy react-i18next resources. Deleted in T7 together with the Next app;
-// at that point this test switches to a frozen snapshot of the strings.
-import legacy from "../../utils/i18n";
 import { LOCALES, ui, type Locale } from "../../src/i18n/ui";
+
+// Frozen snapshot of the legacy utils/i18n.ts resource bundles (es + en),
+// taken before the Next app is removed. No runtime import of legacy code.
+const FIXTURE = fileURLToPath(new URL("../fixtures/legacy-i18n.json", import.meta.url));
+const legacy = JSON.parse(readFileSync(FIXTURE, "utf8")) as Record<Locale, Json>;
 
 const CONTENT_DIR = fileURLToPath(new URL("../../src/content", import.meta.url));
 
@@ -59,11 +61,10 @@ function contentStrings(locale: Locale): string[] {
 }
 
 function legacyStrings(locale: Locale): string[] {
-  const bundle = legacy.getResourceBundle(locale, "translation") as Json;
-  return leaves(bundle);
+  return leaves(legacy[locale]);
 }
 
-test.describe("i18n parity with legacy utils/i18n.ts", () => {
+test.describe("i18n parity with the frozen legacy snapshot (tests/fixtures/legacy-i18n.json)", () => {
   for (const locale of LOCALES) {
     test(`every legacy ${locale} string is present in ui.ts or a content collection`, () => {
       const corpus = new Set([
