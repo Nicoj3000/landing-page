@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { LANGS, ROUTES } from "./routes";
+import { LANGS, ROUTES, STATUS_ROUTES } from "./routes";
 
 // Mobile-first contract: nothing may overflow horizontally at 360px.
 test.describe("no horizontal scroll at 360px", () => {
@@ -17,5 +17,16 @@ test.describe("no horizontal scroll at 360px", () => {
         expect(scrollWidth).toBeLessThanOrEqual(clientWidth);
       });
     }
+  }
+
+  for (const path of STATUS_ROUTES) {
+    test(`status page ${path}`, async ({ page }) => {
+      await page.goto(path);
+      const { scrollWidth, clientWidth } = await page.evaluate(() => ({
+        scrollWidth: document.documentElement.scrollWidth,
+        clientWidth: document.documentElement.clientWidth,
+      }));
+      expect(scrollWidth).toBeLessThanOrEqual(clientWidth);
+    });
   }
 });

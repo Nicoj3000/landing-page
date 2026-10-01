@@ -1,0 +1,53 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Icon from "@/components/Icon.astro";
+import type { Locale, UiKey } from "@/i18n/ui";
+import { localizedPath, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: Locale;
+  kind: "not-found" | "error";
+}
+
+const { lang, kind } = Astro.props;
+const t = useTranslations(lang);
+const copy: Record<Props["kind"], { title: UiKey; body: UiKey; code: string }> = {
+  "not-found": { title: "error.notFoundTitle", body: "error.notFoundBody", code: "404" },
+  error: { title: "error.title", body: "error.body", code: "500" },
+};
+const { title, body, code } = copy[kind];
+---
+
+<BaseLayout lang={lang} title={`${t(title)} | ${t("site.name")}`} noindex>
+  <section class="container-page relative pb-section pt-16 sm:pt-24">
+    <div class="bg-blueprint pointer-events-none absolute inset-x-0 top-0 -z-10 h-[30rem]" aria-hidden="true"></div>
+    <p data-status-code aria-hidden="true" class="status-code font-display text-[clamp(7rem,3rem+28vw,24rem)] font-bold leading-[0.8] tracking-[-0.06em]">
+      {code}
+    </p>
+    <h1 class="mt-10 max-w-[18ch] text-4xl sm:text-5xl">{t(title)}</h1>
+    <p class="mt-5 max-w-[52ch] text-lg text-muted">{t(body)}</p>
+    <div class="mt-10 flex flex-wrap items-center gap-3">
+      <a
+        href={localizedPath("/", lang)}
+        class="inline-flex min-h-12 items-center gap-2 rounded-pill bg-accent px-6 font-mono text-sm text-on-accent transition hover:brightness-110"
+      >
+        {t("error.home")}
+      </a>
+      <a
+        href={localizedPath("/portfolio", lang)}
+        class="inline-flex min-h-12 items-center gap-2 px-3 font-mono text-sm text-fg underline decoration-line-strong underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+      >
+        {t("error.portfolio")}
+        <Icon name="arrow-right" size={18} />
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  /* Outlined numeral: reads as a drawing callout rather than a filled headline. */
+  .status-code {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--line-strong);
+  }
+</style>

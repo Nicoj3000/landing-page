@@ -14,3 +14,6 @@ export const ROUTES: readonly Route[] = [
 ];
 
 export const LANGS: readonly Lang[] = ["es", "en"];
+
+/** Status pages: not part of the main routes (no hreflang, noindex). */
+export const STATUS_ROUTES = ["/404", "/en/404", "/error", "/en/error"] as const;
