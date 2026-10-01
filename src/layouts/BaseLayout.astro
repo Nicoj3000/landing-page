@@ -53,7 +53,9 @@ const path = Astro.url.pathname;
           let pref = "system";
           try {
             pref = localStorage.getItem("theme") || "system";
-          } catch {}
+          } catch {
+            /* storage unavailable (private mode): keep the in-memory preference */
+          }
           return pref === "light" || pref === "dark" ? pref : "system";
         };
         const apply = () => {
@@ -73,7 +75,9 @@ const path = Astro.url.pathname;
         window.__setTheme = (pref) => {
           try {
             localStorage.setItem("theme", pref);
-          } catch {}
+          } catch {
+            /* storage unavailable (private mode): keep the in-memory preference */
+          }
           apply();
         };
       })();

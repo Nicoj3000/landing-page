@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
 // The inline head script must resolve the theme synchronously, before the
 // first paint. We record the attribute at DOMContentLoaded, which fires only
@@ -10,7 +10,7 @@ const recordThemeAtParse = () => {
   });
 };
 
-const themeAtParse = (page: import("@playwright/test").Page) =>
+const themeAtParse = (page: Page) =>
   page.evaluate(
     () => (window as unknown as { __themeAtParse: string | null }).__themeAtParse,
   );

@@ -10,11 +10,13 @@ import { join } from "node:path";
 const outDir = mkdtempSync(join(tmpdir(), "landing-build-"));
 const run = (args) => spawnSync("npx", args, { stdio: "inherit", env: { ...process.env, BUILD_DIR: outDir } });
 
-let status = 1;
+let status;
 try {
   const build = run(["astro", "build", "--outDir", outDir]);
-  if (build.status === 0) status = run(["playwright", "test", "-c", "playwright.build.config.ts"]).status ?? 1;
-  else status = build.status ?? 1;
+  status =
+    build.status === 0
+      ? (run(["playwright", "test", "-c", "playwright.build.config.ts"]).status ?? 1)
+      : (build.status ?? 1);
 } finally {
   if (!process.env.KEEP_BUILD) rmSync(outDir, { recursive: true, force: true });
   else console.log(`Build kept at ${outDir}`);
