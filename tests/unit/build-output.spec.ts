@@ -21,7 +21,7 @@ const PAGES = [
   { file: "about-me.html", es: "/about-me", en: "/en/about-me" },
   { file: "services.html", es: "/services", en: "/en/services" },
   { file: "portfolio.html", es: "/portfolio", en: "/en/portfolio" },
-  { file: "en/index.html", es: "/", en: "/en" },
+  { file: "en.html", es: "/", en: "/en" },
   { file: "en/about-me.html", es: "/about-me", en: "/en/about-me" },
   { file: "en/services.html", es: "/services", en: "/en/services" },
   { file: "en/portfolio.html", es: "/portfolio", en: "/en/portfolio" },
@@ -36,7 +36,7 @@ test.describe("built html: canonical / hreflang / lang switch", () => {
   for (const page of PAGES) {
     test(`${page.file}`, () => {
       const html = readFileSync(join(BUILD_DIR, page.file), "utf8");
-      const isEn = page.file.startsWith("en/");
+      const isEn = page.file === "en.html" || page.file.startsWith("en/");
       const self = `${SITE}${isEn ? page.en : page.es}`;
 
       const canonical = hrefs(html, /<link rel="canonical" href="([^"]+)"/g);

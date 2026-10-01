@@ -41,9 +41,10 @@ Migrate the portfolio from Next.js 14 to Astro (latest stable, 7.x) with strict 
 - [x] T0 — Baseline metrics of current Next.js site (JS weight, Lighthouse mobile per route). Route: inline bounded action.
 - [x] T1 — Astro scaffold: Astro 7 + strict TS + Tailwind 4 tokens, base layout, no-flash theme, i18n routing + hreflang, fonts. Route: delegated writer (2+ non-trivial files).
 - [x] T2 — Content collections with Zod (projects, services, timeline, skills) + UI dictionaries migrated from `utils/i18n.ts` with key-parity test. Route: delegated writer.
-- [ ] T3 — Redesigned pages: home (hero), about-me (timeline/skills/counters), services, portfolio, 404, error. Route: delegated writer.
+- [x] T3a — Review follow-ups R3-001..006. Route: delegated writer (same writer as T3/T5).
+- [x] T3 — Redesigned pages: home (hero), about-me (timeline/skills/counters), services, portfolio, 404, error. Route: delegated writer.
 - [ ] T4 — SEO: metadata, canonical, OG/Twitter via satori at build, sitemap, robots, manifest, favicon/apple-icon, JSON-LD Person. Route: delegated writer.
-- [ ] T5 — Islands & interactions: theme toggler (View Transitions), language switcher, counters, hero field, scroll animations, reduced motion. Route: delegated writer.
+- [x] T5 — Islands & interactions: theme toggler (View Transitions), language switcher, counters, hero field, scroll animations, reduced motion. Route: delegated writer.
 - [ ] T6 — Playwright e2e per route, theme, language, axe a11y; update `ci.yml` (local only). Route: delegated writer.
 - [ ] T7 — Remove Next and unused deps, `netlify.toml`, final metrics, report. Route: delegated writer + inline metrics.
 
@@ -78,6 +79,15 @@ Home script transfer includes the lazy Spline runtime.
 - Review (RDD on): assess medium, `slice_budget_reached`; consent granted by user; lineage `review-561420713d50fcf9`, lens reliability — APPROVED and acknowledged (authority burned). Reviewed boundary → `a8bd5aa`. 6 non-blocking findings (R3-001 `.html` suffix in canonical/hreflang under `build.format: 'file'`; R3-002 no build-output URL test; R3-003 dark theme test vacuous due to hardcoded `data-theme`; R3-004 parity test depends on legacy module; R3-005 no matchMedia listener; R3-006 favicon is the full profile PNG) → scheduled as T3a fixes.
 - Open for later: parity test imports legacy `utils/i18n.ts` → freeze a snapshot before T7 deletes it; dev toolbar disabled; `--ignore-lock` in Playwright webServer; map markers not migrated; favicon to replace in T4.
 
+### T3a + T3 + T5 (delegated writer; trigger: 2+ non-trivial files, one writer)
+
+- Commits: `429dfe0` T3a fixes, `0721d13` shell + home, about page commit, `65a7fdf` services + portfolio, `149103e` 404/error, `bc1759e` T5 islands.
+- T3a: `normalizePathname` in `src/i18n/utils.ts` feeds canonical/hreflang/LangSwitch/aria-current; `tests/unit/build-output.spec.ts` checks built HTML (run: `npx astro build --outDir <dir>` then `BUILD_DIR=<dir> npx playwright test tests/unit/build-output.spec.ts`; skipped when absent); SSR html has no `data-theme`; matchMedia listener while pref is system; parity test reads `tests/fixtures/legacy-i18n.json`; NX monogram SVG favicon + generated 32/48 ICO (`scripts/generate-favicon.mjs`, uses sharp from Astro's deps).
+- Decisions: nav = one `<nav>` landmark that is a bottom tab bar below `lg` (thumb reach, labels wrap at 360px) and a floating top pill from `lg`; theme cycle system -> light -> dark -> system with circle view-transition reveal (skipped under reduced motion/unsupported); icons are an inline SVG map (`src/lib/icons.ts`, Lucide-style paths) instead of `@lucide/astro` (zero runtime, 5 service icons); hero roles rotate in pure CSS and animate only once `html[data-theme]` exists (so no-JS and reduced motion get the static first role); 404 is per-locale (`/404`, `/en/404`) and error page is static (`/error`, `/en/error`): a static site has no 5xx, Netlify serves `/en/404.html` only through a redirect rule that T7 must add to `netlify.toml` (`/en/* -> /en/404.html` status 404); status pages are noindex and filtered from the sitemap.
+- Islands (all vanilla TS, no React): theme toggle (click, eager module), counters (IntersectionObserver), hero dot field (idle-loaded, ~2.0 KB min / 1.1 KB gzip). Budgets enforced by `tests/unit/script-budget.spec.ts`.
+- Verification: `npx astro check` 0 errors; `PORT=4322 npx playwright test` 145 passed, 8 skipped (build-output, no BUILD_DIR); with the scratch build `BUILD_DIR=... build-output.spec.ts` 8 passed. Single scratch `astro build` succeeded (12 pages); built `en` home is `en.html`.
+- Known gaps: T4 SEO (OG/Twitter, JSON-LD, apple-touch/manifest), T6 (axe, CI; `.reveal` elements start at opacity 0 until scrolled, check axe contrast timing), T7 (delete `components/`, `app/`, legacy deps, netlify.toml with the `/en/*` 404 rule, metrics, `npm run lint`).
+
 ## Next step
 
-T3a review follow-ups, then T3 redesigned pages + T5 interactions (single delegated writer).
+T4 (SEO), then T6 (tests/axe/CI) and T7 (cleanup/metrics).
