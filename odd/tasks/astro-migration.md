@@ -39,8 +39,8 @@ Migrate the portfolio from Next.js 14 to Astro (latest stable, 7.x) with strict 
 ## Tasks
 
 - [x] T0 — Baseline metrics of current Next.js site (JS weight, Lighthouse mobile per route). Route: inline bounded action.
-- [ ] T1 — Astro scaffold: Astro 7 + strict TS + Tailwind 4 tokens, base layout, no-flash theme, i18n routing + hreflang, fonts. Route: delegated writer (2+ non-trivial files).
-- [ ] T2 — Content collections with Zod (projects, services, timeline, skills) + UI dictionaries migrated from `utils/i18n.ts` with key-parity test. Route: delegated writer.
+- [x] T1 — Astro scaffold: Astro 7 + strict TS + Tailwind 4 tokens, base layout, no-flash theme, i18n routing + hreflang, fonts. Route: delegated writer (2+ non-trivial files).
+- [x] T2 — Content collections with Zod (projects, services, timeline, skills) + UI dictionaries migrated from `utils/i18n.ts` with key-parity test. Route: delegated writer.
 - [ ] T3 — Redesigned pages: home (hero), about-me (timeline/skills/counters), services, portfolio, 404, error. Route: delegated writer.
 - [ ] T4 — SEO: metadata, canonical, OG/Twitter via satori at build, sitemap, robots, manifest, favicon/apple-icon, JSON-LD Person. Route: delegated writer.
 - [ ] T5 — Islands & interactions: theme toggler (View Transitions), language switcher, counters, hero field, scroll animations, reduced motion. Route: delegated writer.
@@ -68,6 +68,16 @@ Migrate the portfolio from Next.js 14 to Astro (latest stable, 7.x) with strict 
 
 Home script transfer includes the lazy Spline runtime.
 
+### T1 + T2 (delegated writer; trigger: 2+ non-trivial files)
+
+- Commits: `65af0f6` scaffold, `3bed474` content collections, `a8bd5aa` i18n dictionaries + parity test.
+- Decisions: `trailingSlash: 'never'` + `build.format: 'file'` (keeps legacy URLs); Astro fonts API (fontsource provider) with `--af-*` vars; theme via `data-theme` / `data-theme-pref` on `<html>`, re-applied on `astro:after-swap`; all collections JSON + Zod with `{es,en}` localized fields; 26 skill icons generated once from `simple-icons` into `src/assets/icons` (no runtime CDN); `ui.ts` typed from `es` keys.
+- Light accent `#4F6700` (5.7:1); dark lime `#C8F03C` (14.9:1).
+- RED/GREEN: T1 19 failing → 21/21; T2 parity test failing on 72 leaf strings/lang → 3/3. Zod rejection proven (`label.en: Required`).
+- Verification (parent spot check): `npx astro check` → 0 errors, 0 warnings, 0 hints. Writer: `PORT=4322 npx playwright test` → 28 passed; `npm run test:i18n` → 3 passed. `npm run lint` not run yet (still legacy eslint) — pending T7.
+- Review (RDD on): assess medium, `slice_budget_reached`; consent granted by user; lineage `review-561420713d50fcf9`, lens reliability — APPROVED and acknowledged (authority burned). Reviewed boundary → `a8bd5aa`. 6 non-blocking findings (R3-001 `.html` suffix in canonical/hreflang under `build.format: 'file'`; R3-002 no build-output URL test; R3-003 dark theme test vacuous due to hardcoded `data-theme`; R3-004 parity test depends on legacy module; R3-005 no matchMedia listener; R3-006 favicon is the full profile PNG) → scheduled as T3a fixes.
+- Open for later: parity test imports legacy `utils/i18n.ts` → freeze a snapshot before T7 deletes it; dev toolbar disabled; `--ignore-lock` in Playwright webServer; map markers not migrated; favicon to replace in T4.
+
 ## Next step
 
-T1 scaffold.
+T3a review follow-ups, then T3 redesigned pages + T5 interactions (single delegated writer).
