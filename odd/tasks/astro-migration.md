@@ -48,7 +48,7 @@ Migrate the portfolio from Next.js 14 to Astro (latest stable, 7.x) with strict 
 - [x] T5 — Islands & interactions: theme toggler (View Transitions), language switcher, counters, hero field, scroll animations, reduced motion. Route: delegated writer.
 - [x] T6 — Playwright e2e per route, theme, language, axe a11y; update `ci.yml` (local only). Route: delegated writer.
 - [x] T6b — Review follow-ups R2-001..005, R3-001..003, R4. Route: delegated writer (same writer as T7).
-- [ ] T7 — Remove Next and unused deps, `netlify.toml`, README (done, delegated writer); final Lighthouse metrics + report (pending, parent).
+- [x] T7 — Remove Next and unused deps, `netlify.toml`, README (delegated writer); final Lighthouse metrics + report (parent, inline).
 
 ## Acceptance criteria
 
@@ -109,6 +109,23 @@ Home script transfer includes the lazy Spline runtime.
 - Verification (writer): `npm ci` ok; `npx astro check` 0 errors/warnings/hints; `npm run lint` 0 problems; `PORT=4322 npx playwright test` 225 passed, 21 skipped (build specs without BUILD_DIR); `npm run test:build` 25 passed; `npm run test:i18n` 32 passed. depcheck: only virtual `astro:*` modules reported. No `./dist` build, no Lighthouse run.
 - Pending (parent): final Lighthouse mobile metrics per route, client-JS KB vs baseline, final report.
 
+### Final metrics (parent, inline; scratch `astro build` served with `serve` clean URLs, Lighthouse 13 mobile)
+
+| Route | Perf | A11y | BP | SEO | LCP | TBT | CLS | Total KB | Script KB (transfer) |
+|---|---|---|---|---|---|---|---|---|---|
+| / | 99 | 100 | 100 | 100 | 2.3 s | 0 ms | 0 | 227 | 5.9 |
+| /about-me | 98 | 100 | 100 | 100 | 2.4 s | 0 ms | 0 | 246 | 5.9 |
+| /services | 99 | 100 | 100 | 100 | 2.3 s | 0 ms | 0 | 211 | 5.9 |
+| /portfolio | 98 | 100 | 100 | 100 | 2.5 s | 0 ms | 0 | 305 | 5.9 |
+| /en | 99 | 100 | 100 | 100 | 2.3 s | 0 ms | 0 | 227 | 5.9 |
+| /en/about-me | 98 | 100 | 100 | 100 | 2.4 s | 0 ms | — | — | — |
+
+- Home first cold run gave Perf 72 / TBT 1,470 ms; three reruns gave 99 / 0 ms each (cold-start noise, recorded honestly).
+- Only external JS file: ClientRouter, 16.4 KB raw / 5.6 KB gzip; other scripts are inlined (theme, toggle, counters, dot field).
+- Home JS: 858 KB transferred (baseline, incl. Spline) → 5.9 KB (−99.3%). First Load JS 192 kB gz → ~6 kB.
+- Lighthouse found `heading-order` on /about-me (A11y 98): fixed in `34778eb` with TDD (`tests/e2e/heading-order.spec.ts` RED 2 failed → GREEN; axe + about suites 42/42).
+- Production URL https://nicoj3000.netlify.app currently returns Netlify "Site not found"; "before" screenshots were taken from `main` built locally in a detached worktree (`../landing-page-worktrees/before`).
+
 ## Next step
 
-Parent: final metrics (`npm run build`, Lighthouse mobile on 4 routes x preview) and report; T7 is checked once recorded.
+Done. Optional for the user: create/relink the Netlify site and deploy; push/PR remain the user's decision (local-only constraint).
