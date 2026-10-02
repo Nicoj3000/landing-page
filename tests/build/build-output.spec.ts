@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { expect, test } from "@playwright/test";
-import { BUILD_DIR, SITE, SKIP_REASON } from "./build-dir";
+import { BUILD_DIR, SITE_ORIGIN, SKIP_REASON } from "./build-dir";
 
 /**
  * Checks canonical / hreflang shapes in the BUILT html (where Astro.url.pathname
@@ -30,15 +30,15 @@ test.describe("built html: canonical / hreflang / lang switch", () => {
     test(`${page.file}`, () => {
       const html = readFileSync(join(BUILD_DIR as string, page.file), "utf8");
       const isEn = page.file === "en.html" || page.file.startsWith("en/");
-      const self = `${SITE}${isEn ? page.en : page.es}`;
+      const self = `${SITE_ORIGIN}${isEn ? page.en : page.es}`;
 
       const canonical = hrefs(html, /<link rel="canonical" href="([^"]+)"/g);
       expect(canonical).toEqual([self]);
 
       const alternates = hrefs(html, /<link rel="alternate" hreflang="[^"]+" href="([^"]+)"/g);
       expect(alternates).toHaveLength(3);
-      expect(alternates).toContain(`${SITE}${page.es}`);
-      expect(alternates).toContain(`${SITE}${page.en}`);
+      expect(alternates).toContain(`${SITE_ORIGIN}${page.es}`);
+      expect(alternates).toContain(`${SITE_ORIGIN}${page.en}`);
 
       // No `.html` or `/index` leaks into any SEO / switch URL.
       for (const url of [...canonical, ...alternates]) {

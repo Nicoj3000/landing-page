@@ -1,4 +1,5 @@
 import { SITE } from "@/data/site";
+import { LOCALE_TAGS } from "@/data/site-config";
 import type { Locale, UiKey } from "@/i18n/ui";
 import { localizedPath, useTranslations } from "@/i18n/utils";
 
@@ -29,9 +30,13 @@ const DESCRIPTION_KEY: Record<PageId, UiKey> = {
 
 export const OG_SIZE = { width: 1200, height: 630 } as const;
 
-/** BCP 47 tag used in sitemap/JSON-LD, and Open Graph's underscore variant. */
-export const HTML_LANG: Record<Locale, string> = { es: "es-CO", en: "en-US" };
-export const OG_LOCALE: Record<Locale, string> = { es: "es_CO", en: "en_US" };
+/** BCP 47 tag per locale (sitemap, JSON-LD, OG card), from the single map in site-config. */
+export const HTML_LANG: Record<Locale, string> = LOCALE_TAGS;
+/** Open Graph spells locales with an underscore: "es_CO". Derived, never duplicated. */
+export const OG_LOCALE: Record<Locale, string> = {
+  es: LOCALE_TAGS.es.replace("-", "_"),
+  en: LOCALE_TAGS.en.replace("-", "_"),
+};
 
 export interface PageMeta {
   /** Document title: "Section | Name" (home: "Name | Role"). */
@@ -50,11 +55,14 @@ export function pageMeta(lang: Locale, id: PageId): PageMeta {
   return { title: `${section} | ${name}`, heading: section, description };
 }
 
-/** Path (no leading slash, no extension) of a page's OG card: "home", "en/about-me". */
+/**
+ * Path (no leading slash, no extension) of a page's OG card: "home", "en/about-me".
+ * Derived from PAGE_PATH so the card URL follows the page URL. The home route has
+ * no file stem ("/" and "/en"), so it is the only page given an explicit name.
+ */
 export function ogSlug(lang: Locale, id: PageId): string {
-  const path = localizedPath(PAGE_PATH[id], lang);
-  const slug = path === "/" ? "home" : path === "/en" ? "en/home" : path.slice(1);
-  return slug;
+  const stem = PAGE_PATH[id] === PAGE_PATH.home ? "/home" : PAGE_PATH[id];
+  return localizedPath(stem, lang).slice(1);
 }
 
 export const ogImagePath = (lang: Locale, id: PageId): string => `/og/${ogSlug(lang, id)}.png`;

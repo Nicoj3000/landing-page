@@ -1,9 +1,10 @@
 import { defineConfig, fontProviders } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
+import { LOCALE_TAGS, SITE_ORIGIN } from "./src/data/site-config.ts";
 
 export default defineConfig({
-  site: "https://nicoj3000.netlify.app",
+  site: SITE_ORIGIN,
   output: "static",
   // No trailing slash: matches the URLs the legacy site already exposed
   // (/about-me, not /about-me/). `format: "file"` emits about-me.html, which
@@ -21,8 +22,8 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) => !/\/(404|error)\/?$/.test(page),
-      // Emits <xhtml:link> es-CO / en-US alternates for each page pair.
-      i18n: { defaultLocale: "es", locales: { es: "es-CO", en: "en-US" } },
+      // Emits <xhtml:link> alternates (es-CO / en-US) for each page pair.
+      i18n: { defaultLocale: "es", locales: { ...LOCALE_TAGS } },
     }),
   ],
   vite: {

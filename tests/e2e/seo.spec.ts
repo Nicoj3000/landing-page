@@ -1,8 +1,8 @@
 import { expect, test, type Page } from "@playwright/test";
+import { SITE_ORIGIN } from "../../src/data/site-config";
 import { pngSize } from "../helpers/png";
 import { LANGS, ROUTES, STATUS_ROUTES } from "./routes";
 
-const SITE = "https://nicoj3000.netlify.app";
 const NAME = "Nicolás Delgado";
 
 const OG_SLUG = { home: "home", about: "about-me", services: "services", portfolio: "portfolio" } as const;
@@ -53,21 +53,21 @@ test.describe("page metadata", () => {
         expect(description.length).toBeGreaterThan(60);
         expect(description.length).toBeLessThanOrEqual(175);
 
-        const self = `${SITE}${route[lang]}`;
+        const self = `${SITE_ORIGIN}${route[lang]}`;
         await expect(page.locator('head link[rel="canonical"]')).toHaveAttribute("href", self);
-        await expect(page.locator('head link[rel="alternate"][hreflang="es"]')).toHaveAttribute("href", `${SITE}${route.es}`);
-        await expect(page.locator('head link[rel="alternate"][hreflang="en"]')).toHaveAttribute("href", `${SITE}${route.en}`);
-        await expect(page.locator('head link[rel="alternate"][hreflang="x-default"]')).toHaveAttribute("href", `${SITE}${route.es}`);
+        await expect(page.locator('head link[rel="alternate"][hreflang="es"]')).toHaveAttribute("href", `${SITE_ORIGIN}${route.es}`);
+        await expect(page.locator('head link[rel="alternate"][hreflang="en"]')).toHaveAttribute("href", `${SITE_ORIGIN}${route.en}`);
+        await expect(page.locator('head link[rel="alternate"][hreflang="x-default"]')).toHaveAttribute("href", `${SITE_ORIGIN}${route.es}`);
         await expect(page.locator('head meta[name="robots"]')).toHaveCount(0);
       });
 
       test(`${lang} ${path}: Open Graph and Twitter card`, async ({ page, request, baseURL }) => {
         await page.goto(path);
         const description = await meta(page, 'meta[name="description"]');
-        const image = `${SITE}/og/${lang === "en" ? "en/" : ""}${OG_SLUG[id]}.png`;
+        const image = `${SITE_ORIGIN}/og/${lang === "en" ? "en/" : ""}${OG_SLUG[id]}.png`;
 
         expect(await meta(page, 'meta[property="og:type"]')).toBe("website");
-        expect(await meta(page, 'meta[property="og:url"]')).toBe(`${SITE}${route[lang]}`);
+        expect(await meta(page, 'meta[property="og:url"]')).toBe(`${SITE_ORIGIN}${route[lang]}`);
         expect(await meta(page, 'meta[property="og:title"]')).toBe(COPY[lang].titles[id]);
         expect(await meta(page, 'meta[property="og:description"]')).toBe(description);
         expect(await meta(page, 'meta[property="og:site_name"]')).toBe("NicoX");
@@ -84,7 +84,7 @@ test.describe("page metadata", () => {
         expect(await meta(page, 'meta[name="twitter:image"]')).toBe(image);
 
         // The advertised image really resolves (absolute URL re-pointed at the dev server).
-        const res = await request.get(image.replace(SITE, baseURL ?? ""));
+        const res = await request.get(image.replace(SITE_ORIGIN, baseURL ?? ""));
         expect(res.status()).toBe(200);
         expect(res.headers()["content-type"]).toContain("image/png");
         expect(pngSize(await res.body())).toEqual({ width: 1200, height: 630 });
@@ -100,7 +100,7 @@ test.describe("page metadata", () => {
         expect(person).toMatchObject({
           name: NAME,
           alternateName: "NicoX",
-          url: SITE,
+          url: SITE_ORIGIN,
           email: "mailto:nicoj3000its@gmail.com",
           jobTitle: lang === "es" ? "Ingeniero de Sistemas" : "Systems Engineer",
           address: { "@type": "PostalAddress", addressCountry: "CO" },
@@ -114,7 +114,7 @@ test.describe("page metadata", () => {
         expect(skills.length).toBeGreaterThan(10);
         expect(skills).toEqual(expect.arrayContaining(["TypeScript", "React"]));
 
-        expect(website).toMatchObject({ name: "NicoX", url: SITE, inLanguage: lang === "es" ? "es-CO" : "en-US" });
+        expect(website).toMatchObject({ name: "NicoX", url: SITE_ORIGIN, inLanguage: lang === "es" ? "es-CO" : "en-US" });
       });
     }
   }

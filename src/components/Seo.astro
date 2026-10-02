@@ -2,6 +2,7 @@
 import { getImage } from "astro:assets";
 import photo from "@/assets/images/Foto-CV.png";
 import { SITE } from "@/data/site";
+import { SITE_ORIGIN } from "@/data/site-config";
 import { getSkills } from "@/data/content";
 import { DEFAULT_LOCALE, LOCALES, type Locale } from "@/i18n/ui";
 import { localizedPath, stripLocale, useTranslations } from "@/i18n/utils";
@@ -21,7 +22,7 @@ interface Props {
 
 const { title, description, lang, path, page, noindex = false } = Astro.props;
 const t = useTranslations(lang);
-const site = Astro.site ?? new URL("https://nicoj3000.netlify.app");
+const site = Astro.site ?? new URL(SITE_ORIGIN);
 const neutralPath = stripLocale(path);
 const absolute = (locale: Locale) => new URL(localizedPath(neutralPath, locale), site).href;
 const url = absolute(lang);

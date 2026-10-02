@@ -1,6 +1,5 @@
 import { expect, test } from "@playwright/test";
-
-const SITE = "https://nicoj3000.netlify.app";
+import { SITE_ORIGIN } from "../../src/data/site-config";
 
 const ROUTES = [
   { es: "/", en: "/en" },
@@ -34,17 +33,17 @@ test.describe("localized routing", () => {
           )
           .getAttribute("href");
 
-      expect(await href("alternate", "es")).toBe(`${SITE}${route.es}`);
-      expect(await href("alternate", "en")).toBe(`${SITE}${route.en}`);
-      expect(await href("alternate", "x-default")).toBe(`${SITE}${route.es}`);
-      expect(await href("canonical")).toBe(`${SITE}${route.es}`);
+      expect(await href("alternate", "es")).toBe(`${SITE_ORIGIN}${route.es}`);
+      expect(await href("alternate", "en")).toBe(`${SITE_ORIGIN}${route.en}`);
+      expect(await href("alternate", "x-default")).toBe(`${SITE_ORIGIN}${route.es}`);
+      expect(await href("canonical")).toBe(`${SITE_ORIGIN}${route.es}`);
     });
 
     test(`canonical on ${route.en} points to itself`, async ({ page }) => {
       await page.goto(route.en);
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
         "href",
-        `${SITE}${route.en}`,
+        `${SITE_ORIGIN}${route.en}`,
       );
     });
   }

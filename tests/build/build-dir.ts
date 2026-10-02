@@ -18,4 +18,4 @@ if (BUILD_DIR !== undefined && !existsSync(BUILD_DIR)) {
   throw new Error(`BUILD_DIR points to a missing directory: ${BUILD_DIR}`);
 }
 
-export const SITE = "https://nicoj3000.netlify.app";
+export { SITE_ORIGIN } from "../../src/data/site-config";

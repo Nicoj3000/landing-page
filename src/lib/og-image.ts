@@ -1,11 +1,12 @@
 import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { srcDir } from "astro:config/server";
 import satori from "satori";
 import sharp from "sharp";
 import { SITE } from "@/data/site";
 import type { Locale } from "@/i18n/ui";
 import { useTranslations } from "@/i18n/utils";
-import { OG_SIZE, PAGE_IDS, pageMeta, type PageId } from "@/lib/seo";
+import { FONT_SUBDIR, createFontLoader } from "@/lib/og-fonts";
+import { HTML_LANG, OG_SIZE, PAGE_IDS, pageMeta, type PageId } from "@/lib/seo";
 
 /** Brand tokens (dark "Spec Sheet" palette from global.css). */
 const INK = "#0A0C0F";
@@ -15,22 +16,9 @@ const TEXT = "#E8E6E1";
 const MUTED = "#8B8A86";
 const LIME = "#C8F03C";
 
-// satori reads TTF/OTF/WOFF only (no WOFF2), so the static WOFF files are bundled in the repo.
-const FONT_DIR = resolve(process.cwd(), "src/assets/fonts");
-const fontFile = (name: string) => readFile(resolve(FONT_DIR, name));
-
-type Fonts = Parameters<typeof satori>[1]["fonts"];
-let fonts: Promise<Fonts> | undefined;
-const loadFonts = (): Promise<Fonts> =>
-  (fonts ??= Promise.all([
-    fontFile("bricolage-grotesque-latin-800-normal.woff"),
-    fontFile("geist-mono-latin-400-normal.woff"),
-    fontFile("geist-mono-latin-500-normal.woff"),
-  ]).then(([display, mono, monoMedium]) => [
-    { name: "Bricolage Grotesque", data: display, weight: 800, style: "normal" },
-    { name: "Geist Mono", data: mono, weight: 400, style: "normal" },
-    { name: "Geist Mono", data: monoMedium, weight: 500, style: "normal" },
-  ]));
+// `srcDir` comes from Astro's resolved config, so it is right in `astro dev` and `astro build`
+// regardless of process.cwd() or where the bundler places this module.
+const loadFonts = createFontLoader((file) => readFile(new URL(`${FONT_SUBDIR}${file}`, srcDir)));
 
 type Style = Record<string, string | number>;
 interface Node {
@@ -73,7 +61,7 @@ function card(lang: Locale, id: PageId): Node {
     [
       el({ justifyContent: "space-between", alignItems: "center" }, [
         el({ alignItems: "center", gap: 20 }, [monogram, mono(24, MUTED, `${SITE.brand.toUpperCase()} / SPEC SHEET`, { fontWeight: 500 })]),
-        mono(24, MUTED, lang === "es" ? "ES-CO" : "EN-US", { fontWeight: 500 }),
+        mono(24, MUTED, HTML_LANG[lang].toUpperCase(), { fontWeight: 500 }),
       ]),
       el({ flexDirection: "column", gap: 24 }, [
         mono(30, LIME, section, { fontWeight: 500 }),
