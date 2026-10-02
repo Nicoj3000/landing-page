@@ -40,6 +40,8 @@ const cities = t("location.cities").split(" · ");
 
   <section aria-labelledby="timeline-label" class="container-page pb-section">
     <SectionLabel id="timeline-label" index="03" label={t("section.timeline")} />
+    <!-- Visually hidden h2 keeps the outline sequential: the entries below are h3. -->
+    <h2 class="sr-only">{t("section.timeline")}</h2>
     <div class="mt-10 lg:grid lg:grid-cols-12">
       <div class="lg:col-span-10 lg:col-start-2">
         <GitLog {lang} />
