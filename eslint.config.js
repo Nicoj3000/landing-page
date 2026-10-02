@@ -7,23 +7,12 @@ import tseslint from "typescript-eslint";
 export default defineConfig([
   globalIgnores([
     "dist/",
-    ".next/",
-    "out/",
     ".claude/",
     ".playwright-mcp/",
     ".astro/",
     "node_modules/",
     "test-results/",
     "playwright-report/",
-    // Legacy Next.js sources, deleted in T7. Anchored: src/lib etc. stay linted.
-    "app/",
-    "components/",
-    "lib/",
-    "utils/",
-    "data.tsx",
-    "next.config.mjs",
-    "tailwind.config.ts",
-    "postcss.config.mjs",
   ]),
   js.configs.recommended,
   tseslint.configs.recommended,

@@ -26,11 +26,7 @@ export default defineConfig({
       i18n: { defaultLocale: "es", locales: { ...LOCALE_TAGS } },
     }),
   ],
-  vite: {
-    plugins: [tailwindcss()],
-    // Ignore the legacy postcss.config.mjs (Tailwind 3 / Next) until T7 deletes it.
-    css: { postcss: { plugins: [] } },
-  },
+  vite: { plugins: [tailwindcss()] },
   fonts: [
     {
       provider: fontProviders.fontsource(),

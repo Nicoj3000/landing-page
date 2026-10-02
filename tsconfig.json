@@ -1,17 +1,7 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "include": [".astro/types.d.ts", "src/**/*", "tests/**/*", "playwright.config.ts", "astro.config.mjs", "playwright.build.config.ts"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "app",
-    "components",
-    "lib",
-    "utils",
-    "data.tsx",
-    "next.config.mjs",
-    "tailwind.config.ts"
-  ],
+  "exclude": ["node_modules", "dist"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": { "@/*": ["src/*"] }

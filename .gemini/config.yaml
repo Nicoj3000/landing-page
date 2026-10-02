@@ -21,7 +21,7 @@ code_review:
 ignore_patterns:
   - "package-lock.json"
   - "node_modules/**"
-  - ".next/**"
+  - ".astro/**"
   - "dist/**"
   - "build/**"
   - "**/*.min.js"
