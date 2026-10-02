@@ -47,7 +47,8 @@ Migrate the portfolio from Next.js 14 to Astro (latest stable, 7.x) with strict 
 - [x] T3b — Review follow-ups R3-101..104. Route: delegated writer (same writer as T4/T6).
 - [x] T5 — Islands & interactions: theme toggler (View Transitions), language switcher, counters, hero field, scroll animations, reduced motion. Route: delegated writer.
 - [x] T6 — Playwright e2e per route, theme, language, axe a11y; update `ci.yml` (local only). Route: delegated writer.
-- [ ] T7 — Remove Next and unused deps, `netlify.toml`, final metrics, report. Route: delegated writer + inline metrics.
+- [x] T6b — Review follow-ups R2-001..005, R3-001..003, R4. Route: delegated writer (same writer as T7).
+- [ ] T7 — Remove Next and unused deps, `netlify.toml`, README (done, delegated writer); final Lighthouse metrics + report (pending, parent).
 
 ## Acceptance criteria
 
@@ -98,6 +99,16 @@ Home script transfer includes the lazy Spline runtime.
 - Verification: `npx astro check` 0 errors/warnings/hints; `npm run lint` 0 errors, 0 warnings; `PORT=4322 npx playwright test` 213 passed, 21 skipped (build specs, no BUILD_DIR, reason reported); `npm run test:build` 21 passed; `npm run test:i18n` 24 passed. Two scratch builds (T3b, T4); no build into `./dist`.
 - Known gaps for T7: remove Next and legacy deps (next, react, react-dom, @types/react*, radix, spline, tsparticles, framer-motion, i18next, react-i18next, lucide-react, next-themes, react-countup, react-type-animation, svg-dotted-map, tailwindcss-animate, class-variance-authority, clsx, tailwind-merge, autoprefixer, postcss; check satori's optional react types), delete `app/ components/ lib/ utils/ data.tsx` and legacy configs (next.config.mjs, tailwind.config.ts, postcss.config.mjs, components.json) then drop the matching `tsconfig` excludes, ESLint ignores and the `css.postcss` override in `astro.config.mjs`; `netlify.toml` with build command and `/en/* -> /en/404.html` (status 404); final Lighthouse metrics; `README.md`/`docs/` refresh; consider `engines.node` in package.json.
 
+### T6b + T7 (delegated writer; trigger: 2+ non-trivial files, one writer)
+
+- Commits: `57e16c3` T6b, `d628056` legacy removal + deps, `113b0f6` netlify.toml + README, plus this docs commit.
+- T6b: `src/data/site-config.ts` (dependency-free) holds `SITE_ORIGIN` and `LOCALE_TAGS`; `astro.config.mjs` imports it (TS import works in the Astro config), and `site.ts`, `seo.ts` (`HTML_LANG`, derived `OG_LOCALE`), `Seo.astro`, OG card label, JSON-LD and all tests reuse it. `tests/build/build-dir.ts` re-exports `SITE_ORIGIN` (renamed from `SITE`). `ogSlug` derives home from `PAGE_PATH`. `seo-build.spec.ts` uses string search + escaped regex. CI `cancel-in-progress` only for PRs. R3-001: `createFontLoader` in `src/lib/og-fonts.ts` resets the cache on rejection (RED: module missing, GREEN 3/3). R3-002: `process.cwd()` removed; a module-relative `import.meta.url` URL FAILED in `astro build` (resolved into `.astro/.prerender/assets/fonts`, ENOENT), so fonts resolve from `srcDir` of `astro:config/server` (works in dev and build; `test:build` green).
+- T7 removed: next, react, react-dom, framer-motion, @splinetool/react-spline, @splinetool/runtime, @tsparticles/react, @tsparticles/slim, i18next, react-i18next, next-themes, react-countup, react-type-animation, svg-dotted-map, lucide-react, @radix-ui/react-icons, @radix-ui/react-slot, @radix-ui/react-tooltip, class-variance-authority, clsx, tailwind-merge, tailwindcss-animate, autoprefixer, postcss, @types/react, @types/react-dom. Added devDeps: `esbuild` (was an undeclared transitive import in the script-budget spec, found by depcheck) and `smol-toml` (netlify spec). Only Tailwind 4 remains (4.3.3). `engines.node >=22`; `.nvmrc` was already 22. No React types needed: satori takes plain objects, `astro check` 0 errors without `@types/react`.
+- Deleted: `app/`, `components/`, `lib/` (root), `utils/`, `data.tsx`, `next.config.mjs`, `tailwind.config.ts`, `postcss.config.mjs`, `components.json`, `next-env.d.ts` (ignored), `.next`; removed tsconfig excludes, ESLint legacy ignores, `css.postcss` override, Next/Vercel `.gitignore` entries. `public/` held no legacy assets already. `.gemini` kept but its styleguide rewritten for Astro (it described Next/React/`cn()`), ignore pattern `.next` -> `.astro`.
+- `netlify.toml`: `npm run build`, publish `dist`, Node 22, `/en/*` -> `/en/404.html` 404 (no `force`, so real pages win), `/_astro/*` immutable 1y, global nosniff, strict-origin-when-cross-origin, minimal Permissions-Policy, `X-Frame-Options: DENY` + CSP `frame-ancestors 'none'` (no full CSP: inline theme script). Syntax checked against Netlify docs via ctx7. `tests/build/netlify.spec.ts` parses it (RED: file missing -> ENOENT, GREEN 4/4). README rewritten.
+- Verification (writer): `npm ci` ok; `npx astro check` 0 errors/warnings/hints; `npm run lint` 0 problems; `PORT=4322 npx playwright test` 225 passed, 21 skipped (build specs without BUILD_DIR); `npm run test:build` 25 passed; `npm run test:i18n` 32 passed. depcheck: only virtual `astro:*` modules reported. No `./dist` build, no Lighthouse run.
+- Pending (parent): final Lighthouse mobile metrics per route, client-JS KB vs baseline, final report.
+
 ## Next step
 
-T7 (cleanup, `netlify.toml`, final metrics and report).
+Parent: final metrics (`npm run build`, Lighthouse mobile on 4 routes x preview) and report; T7 is checked once recorded.
