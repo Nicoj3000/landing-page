@@ -50,6 +50,7 @@ Option A: remove `<ClientRouter />` and use native cross-document View Transitio
 - [x] T4 — LCP: `fetchpriority="high"` on the above-the-fold portrait. Route: inline (one mechanical file). Premise verified: Lighthouse LCP element is the portrait on home and about-me. Commit `35437d0`. RED: `tests/e2e/lcp-image.spec.ts` `Expected "high", Received ""`; GREEN 8/8 (re-confirmed RED by stashing the fix).
 - [x] T5 — Add a mobile Playwright project (e.g. Pixel 7) so nav/layout specs run under mobile emulation. Route: delegated writer. Commit `ba1fd4e`. `mobile-chrome` (Pixel 7) project, e2e only; 440 passed / 21 skipped.
 - [x] T1c — Review follow-ups (approved native review of the plan+T1+T1b slice, lineage review-77830a15447a43bd): bfcache theme spec + network-based prefetch assertion. Route: delegated writer. Commit `486fb01`. Note: headless Chromium does not restore from bfcache, so the `pageshow`/`persisted` branch itself stays untested (spec covers the fresh-load path).
+- [x] T1d — Follow-ups from the approved native review of the whole branch (lineage review-25891041c55c6648): (WARNING) bfcache re-sync proven via a synthetic `pageshow` persisted event — mutation check: removing both `pageshow` handlers makes it fail (`Expected "light", Received "system"`); (SUGGESTION) coarse-pointer hero spec now waits on a positive `data-skipped="coarse-pointer"` signal instead of a fixed 1800 ms sleep (RED `Received ""`, then GREEN). Route: inline. Commit `3bfce35`. Evidence: lint ok, check 0 errors, e2e 461 passed / 24 skipped / 0 failed, script budget 3/3.
 - [~] T6 — Final metrics: lint, check, full Playwright, build, Lighthouse mobile on the Netlify deploy preview vs baseline. Route: inline bounded action. Local part done; deploy-preview part pending (needs push, user decision).
   - lint ok; check 0 errors; e2e 459 passed / 24 skipped / 0 failed (desktop + mobile); test:build 25/25; build 12 pages.
   - Shipped JS: one 4 KB external module (`page.*.js`); no ClientRouter in `dist` (baseline shipped a 16 KB ClientRouter bundle).
@@ -73,7 +74,7 @@ Option A: remove `<ClientRouter />` and use native cross-document View Transitio
 - 2026-10-03: exploration + baseline done; option A chosen; document created.
 - 2026-10-03: T1 and T1b done; native review approved (plan+T1+T1b). Execution order for the rest: T5 (mobile project first, so T2/T3 are tested on mobile), T2, T3, then T4 inline, then T6.
 
-- 2026-10-03: T5, T2, T3, T1c, T4 done; T6 local metrics done. Slice since `4c11a1b` assessed `under_budget` (medium, 209 lines), pending.
+- 2026-10-03: T5, T2, T3, T1c, T4 done; T6 local metrics done. Native review of the whole branch since `65f846e` APPROVED (lineage review-25891041c55c6648); its two findings fixed in T1d.
 
 ## Next step
 
