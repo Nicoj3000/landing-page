@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from "astro:transitions";
 import { Font } from "astro:assets";
 import "@/styles/global.css";
 import DockNav from "@/components/DockNav.astro";
@@ -43,8 +42,9 @@ const path = Astro.url.pathname;
     <!--
       No-flash theme. Runs synchronously before first paint. Preference lives in
       localStorage "theme" (light | dark | system); the resolved value is written
-      to <html data-theme>. Re-applied after every View Transitions swap, since
-      the router replaces <html> attributes with the incoming document's.
+      to <html data-theme>. Every page is a fresh document (native cross-document
+      view transitions), so it only re-applies on a bfcache restore, where the
+      preference may have changed on another page.
     -->
     <script is:inline>
       (() => {
@@ -66,7 +66,7 @@ const path = Astro.url.pathname;
           root.dataset.themePref = pref;
         };
         apply();
-        document.addEventListener("astro:after-swap", apply);
+        addEventListener("pageshow", (event) => event.persisted && apply());
         // Follow OS changes live, but only while the preference is "system".
         dark.addEventListener("change", () => {
           if (readPref() === "system") apply();
@@ -87,8 +87,6 @@ const path = Astro.url.pathname;
     <Font cssVariable="--af-display" preload={[{ subset: "latin", style: "normal" }]} />
     <Font cssVariable="--af-body" preload={[{ subset: "latin", style: "normal" }]} />
     <Font cssVariable="--af-mono" />
-
-    <ClientRouter />
   </head>
   <body class="font-sans">
     <a class="skip-link" href="#main">{t("a11y.skipToContent")}</a>

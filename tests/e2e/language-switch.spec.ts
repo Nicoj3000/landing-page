@@ -30,7 +30,7 @@ test.describe("language switch", () => {
     },
   );
 
-  test("the active locale is marked and survives a View Transitions navigation", async ({ page }) => {
+  test("the active locale is marked and survives a page navigation", async ({ page }) => {
     const home = new HomePage(page);
     await home.goto("/en");
     await expect(home.languageLink("en")).toHaveAttribute("aria-current", "true");

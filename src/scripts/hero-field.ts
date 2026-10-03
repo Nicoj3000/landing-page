@@ -12,8 +12,6 @@ const init = () => {
   const ctx = canvas?.getContext("2d");
   if (!canvas || !ctx || canvas.dataset.ready || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  const abort = new AbortController();
-  const { signal } = abort;
   let w = 0;
   let h = 0;
   let tx = -1e4;
@@ -88,7 +86,7 @@ const init = () => {
       ty = e.clientY - r.top;
       wake();
     },
-    { signal, passive: true },
+    { passive: true },
   );
   document.documentElement.addEventListener(
     "pointerleave",
@@ -96,9 +94,8 @@ const init = () => {
       tx = ty = -1e4;
       wake();
     },
-    { signal },
   );
-  document.addEventListener("visibilitychange", publish, { signal });
+  document.addEventListener("visibilitychange", publish);
 
   const io = new IntersectionObserver(([entry]) => {
     onScreen = !!entry?.isIntersecting;
@@ -111,19 +108,6 @@ const init = () => {
   ro.observe(canvas);
   theme.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
-  // ClientRouter swaps the page: release everything tied to this canvas.
-  document.addEventListener(
-    "astro:before-swap",
-    () => {
-      abort.abort();
-      io.disconnect();
-      ro.disconnect();
-      theme.disconnect();
-      cancelAnimationFrame(raf);
-    },
-    { once: true },
-  );
-
   resize();
   publish();
   canvas.dataset.ready = "true";
@@ -134,6 +118,7 @@ const schedule = () => {
   else setTimeout(init, 200);
 };
 
-document.addEventListener("astro:page-load", schedule);
+// Module scripts are deferred: the DOM is parsed, and each page is a fresh document.
+schedule();
 
 export {};

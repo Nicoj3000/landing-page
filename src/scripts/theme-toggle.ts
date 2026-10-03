@@ -67,12 +67,12 @@ const cycle = (button: HTMLElement) => {
   });
 };
 
-// Delegated: the button node is replaced on every ClientRouter navigation.
 document.addEventListener("click", (event) => {
   const button = (event.target as Element | null)?.closest<HTMLElement>("[data-theme-toggle]");
   if (button) cycle(button);
 });
-document.addEventListener("astro:page-load", sync);
 sync();
+// A bfcache restore can bring back a page whose theme changed elsewhere.
+addEventListener("pageshow", (event) => event.persisted && sync());
 
 export {};
