@@ -31,11 +31,14 @@ test.describe("native cross-document navigation", () => {
     await expect(page.locator('link[rel="prefetch"][href$="/about-me"]')).toHaveCount(1, { timeout: 5000 });
   });
 
-  test("theme toggle and hero still work after a navigation", async ({ page }) => {
+  test("theme toggle and hero still work after a navigation", async ({ page, isMobile }) => {
     await page.goto("/about-me");
     await page.getByRole("navigation", { name: "Navegación principal" }).getByRole("link", { name: "Inicio" }).click();
     await expect(page).toHaveURL(/\/$/);
-    await expect(page.locator("canvas[data-dot-field]")).toHaveAttribute("data-ready", "true", { timeout: 5000 });
+    // The dot field is intentionally off on coarse pointers (see mobile-paint.spec.ts).
+    if (!isMobile) {
+      await expect(page.locator("canvas[data-dot-field]")).toHaveAttribute("data-ready", "true", { timeout: 5000 });
+    }
 
     const toggle = page.locator("[data-theme-toggle]:visible").first();
     const before = await page.locator("html").getAttribute("data-theme-pref");

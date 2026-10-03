@@ -315,6 +315,7 @@ html[data-theme-vt] [data-astro-transition-scope] {
 
 /* ---------- Availability dot ---------- */
 .status-dot {
+  position: relative;
   display: inline-block;
   width: 0.5rem;
   height: 0.5rem;
@@ -323,17 +324,26 @@ html[data-theme-vt] [data-astro-transition-scope] {
   background: var(--accent);
 }
 
+/* Pulse ring: a pseudo-element scaled and faded on the compositor (no box-shadow repaint). */
 @media (prefers-reduced-motion: no-preference) {
-  html[data-theme] .status-dot {
+  html[data-theme] .status-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--accent);
+    opacity: 0;
     animation: status-pulse 2.4s ease-out infinite;
   }
 }
 
 @keyframes status-pulse {
-  0% {
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent);
+  from {
+    opacity: 0.55;
+    transform: scale(1);
   }
-  100% {
-    box-shadow: 0 0 0 0.6rem transparent;
+  to {
+    opacity: 0;
+    transform: scale(3.4);
   }
 }

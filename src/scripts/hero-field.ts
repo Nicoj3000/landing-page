@@ -1,7 +1,8 @@
 /**
  * Pointer-reactive dot field for the hero. Vanilla canvas, loaded at idle:
  * never touches LCP, pauses off-screen / in background tabs, DPR capped at 2,
- * and does nothing at all under prefers-reduced-motion (CSS dot pattern stays).
+ * and does nothing at all under prefers-reduced-motion or on coarse pointers (the CSS dot
+ * pattern stays).
  * The frame loop only runs while the pointer is moving the field.
  */
 const GAP = 26;
@@ -11,6 +12,8 @@ const init = () => {
   const canvas = document.querySelector<HTMLCanvasElement>("canvas[data-dot-field]");
   const ctx = canvas?.getContext("2d");
   if (!canvas || !ctx || canvas.dataset.ready || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  // Touch devices never get the pointer effect: skip the canvas (CSS hides it, the static pattern stays).
+  if (matchMedia("(pointer: coarse)").matches) return;
 
   let w = 0;
   let h = 0;

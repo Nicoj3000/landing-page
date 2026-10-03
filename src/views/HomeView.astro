@@ -92,6 +92,12 @@ const btn =
   .hero:has(canvas[data-ready]) .hero-pattern {
     opacity: 0;
   }
+  /* No pointer effect on touch devices: no canvas box, the static pattern is the look. */
+  @media (pointer: coarse) {
+    canvas[data-dot-field] {
+      display: none;
+    }
+  }
 
   /* Rotating role. Static (first role only) without JS and under reduced motion;
      animated only once the theme script has run (html[data-theme]) AND motion is allowed. */
