@@ -34,7 +34,7 @@ export default defineConfig({
       provider: fontProviders.fontsource(),
       name: "Bricolage Grotesque",
       cssVariable: "--af-display",
-      weights: ["200 800"],
+      weights: ["400", "600", "700"],
       styles: ["normal"],
       subsets: ["latin"],
       fallbacks: ["sans-serif"],
