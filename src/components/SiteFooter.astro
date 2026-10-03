@@ -1,0 +1,60 @@
+---
+import type { Locale } from "@/i18n/ui";
+import { SITE, cvPath, mailto } from "@/data/site";
+import { useTranslations } from "@/i18n/utils";
+import Icon from "./Icon.astro";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const external = t("a11y.externalLink");
+const cell = "flex flex-col gap-3 border-line p-5 sm:p-6";
+const link =
+  "inline-flex min-h-11 items-center gap-2 text-fg underline decoration-line-strong decoration-1 underline-offset-4 transition-colors duration-(--duration-fast) hover:text-accent hover:decoration-accent";
+---
+
+<!-- Drawing-sheet title block: ruled cells with mono field names. -->
+<footer class="container-page pb-28 pt-section lg:pb-12">
+  <div class="grid border border-line-strong sm:grid-cols-2 lg:grid-cols-[1.4fr_1.4fr_1fr_1fr]">
+    <div class={`${cell} border-b sm:border-r lg:border-b-0`}>
+      <p class="label-mono">{t("site.role")}</p>
+      <p class="font-display text-2xl font-semibold tracking-tight">{t("site.name")}</p>
+      <p class="text-sm text-muted">{t("location.availableRemote")}</p>
+    </div>
+    <div class={`${cell} border-b lg:border-b-0 lg:border-r`}>
+      <p class="label-mono">{t("footer.contact")}</p>
+      <a href={mailto()} class={`${link} break-all font-mono text-sm`}>
+        <Icon name="mail" size={18} />
+        {SITE.mail}
+      </a>
+    </div>
+    <div class={`${cell} border-b sm:border-r lg:border-b-0`}>
+      <p class="label-mono">{t("footer.profiles")}</p>
+      <ul class="flex flex-col">
+        <li>
+          <a href={SITE.github} target="_blank" rel="noopener noreferrer" aria-label={`GitHub ${external}`} class={link}>
+            <Icon name="github" size={18} />GitHub
+          </a>
+        </li>
+        <li>
+          <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn ${external}`} class={link}>
+            <Icon name="linkedin" size={18} />LinkedIn
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class={cell}>
+      <p class="label-mono">{t("footer.resume")}</p>
+      <a href={cvPath(lang)} download class={link}>
+        <Icon name="download" size={18} />{t("cta.downloadCv")}
+      </a>
+    </div>
+  </div>
+  <p class="label-mono mt-6 flex flex-wrap justify-between gap-2">
+    <span>© {new Date().getFullYear()} {t("site.name")}</span>
+    <span>{t("footer.rights")}</span>
+  </p>
+</footer>

@@ -9,10 +9,6 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
-
 # production
 /build
 
@@ -28,12 +24,8 @@ yarn-error.log*
 # local env files
 .env*.local
 
-# vercel
-.vercel
-
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 
 # agent / local tooling artifacts
 /.playwright-mcp/
@@ -46,5 +38,6 @@ next-env.d.ts
 /playwright-report/
 /blob-report/
 
-# astro generated types and cache
-.astro/
+# astro
+/dist/
+/.astro/

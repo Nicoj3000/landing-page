@@ -5,35 +5,56 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: }
+
 jobs:
   quality:
-    name: Lint & Types
+    name: Lint & types
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version-file: .nvmrc
           cache: npm
       - run: npm ci
       - run: npm run lint
-      - run: npx tsc --noEmit
+      - run: npx astro check
 
   e2e:
-    name: Smoke E2E
+    name: E2E (Playwright + axe)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version-file: .nvmrc
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium
+      # Playwright starts `astro dev` itself (see playwright.config.ts).
       - run: npx playwright test
       - uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: playwright-report
-          path: playwright-report/
+          path: |
+            playwright-report/
+            test-results/
           retention-days: 7
+
+  build:
+    name: Build & build-output checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      # Builds into a throw-away directory and checks OG images, sitemap, manifest, canonical URLs.
+      - run: npm run test:build

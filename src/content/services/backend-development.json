@@ -1,0 +1,12 @@
+{
+  "order": 2,
+  "icon": "server",
+  "title": {
+    "es": "Desarrollo Backend",
+    "en": "Backend Development"
+  },
+  "description": {
+    "es": "Sistemas backend con Node.js, arquitectura API-first, autenticación segura e integraciones robustas orientadas a escalabilidad.",
+    "en": "Backend systems with Node.js, API-first architecture, secure authentication, and robust integrations built for scalability."
+  }
+}

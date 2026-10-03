@@ -1,0 +1,73 @@
+---
+/**
+ * Static, dependency-free location plate: a simplified Colombia outline with
+ * the three legacy markers (Bogotá, Pereira, Medellín) projected from lat/lng.
+ * Decorative: the cities are also listed as text next to it.
+ */
+const BBOX = { lng: -79.2, lat: 12.6 };
+const SCALE = 20;
+const project = (lng: number, lat: number): [number, number] => [
+  +((lng - BBOX.lng) * SCALE).toFixed(1),
+  +((BBOX.lat - lat) * SCALE).toFixed(1),
+];
+
+// Simplified border, clockwise from Punta Gallinas.
+const OUTLINE: Array<[number, number]> = [
+  [-71.65, 12.45], [-72.2, 12.2], [-72.9, 11.6], [-73.9, 11.3], [-74.8, 11.0], [-75.5, 10.4],
+  [-75.8, 9.7], [-76.4, 8.9], [-76.9, 8.5], [-77.4, 8.65], [-77.3, 7.9], [-77.9, 7.2],
+  [-77.5, 5.5], [-77.1, 3.85], [-78.7, 1.8], [-78.85, 1.4], [-77.7, 0.85], [-76.5, 0.25],
+  [-75.3, -0.1], [-74.0, -1.0], [-73.2, -1.9], [-72.0, -2.4], [-70.5, -3.6], [-69.95, -4.2],
+  [-69.4, -1.1], [-70.05, -0.15], [-69.6, 1.0], [-68.2, 2.0], [-67.1, 1.8], [-67.6, 2.8],
+  [-67.3, 3.7], [-67.8, 4.5], [-67.5, 5.8], [-67.8, 6.3], [-69.4, 6.1], [-70.2, 7.0],
+  [-72.0, 7.0], [-72.5, 7.4], [-72.3, 8.2], [-72.4, 9.0], [-73.0, 9.2], [-72.8, 10.5],
+  [-72.1, 11.0], [-71.5, 11.8],
+];
+
+const MARKERS = [
+  { name: "Bogotá", lat: 4.711, lng: -74.0721 },
+  { name: "Pereira", lat: 4.8087, lng: -75.6906 },
+  { name: "Medellín", lat: 6.2476, lng: -75.5658 },
+].map((m) => ({ ...m, point: project(m.lng, m.lat) }));
+
+const outline = OUTLINE.map(([lng, lat]) => project(lng, lat).join(",")).join(" ");
+const width = (79.2 - 66.6) * SCALE;
+const height = (12.6 + 4.4) * SCALE;
+const meridians = [-78, -74, -70];
+const parallels = [-4, 0, 4, 8, 12];
+---
+
+<svg
+  viewBox={`0 0 ${width} ${height}`}
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+  class="colombia-map h-auto w-full"
+>
+  <g stroke="var(--line)" stroke-width="1" fill="none">
+    {meridians.map((lng) => <path d={`M${project(lng, 12.6)[0]} 0V${height}`} stroke-dasharray="2 5" />)}
+    {parallels.map((lat) => <path d={`M0 ${project(-79.2, lat)[1]}H${width}`} stroke-dasharray="2 5" />)}
+  </g>
+  <polygon points={outline} fill="var(--bg-raised)" stroke="var(--line-strong)" stroke-width="1.5" stroke-linejoin="round" />
+  {
+    MARKERS.map(({ name, point: [x, y] }) => (
+      <g>
+        <circle class="marker-ring" cx={x} cy={y} r="9" fill="none" stroke="var(--accent)" stroke-width="1" />
+        <circle data-marker={name} cx={x} cy={y} r="4.5" fill="var(--accent)" />
+      </g>
+    ))
+  }
+</svg>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .marker-ring {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: marker-ping 2.8s ease-out infinite;
+    }
+  }
+  @keyframes marker-ping {
+    0% { transform: scale(0.6); opacity: 0.9; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
+</style>

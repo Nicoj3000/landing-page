@@ -1,0 +1,78 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Icon from "@/components/Icon.astro";
+import SectionLabel from "@/components/SectionLabel.astro";
+import { getServices } from "@/data/content";
+import { cvPath, mailto } from "@/data/site";
+import type { Locale } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const services = await getServices();
+---
+
+<BaseLayout lang={lang} page="services">
+  <section class="container-page pt-10 sm:pt-16 lg:pt-20">
+    <div class="bg-blueprint pointer-events-none absolute inset-x-0 top-0 -z-10 h-[30rem]" aria-hidden="true"></div>
+    <SectionLabel index="01" label={t("section.services")} />
+    <div class="mt-10 grid gap-10 lg:grid-cols-12 lg:items-end">
+      <h1 class="font-display text-[clamp(2.6rem,0.8rem+7vw,6.5rem)] font-semibold leading-[0.95] tracking-[-0.045em] lg:col-span-7">
+        <span class="block text-muted">{t("services.titleLead")}</span>{" "}
+        <span class="block">{t("services.titleEmphasis")}</span>
+      </h1>
+      <div class="flex flex-col gap-4 text-lg text-muted lg:col-span-5">
+        <p>{t("services.intro1")}</p>
+        <p>{t("services.intro2")}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-page py-section" aria-label={t("nav.services")}>
+    <ol class="border-t border-line-strong">
+      {
+        services.map((service, i) => {
+          const title = service.data.title[lang];
+          return (
+            <li data-service class="reveal service-row group relative border-b border-line">
+              <div class="grid gap-x-8 gap-y-5 py-8 sm:py-10 lg:grid-cols-[5rem_minmax(0,1.1fr)_minmax(0,1.4fr)_auto] lg:items-start">
+                <span data-index class="font-mono text-sm text-accent tabular-nums lg:pt-2">{String(i + 1).padStart(2, "0")}</span>
+                <div class="flex items-start gap-4">
+                  <span class="mt-1 grid size-11 shrink-0 place-items-center border border-line-strong text-fg transition-colors duration-(--duration-base) group-hover:border-accent group-hover:text-accent">
+                    <Icon name={service.data.icon} size={22} />
+                  </span>
+                  <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
+                </div>
+                <p class="max-w-[52ch] text-muted lg:pt-1">{service.data.description[lang]}</p>
+                <a
+                  href={mailto(title)}
+                  aria-label={`${t("services.cta")}: ${title}`}
+                  class="inline-flex min-h-11 items-center gap-2 font-mono text-sm text-fg underline decoration-line-strong underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+                >
+                  {t("services.cta")}
+                  <Icon name="arrow-up-right" size={18} />
+                </a>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ol>
+
+    <div class="mt-12 flex flex-wrap items-center justify-between gap-4">
+      <p class="max-w-[48ch] text-muted">{t("services.intro3")}</p>
+      <a
+        href={cvPath(lang)}
+        download
+        class="inline-flex min-h-12 items-center gap-2 rounded-pill bg-accent px-6 font-mono text-sm text-on-accent transition hover:brightness-110"
+      >
+        <Icon name="download" size={18} />
+        {t("services.ctaCv")}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

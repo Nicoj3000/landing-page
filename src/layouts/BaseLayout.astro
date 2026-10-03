@@ -1,0 +1,105 @@
+---
+import { ClientRouter } from "astro:transitions";
+import { Font } from "astro:assets";
+import "@/styles/global.css";
+import DockNav from "@/components/DockNav.astro";
+import SiteFooter from "@/components/SiteFooter.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
+import Seo from "@/components/Seo.astro";
+import type { Locale } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+import { pageMeta, type PageId } from "@/lib/seo";
+
+interface Props {
+  lang: Locale;
+  /** Page owning the metadata and OG card (status pages pass "home" plus their own title). */
+  page: PageId;
+  title?: string;
+  description?: string;
+  /** Error pages: no canonical/hreflang, robots noindex. */
+  noindex?: boolean;
+}
+
+const { lang, page, noindex = false } = Astro.props;
+const t = useTranslations(lang);
+const meta = pageMeta(lang, page);
+const title = Astro.props.title ?? meta.title;
+const description = Astro.props.description ?? meta.description;
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32 48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <Seo {title} {description} {lang} {path} {page} {noindex} />
+
+    <!--
+      No-flash theme. Runs synchronously before first paint. Preference lives in
+      localStorage "theme" (light | dark | system); the resolved value is written
+      to <html data-theme>. Re-applied after every View Transitions swap, since
+      the router replaces <html> attributes with the incoming document's.
+    -->
+    <script is:inline>
+      (() => {
+        const dark = matchMedia("(prefers-color-scheme: dark)");
+        const readPref = () => {
+          let pref = "system";
+          try {
+            pref = localStorage.getItem("theme") || "system";
+          } catch {
+            /* storage unavailable (private mode): keep the in-memory preference */
+          }
+          return pref === "light" || pref === "dark" ? pref : "system";
+        };
+        const apply = () => {
+          const pref = readPref();
+          const resolved = pref === "system" ? (dark.matches ? "dark" : "light") : pref;
+          const root = document.documentElement;
+          root.dataset.theme = resolved;
+          root.dataset.themePref = pref;
+        };
+        apply();
+        document.addEventListener("astro:after-swap", apply);
+        // Follow OS changes live, but only while the preference is "system".
+        dark.addEventListener("change", () => {
+          if (readPref() === "system") apply();
+        });
+        // Single entry point for the toggle island: persists, then re-resolves.
+        window.__setTheme = (pref) => {
+          try {
+            localStorage.setItem("theme", pref);
+          } catch {
+            /* storage unavailable (private mode): keep the in-memory preference */
+          }
+          apply();
+        };
+      })();
+    </script>
+
+    <!-- Only the critical display + body families are preloaded; mono loads on demand. -->
+    <Font cssVariable="--af-display" preload={[{ subset: "latin", style: "normal" }]} />
+    <Font cssVariable="--af-body" preload={[{ subset: "latin", style: "normal" }]} />
+    <Font cssVariable="--af-mono" />
+
+    <ClientRouter />
+  </head>
+  <body class="font-sans">
+    <a class="skip-link" href="#main">{t("a11y.skipToContent")}</a>
+
+    <SiteHeader {lang} {path} />
+    <DockNav {lang} {path} />
+
+    <main id="main" tabindex="-1" class="relative focus:outline-none" transition:name="page">
+      <slot />
+    </main>
+
+    <SiteFooter {lang} />
+  </body>
+</html>

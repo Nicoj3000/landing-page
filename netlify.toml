@@ -1,0 +1,31 @@
+# Static Astro output (`output: "static"`): no adapter, Netlify just serves `dist/`.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# `build.format: "file"` emits about-me.html etc.; Netlify serves them at /about-me
+# (pretty URLs), and serves /404.html by itself for any other unknown path.
+# The English tree has its own 404 page, so unknown /en/* paths get it with a real 404 status.
+# Real files take precedence (no `force`), so only non-existent assets are rewritten.
+[[redirects]]
+  from = "/en/*"
+  to = "/en/404.html"
+  status = 404
+
+# Hashed build assets (JS, CSS, fonts, optimized images) never change under the same URL.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    X-Frame-Options = "DENY"
+    Content-Security-Policy = "frame-ancestors 'none'"

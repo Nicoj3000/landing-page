@@ -1,0 +1,48 @@
+---
+import type { Locale } from "@/i18n/ui";
+import { getProjects } from "@/data/content";
+import { localizedPath, useTranslations } from "@/i18n/utils";
+import Icon from "./Icon.astro";
+import SectionLabel from "./SectionLabel.astro";
+
+interface Props {
+  lang: Locale;
+  index: string;
+}
+
+const { lang, index } = Astro.props;
+const t = useTranslations(lang);
+const projects = (await getProjects()).slice(0, 3);
+const portfolio = localizedPath("/portfolio", lang);
+---
+
+<section data-featured aria-labelledby="featured-label" class="container-page pb-section">
+  <SectionLabel id="featured-label" {index} label={t("section.featured")} />
+  <h2 class="mt-6 max-w-[18ch] text-4xl">{t("home.featuredTitle")}</h2>
+  <ol class="mt-10 border-t border-line">
+    {
+      projects.map((project, i) => (
+        <li class="reveal border-b border-line">
+          <a
+            href={`${portfolio}#${project.id}`}
+            class="featured-row group grid grid-cols-[auto_1fr_auto] items-baseline gap-x-4 gap-y-2 py-7 sm:gap-x-8 sm:py-9"
+          >
+            <span class="font-mono text-sm text-muted tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+            <span class="font-display text-3xl font-semibold tracking-tight transition-transform duration-(--duration-base) ease-(--ease-out-expo) group-hover:translate-x-2 sm:text-4xl">
+              {project.data.title}
+            </span>
+            <Icon name="arrow-up-right" size={28} class="self-center text-muted transition-colors duration-(--duration-fast) group-hover:text-accent" />
+            <span class="col-start-2 col-end-4 max-w-prose text-muted">{project.data.description[lang]}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+  <a
+    href={portfolio}
+    class="mt-8 inline-flex min-h-11 items-center gap-2 font-mono text-sm text-fg underline decoration-line-strong underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+  >
+    {t("cta.viewAllProjects")}
+    <Icon name="arrow-right" size={18} />
+  </a>
+</section>

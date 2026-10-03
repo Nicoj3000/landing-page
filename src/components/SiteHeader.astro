@@ -1,0 +1,48 @@
+---
+import type { Locale } from "@/i18n/ui";
+import { SITE } from "@/data/site";
+import { localizedPath, useTranslations } from "@/i18n/utils";
+import Icon from "./Icon.astro";
+import LangSwitch from "./LangSwitch.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+
+interface Props {
+  lang: Locale;
+  path: string;
+}
+
+const { lang, path } = Astro.props;
+const t = useTranslations(lang);
+const external = t("a11y.externalLink");
+---
+
+<header class="container-page relative z-40 flex items-center justify-between gap-4 py-4 lg:py-6" transition:name="site-header">
+  <a
+    href={localizedPath("/", lang)}
+    class="group flex min-h-11 items-center gap-3"
+    transition:name="logo"
+  >
+    <span aria-hidden="true" class="grid size-10 place-items-center rounded-md border border-line-strong bg-raised font-display text-lg font-bold tracking-tighter text-accent transition-colors duration-(--duration-base) group-hover:bg-accent group-hover:text-on-accent">NX</span>
+    <span class="sr-only font-mono text-sm leading-tight text-muted sm:not-sr-only">
+      <span class="block text-fg">{t("site.name")}</span>
+      <span class="block">{t("site.role")}</span>
+    </span>
+  </a>
+
+  <div class="flex items-center gap-2 sm:gap-3">
+    <ul class="hidden items-center gap-1 lg:flex" aria-label={t("a11y.socials")}>
+      <li>
+        <a href={SITE.github} target="_blank" rel="noopener noreferrer" aria-label={`GitHub ${external}`} class="grid size-11 place-items-center rounded-pill text-muted transition-colors duration-(--duration-fast) hover:text-fg">
+          <Icon name="github" />
+        </a>
+      </li>
+      <li>
+        <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn ${external}`} class="grid size-11 place-items-center rounded-pill text-muted transition-colors duration-(--duration-fast) hover:text-fg">
+          <Icon name="linkedin" />
+        </a>
+      </li>
+    </ul>
+    <LangSwitch {lang} {path} />
+    <ThemeToggle {lang} />
+  </div>
+</header>

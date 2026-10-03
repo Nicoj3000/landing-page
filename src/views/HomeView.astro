@@ -1,0 +1,135 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CounterStrip from "@/components/CounterStrip.astro";
+import FeaturedProjects from "@/components/FeaturedProjects.astro";
+import Icon from "@/components/Icon.astro";
+import Portrait from "@/components/Portrait.astro";
+import { cvPath, mailto } from "@/data/site";
+import type { Locale } from "@/i18n/ui";
+import { localizedPath, useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const roles = [t("hero.verb1"), t("hero.verb2"), t("hero.verb3"), t("hero.verb4")];
+
+const btn =
+  "inline-flex min-h-12 items-center justify-center gap-2 rounded-pill px-6 font-mono text-sm transition-[background-color,color,border-color,transform] duration-(--duration-base) active:translate-y-px";
+---
+
+<BaseLayout lang={lang} page="home">
+  <section data-hero class="hero relative isolate overflow-clip">
+    <!-- CSS fallback pattern; the canvas (data-dot-field) replaces it once the idle script is ready. -->
+    <div aria-hidden="true" class="hero-pattern absolute inset-0 -z-20"></div>
+    <canvas data-dot-field aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 size-full"></canvas>
+
+    <div class="container-page pb-section pt-10 sm:pt-16 lg:pt-24">
+      <p class="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-sm text-muted">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>{t("location.availableRemote")}</span>
+      </p>
+
+      <h1 class="mt-8 font-display text-hero font-semibold leading-[0.95] tracking-[-0.045em]">
+        <span class="block">{t("hero.lead")}</span>
+        <span class="hero-roles mt-[0.08em] block text-accent">
+          {
+            roles.map((role, i) => (
+              <span data-role class="hero-role" style={`--i:${i}`} aria-hidden={i > 0 ? "true" : undefined}>
+                {role}
+              </span>
+            ))
+          }
+        </span>
+      </h1>
+
+      <div class="mt-12 grid gap-12 lg:mt-16 lg:grid-cols-12 lg:items-start">
+        <div class="lg:col-span-7">
+          <p class="max-w-[46ch] text-lg text-muted sm:text-xl">{t("hero.summary")}</p>
+          <div class="mt-10 flex flex-wrap items-center gap-3">
+            <a href={cvPath(lang)} download class={`${btn} bg-accent text-on-accent hover:brightness-110`}>
+              <Icon name="download" size={18} />
+              {t("cta.downloadCv")}
+            </a>
+            <a href={mailto()} class={`${btn} border border-line-strong text-fg hover:border-accent hover:text-accent`}>
+              <Icon name="mail" size={18} />
+              {t("cta.contact")}
+            </a>
+            <a
+              href={localizedPath("/portfolio", lang)}
+              class="inline-flex min-h-12 items-center gap-2 px-3 font-mono text-sm text-fg underline decoration-line-strong underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+            >
+              {t("hero.ctaWork")}
+              <Icon name="arrow-right" size={18} />
+            </a>
+          </div>
+        </div>
+        <div class="lg:col-span-4 lg:col-start-9">
+          <Portrait {lang} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CounterStrip {lang} index="01" />
+  <FeaturedProjects {lang} index="02" />
+</BaseLayout>
+
+<script>
+  import "@/scripts/hero-field";
+</script>
+
+<style is:global>
+  /* Dot grid fallback (also the pre-idle state of the canvas), faded toward the edges. */
+  .hero-pattern {
+    background-image: radial-gradient(circle, var(--dot) 1.25px, transparent 1.75px);
+    background-size: 28px 28px;
+    -webkit-mask-image: radial-gradient(ellipse 90% 80% at 70% 30%, #000 20%, transparent 80%);
+    mask-image: radial-gradient(ellipse 90% 80% at 70% 30%, #000 20%, transparent 80%);
+  }
+  .hero:has(canvas[data-ready]) .hero-pattern {
+    opacity: 0;
+  }
+
+  /* Rotating role. Static (first role only) without JS and under reduced motion;
+     animated only once the theme script has run (html[data-theme]) AND motion is allowed. */
+  .hero-roles {
+    display: grid;
+  }
+  .hero-role {
+    grid-area: 1 / 1;
+  }
+  .hero-role:not(:first-child) {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html[data-theme] .hero-role:not(:first-child) {
+      display: block;
+    }
+    html[data-theme] .hero-role {
+      opacity: 0;
+      animation: hero-role-cycle 12s var(--ease-standard) infinite backwards;
+      animation-delay: calc(var(--i) * 3s);
+    }
+  }
+
+  @keyframes hero-role-cycle {
+    0% {
+      opacity: 0;
+      translate: 0 0.3em;
+    }
+    3%,
+    22% {
+      opacity: 1;
+      translate: 0 0;
+    }
+    25%,
+    100% {
+      opacity: 0;
+      translate: 0 -0.3em;
+    }
+  }
+</style>

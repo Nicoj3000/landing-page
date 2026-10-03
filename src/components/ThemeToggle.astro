@@ -1,0 +1,49 @@
+---
+import type { Locale } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+import Icon from "./Icon.astro";
+
+interface Props {
+  lang: Locale;
+}
+
+const t = useTranslations(Astro.props.lang);
+---
+
+<!--
+  Cycles system -> light -> dark -> system. All three icons are in the markup;
+  CSS shows the one matching <html data-theme-pref>. The behavior lives in
+  src/scripts/theme-toggle.ts (progressive enhancement: without JS the button
+  is inert but harmless; the theme still follows the OS).
+-->
+<button
+  type="button"
+  data-theme-toggle
+  data-label={t("theme.toggle")}
+  data-state-light={t("theme.light")}
+  data-state-dark={t("theme.dark")}
+  data-state-system={t("theme.system")}
+  aria-label={t("theme.toggle")}
+  class="theme-toggle grid size-11 place-items-center rounded-pill border border-line text-fg transition-colors duration-(--duration-fast) hover:border-line-strong hover:bg-raised"
+>
+  <Icon name="sun" class="theme-icon theme-icon-light" />
+  <Icon name="moon" class="theme-icon theme-icon-dark" />
+  <Icon name="monitor" class="theme-icon theme-icon-system" />
+</button>
+
+<script>
+  import "@/scripts/theme-toggle";
+</script>
+
+<style is:global>
+  .theme-toggle > .theme-icon {
+    grid-area: 1 / 1;
+    display: none;
+  }
+  html:not([data-theme-pref]) .theme-icon-system,
+  html[data-theme-pref="system"] .theme-icon-system,
+  html[data-theme-pref="light"] .theme-icon-light,
+  html[data-theme-pref="dark"] .theme-icon-dark {
+    display: block;
+  }
+</style>

@@ -1,0 +1,19 @@
+{
+  "order": 3,
+  "title": {
+    "es": "Desarrollador Fullstack",
+    "en": "Fullstack Developer"
+  },
+  "subtitle": {
+    "es": "Experiencia Profesional Previa",
+    "en": "Previous Professional Experience"
+  },
+  "description": {
+    "es": "Desarrollé plataformas web y soluciones de automatización para organizaciones como Senica SAS e Hidroconsultora, usando React, Next.js, Node.js, TypeScript, Python, SQL y MongoDB.",
+    "en": "Built web platforms and automation solutions for organizations such as Senica SAS and Hidroconsultora, using React, Next.js, Node.js, TypeScript, Python, SQL, and MongoDB."
+  },
+  "date": {
+    "es": "2023 - 2025",
+    "en": "2023 - 2025"
+  }
+}

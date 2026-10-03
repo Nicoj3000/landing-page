@@ -1,0 +1,75 @@
+---
+import { getImage } from "astro:assets";
+import photo from "@/assets/images/Foto-CV.png";
+import { SITE } from "@/data/site";
+import { SITE_ORIGIN } from "@/data/site-config";
+import { getSkills } from "@/data/content";
+import { DEFAULT_LOCALE, LOCALES, type Locale } from "@/i18n/ui";
+import { localizedPath, stripLocale, useTranslations } from "@/i18n/utils";
+import { buildJsonLd, serializeJsonLd } from "@/lib/json-ld";
+import { OG_LOCALE, OG_SIZE, ogAlt, ogImagePath, type PageId } from "@/lib/seo";
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Locale;
+  /** Current pathname, with or without locale prefix. */
+  path: string;
+  /** Page whose OG card is advertised. */
+  page: PageId;
+  noindex?: boolean;
+}
+
+const { title, description, lang, path, page, noindex = false } = Astro.props;
+const t = useTranslations(lang);
+const site = Astro.site ?? new URL(SITE_ORIGIN);
+const neutralPath = stripLocale(path);
+const absolute = (locale: Locale) => new URL(localizedPath(neutralPath, locale), site).href;
+const url = absolute(lang);
+const image = new URL(ogImagePath(lang, page), site).href;
+const alternateLocales = LOCALES.filter((locale) => locale !== lang);
+
+const portrait = await getImage({ src: photo, width: 1080, format: "jpg" });
+const skills = (await getSkills()).map((skill) => skill.data.name);
+const jsonLd = serializeJsonLd(
+  buildJsonLd({
+    origin: site.origin,
+    lang,
+    name: t("site.name"),
+    jobTitle: t("site.role"),
+    description: t("site.description"),
+    image: new URL(portrait.src, site).href,
+    knowsAbout: skills,
+  }),
+);
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="theme-color" content="#F4F2EC" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0A0C0F" media="(prefers-color-scheme: dark)" />
+{noindex && <meta name="robots" content="noindex" />}
+{!noindex && <link rel="canonical" href={url} />}
+{!noindex && LOCALES.map((locale) => <link rel="alternate" hreflang={locale} href={absolute(locale)} />)}
+{!noindex && <link rel="alternate" hreflang="x-default" href={absolute(DEFAULT_LOCALE)} />}
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content={SITE.brand} />
+<meta property="og:locale" content={OG_LOCALE[lang]} />
+{alternateLocales.map((locale) => <meta property="og:locale:alternate" content={OG_LOCALE[locale]} />)}
+<meta property="og:image" content={image} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content={String(OG_SIZE.width)} />
+<meta property="og:image:height" content={String(OG_SIZE.height)} />
+<meta property="og:image:alt" content={ogAlt(lang, page)} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+<meta name="twitter:image:alt" content={ogAlt(lang, page)} />
+
+<script type="application/ld+json" is:inline set:html={jsonLd} />
