@@ -31,6 +31,34 @@ test.describe("native cross-document navigation", () => {
     await expect(page.locator('link[rel="prefetch"][href$="/about-me"]')).toHaveCount(1, { timeout: 5000 });
   });
 
+  test("the next page is requested over the network before any hover or tap", async ({ page }) => {
+    // Engine-independent: whichever mechanism prefetches (link tag or speculation rules),
+    // the about-me document must hit the network from a page that was only loaded.
+    const request = page.waitForRequest((req) => new URL(req.url()).pathname === "/about-me", { timeout: 5000 });
+    await page.goto("/");
+    expect((await request).url()).toMatch(/\/about-me$/);
+  });
+
+  test("a back navigation shows the theme chosen on the page we left (fresh load or bfcache)", async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "dark" });
+    await page.goto("/");
+    await expect(page.locator("html")).toHaveAttribute("data-theme-pref", "system");
+
+    await page.goto("/about-me");
+    const toggle = page.locator("[data-theme-toggle]:visible").first();
+    await toggle.click();
+    await expect(page.locator("html")).toHaveAttribute("data-theme-pref", "light");
+
+    // Chromium may or may not restore from bfcache here; the contract holds either way:
+    // pageshow(persisted) re-syncs the restored page, a fresh load reads storage.
+    await page.goBack();
+    await expect(page).toHaveURL(/\/$/);
+    const html = page.locator("html");
+    await expect(html).toHaveAttribute("data-theme-pref", "light");
+    await expect(html).toHaveAttribute("data-theme", "light");
+    await expect(page.locator("[data-theme-toggle]:visible").first()).toHaveAttribute("aria-label", /claro/i);
+  });
+
   test("theme toggle and hero still work after a navigation", async ({ page, isMobile }) => {
     await page.goto("/about-me");
     await page.getByRole("navigation", { name: "Navegación principal" }).getByRole("link", { name: "Inicio" }).click();
