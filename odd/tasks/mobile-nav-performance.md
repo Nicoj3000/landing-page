@@ -1,7 +1,7 @@
 # Feature: Mobile navigation performance
 
 - **Branch:** `perf/mobile-navigation`
-- **Status:** in progress
+- **Status:** implementation complete; pending user decision on delivery (push + PR + deploy-preview Lighthouse)
 - **TDD:** strict, enabled (source: user global CLAUDE.md "Strict TDD Mode: enabled"); runner: Playwright (`npx playwright test`, dev server via `webServer`) + `astro check` + `npm run lint`
 - **Delivery strategy:** `ask-on-risk`; forecast ~250–350 authored changed lines → single PR to `main`
 - **Build policy:** never build after each change (user rule); `npm run build` only for the final metrics task (T6)
@@ -45,11 +45,17 @@ Option A: remove `<ClientRouter />` and use native cross-document View Transitio
   - `transition:name` still emits `view-transition-name` without ClientRouter (verified by spec + docs).
   - Review: assess `under_budget` (medium, 172 lines since `65f846e`), pending in slice.
 - [x] T1b — Pre-existing `npm run check` failure on `main` (2 × TS2532 in `tests/e2e/heading-order.spec.ts:15`). Fixed with strict-safe iteration. Route: inline (one mechanical file). Commit `7ac1891`. Evidence: check 0 errors, heading-order 8/8, lint clean.
-- [ ] T2 — Shorten page transition choreography for snappy navigation (target ≤ 250 ms total), keep reduced-motion off. Route: delegated writer (same as T1 if scope stays small) or inline.
-- [ ] T3 — Mobile paint costs: no `backdrop-blur` below `lg` (opaque surface instead); skip hero dot field on `(pointer: coarse)`; `.status-dot` pulse via `transform`/`opacity` instead of `box-shadow`. Route: delegated writer.
-- [ ] T4 — LCP: `fetchpriority="high"` on the above-the-fold portrait. Route: inline (one mechanical file).
-- [ ] T5 — Add a mobile Playwright project (e.g. Pixel 7) so nav/layout specs run under mobile emulation. Route: inline or delegated with T1.
-- [ ] T6 — Final metrics: lint, check, full Playwright, build, Lighthouse mobile on the Netlify deploy preview vs baseline. Route: inline bounded action.
+- [x] T2 — Shorten page transition choreography for snappy navigation (target ≤ 250 ms total), keep reduced-motion off. Route: delegated writer. Commit `23ce8fd`. RED: budget spec `Expected <= 250, Received 700` on both projects. GREEN: dedicated `--duration-page-out: 100ms` / `--duration-page-in: 150ms`, translate -4px/6px; full suite 442 passed / 21 skipped.
+- [x] T3 — Mobile paint costs: no `backdrop-blur` below `lg` (opaque surface instead); skip hero dot field on `(pointer: coarse)`; `.status-dot` pulse via `transform`/`opacity` instead of `box-shadow`. Route: delegated writer. Commit `c6c006a`. RED: 3/4 `tests/e2e/mobile-paint.spec.ts` failing per project (blur(12px), canvas data-ready, boxShadow keyframes). GREEN: 447 passed / 24 skipped (3 desktop-only canvas specs skipped on mobile with reason).
+- [x] T4 — LCP: `fetchpriority="high"` on the above-the-fold portrait. Route: inline (one mechanical file). Premise verified: Lighthouse LCP element is the portrait on home and about-me. Commit `35437d0`. RED: `tests/e2e/lcp-image.spec.ts` `Expected "high", Received ""`; GREEN 8/8 (re-confirmed RED by stashing the fix).
+- [x] T5 — Add a mobile Playwright project (e.g. Pixel 7) so nav/layout specs run under mobile emulation. Route: delegated writer. Commit `ba1fd4e`. `mobile-chrome` (Pixel 7) project, e2e only; 440 passed / 21 skipped.
+- [x] T1c — Review follow-ups (approved native review of the plan+T1+T1b slice, lineage review-77830a15447a43bd): bfcache theme spec + network-based prefetch assertion. Route: delegated writer. Commit `486fb01`. Note: headless Chromium does not restore from bfcache, so the `pageshow`/`persisted` branch itself stays untested (spec covers the fresh-load path).
+- [~] T6 — Final metrics: lint, check, full Playwright, build, Lighthouse mobile on the Netlify deploy preview vs baseline. Route: inline bounded action. Local part done; deploy-preview part pending (needs push, user decision).
+  - lint ok; check 0 errors; e2e 459 passed / 24 skipped / 0 failed (desktop + mobile); test:build 25/25; build 12 pages.
+  - Shipped JS: one 4 KB external module (`page.*.js`); no ClientRouter in `dist` (baseline shipped a 16 KB ClientRouter bundle).
+  - Lighthouse mobile, local `astro preview`, median of 3, baseline `65f846e` vs branch: home perf 99/99, LCP 2255/2254 ms, TBT 0/0; about-me perf 98/98, LCP 2404/2406 ms. Home main-thread script bootup 820 → 253 ms.
+  - Honest reading: page-load metrics were already near the ceiling locally; the production TBT of 300 ms did not reproduce locally (likely network/CPU variance). The user-facing win is navigation: no router JS, prefetch without hover on touch, 700 → 250 ms page transition, no blur/canvas/box-shadow repaint on mobile. Lighthouse does not measure page-to-page navigation.
+  - Remaining LCP cost is element render delay (~650-760 ms) on the portrait; candidate follow-up.
 
 ## Acceptance criteria
 
@@ -65,8 +71,10 @@ Option A: remove `<ClientRouter />` and use native cross-document View Transitio
 ## Progress
 
 - 2026-10-03: exploration + baseline done; option A chosen; document created.
-- 2026-10-03: T1 and T1b done. Execution order for the rest: T5 (mobile project first, so T2/T3 are tested on mobile), T2, T3, then T4 inline, then T6.
+- 2026-10-03: T1 and T1b done; native review approved (plan+T1+T1b). Execution order for the rest: T5 (mobile project first, so T2/T3 are tested on mobile), T2, T3, then T4 inline, then T6.
+
+- 2026-10-03: T5, T2, T3, T1c, T4 done; T6 local metrics done. Slice since `4c11a1b` assessed `under_budget` (medium, 209 lines), pending.
 
 ## Next step
 
-T5, T2, T3 by one delegated writer, one commit per task.
+User decision: push branch + open PR to get the Netlify deploy preview, run Lighthouse there, then merge. Optional follow-up: portrait render delay.
