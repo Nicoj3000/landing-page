@@ -113,6 +113,9 @@
   --duration-base: 220ms;
   --duration-slow: 480ms;
   --duration-theme: 600ms;
+  /* Page transition: old fades out, then new fades in; keep the sum <= 250ms. */
+  --duration-page-out: 100ms;
+  --duration-page-in: 150ms;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
@@ -246,24 +249,24 @@
   }
 
   ::view-transition-old(page) {
-    animation: vt-page-out var(--duration-base) var(--ease-standard) both;
+    animation: vt-page-out var(--duration-page-out) var(--ease-standard) both;
   }
   ::view-transition-new(page) {
-    animation: vt-page-in var(--duration-slow) var(--ease-out-expo) both;
+    animation: vt-page-in var(--duration-page-in) var(--ease-out-expo) both;
   }
 }
 
 @keyframes vt-page-out {
   to {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-4px);
   }
 }
 
 @keyframes vt-page-in {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(6px);
   }
 }
 
