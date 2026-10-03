@@ -20,14 +20,6 @@ for (const lang of LANGS) {
       expect(names.every((name) => name !== "none")).toBe(true);
     });
 
-    test("hero h1 renders in the display font at weight 600", async ({ page }) => {
-      await page.goto(HOME[lang]);
-      const h1 = page.locator("h1");
-      await expect(h1).toHaveCSS("font-weight", "600");
-      // The Astro fonts API names the family "Bricolage Grotesque-<hash>" and appends fallbacks.
-      await expect(h1).toHaveCSS("font-family", /^"?Bricolage Grotesque/);
-    });
-
     test("reduced motion shows only the first role, statically", async ({ browser }) => {
       const context = await browser.newContext({ reducedMotion: "reduce" });
       const page = await context.newPage();

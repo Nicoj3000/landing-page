@@ -84,7 +84,7 @@ const path = Astro.url.pathname;
     </script>
 
     <!-- Only the critical display + body families are preloaded; mono loads on demand. -->
-    <Font cssVariable="--af-display" preload={[{ subset: "latin", weight: "600", style: "normal" }]} />
+    <Font cssVariable="--af-display" preload={[{ subset: "latin", style: "normal" }]} />
     <Font cssVariable="--af-body" preload={[{ subset: "latin", style: "normal" }]} />
     <Font cssVariable="--af-mono" />
   </head>
