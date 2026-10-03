@@ -1,0 +1,66 @@
+# Feature: Mobile navigation performance
+
+- **Branch:** `perf/mobile-navigation`
+- **Status:** in progress
+- **TDD:** strict, enabled (source: user global CLAUDE.md "Strict TDD Mode: enabled"); runner: Playwright (`npx playwright test`, dev server via `webServer`) + `astro check` + `npm run lint`
+- **Delivery strategy:** `ask-on-risk`; forecast ~250–350 authored changed lines → single PR to `main`
+- **Build policy:** never build after each change (user rule); `npm run build` only for the final metrics task (T6)
+
+## Objective
+
+Make navigation on mobile feel instant and remove avoidable main-thread and paint cost, while keeping the visual design, accessibility (100) and i18n behavior.
+
+## Problem / Why
+
+Baseline, Lighthouse mobile against production (2026-10-03):
+
+| Page | Perf | FCP | LCP | TBT | Speed Index |
+|---|---|---|---|---|---|
+| `/` | 90 | 1.4 s | 2.3 s | 300 ms | 4.1 s |
+| `/about-me` | 98 | 1.3 s | 2.2 s | 0 ms | 2.8 s |
+
+- `<ClientRouter />` (`src/layouts/BaseLayout.astro`) is the most expensive script on home (~633 ms bootup on mobile).
+- Prefetch defaults to the `hover` strategy under ClientRouter, so on touch devices the next page is only fetched on tap.
+- Every navigation runs ~700 ms of page choreography (`vt-page-out` 220 ms + `vt-page-in` 480 ms, `src/styles/global.css`).
+- Paint costs on mobile: `backdrop-blur-md` on the fixed dock (`src/components/DockNav.astro`), hero dot-field canvas drawn right after each navigation to home (`src/scripts/hero-field.ts`), infinite `box-shadow` pulse on `.status-dot`.
+
+## Decision (user, 2026-10-03)
+
+Option A: remove `<ClientRouter />` and use native cross-document View Transitions (`@view-transition { navigation: auto; }`) with zero JS. Accepted tradeoffs: no page animation in browsers without cross-document VT (e.g. Firefox navigates normally); the header is no longer DOM-persisted between pages (still visually matched via `view-transition-name`).
+
+## Scope / Constraints
+
+- Static output on Netlify stays; no new dependencies.
+- Keep `transition:name` / view-transition names for header, logo and page.
+- Keep `prefers-reduced-motion` behavior (no animations).
+- Keep theme no-flash behavior and the theme toggle circle reveal (same-document `startViewTransition`).
+- Keep the script size budgets (`tests/unit/script-budget.spec.ts`).
+- WCAG 2.2 AA, 360px layout, ES/EN parity.
+
+## Tasks
+
+- [ ] T1 — Replace ClientRouter with native cross-document View Transitions; migrate `astro:page-load` / `astro:after-swap` / `astro:before-swap` listeners to native lifecycle (DOMContentLoaded / `pageshow` / `pagereveal`); enable prefetch with `prefetchAll` + `viewport` strategy; update tests that assert ClientRouter behavior. Route: delegated writer (2+ non-trivial files).
+- [ ] T2 — Shorten page transition choreography for snappy navigation (target ≤ 250 ms total), keep reduced-motion off. Route: delegated writer (same as T1 if scope stays small) or inline.
+- [ ] T3 — Mobile paint costs: no `backdrop-blur` below `lg` (opaque surface instead); skip hero dot field on `(pointer: coarse)`; `.status-dot` pulse via `transform`/`opacity` instead of `box-shadow`. Route: delegated writer.
+- [ ] T4 — LCP: `fetchpriority="high"` on the above-the-fold portrait. Route: inline (one mechanical file).
+- [ ] T5 — Add a mobile Playwright project (e.g. Pixel 7) so nav/layout specs run under mobile emulation. Route: inline or delegated with T1.
+- [ ] T6 — Final metrics: lint, check, full Playwright, build, Lighthouse mobile on the Netlify deploy preview vs baseline. Route: inline bounded action.
+
+## Acceptance criteria
+
+- No ClientRouter script shipped; navigation between pages works with plain document loads and animates via native VT where supported.
+- Internal links are prefetched without a hover (viewport strategy).
+- Home Lighthouse mobile TBT < 100 ms and Performance ≥ 95 on the deploy preview; accessibility stays 100.
+- All existing Playwright specs (updated where they asserted ClientRouter internals) pass on desktop and mobile projects.
+
+## Applicable checks
+
+`npm run lint`, `npm run check`, `npx playwright test`, `npm run test:build` (T6), Lighthouse mobile (T6).
+
+## Progress
+
+- 2026-10-03: exploration + baseline done; option A chosen; document created.
+
+## Next step
+
+T1.
