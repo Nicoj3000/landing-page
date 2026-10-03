@@ -49,7 +49,7 @@ const btn =
         <div class="lg:col-span-7">
           <p class="max-w-[46ch] text-lg text-muted sm:text-xl">{t("hero.summary")}</p>
           <div class="mt-10 flex flex-wrap items-center gap-3">
-            <a href={cvPath(lang)} download class={`${btn} bg-accent text-on-accent hover:brightness-110`}>
+            <a href={cvPath(lang)} download data-astro-prefetch="false" class={`${btn} bg-accent text-on-accent hover:brightness-110`}>
               <Icon name="download" size={18} />
               {t("cta.downloadCv")}
             </a>
