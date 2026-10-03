@@ -15,7 +15,16 @@ export default defineConfig({
     baseURL: `http://localhost:${PORT}`,
     trace: "on-first-retry",
   },
-  projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
+  projects: [
+    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
+    {
+      // Touch + coarse pointer + small viewport. Only the e2e specs: unit/build
+      // specs do not depend on the device, so they run once (chromium project).
+      name: "mobile-chrome",
+      testMatch: "e2e/**/*.spec.ts",
+      use: { ...devices["Pixel 7"] },
+    },
+  ],
   webServer: {
     // --ignore-lock is REQUIRED: without a TTY, Astro 7's `astro dev` detaches into a
     // background daemon and exits 0, so Playwright would see its server process die.
