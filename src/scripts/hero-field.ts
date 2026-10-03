@@ -13,7 +13,10 @@ const init = () => {
   const ctx = canvas?.getContext("2d");
   if (!canvas || !ctx || canvas.dataset.ready || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   // Touch devices never get the pointer effect: skip the canvas (CSS hides it, the static pattern stays).
-  if (matchMedia("(pointer: coarse)").matches) return;
+  if (matchMedia("(pointer: coarse)").matches) {
+    canvas.dataset.skipped = "coarse-pointer";
+    return;
+  }
 
   let w = 0;
   let h = 0;

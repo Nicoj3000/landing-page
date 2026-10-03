@@ -59,6 +59,22 @@ test.describe("native cross-document navigation", () => {
     await expect(page.locator("[data-theme-toggle]:visible").first()).toHaveAttribute("aria-label", /claro/i);
   });
 
+  test("a bfcache restore (pageshow persisted) re-syncs a theme changed elsewhere", async ({ page }) => {
+    // Headless Chromium does not restore from bfcache, so simulate the restore event itself.
+    await page.goto("/");
+    await expect(page.locator("html")).toHaveAttribute("data-theme-pref", "system");
+
+    await page.evaluate(() => {
+      localStorage.setItem("theme", "light");
+      dispatchEvent(new PageTransitionEvent("pageshow", { persisted: true }));
+    });
+
+    const html = page.locator("html");
+    await expect(html).toHaveAttribute("data-theme-pref", "light");
+    await expect(html).toHaveAttribute("data-theme", "light");
+    await expect(page.locator("[data-theme-toggle]:visible").first()).toHaveAttribute("aria-label", /claro/i);
+  });
+
   test("theme toggle and hero still work after a navigation", async ({ page, isMobile }) => {
     await page.goto("/about-me");
     await page.getByRole("navigation", { name: "Navegación principal" }).getByRole("link", { name: "Inicio" }).click();

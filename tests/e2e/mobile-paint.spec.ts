@@ -27,8 +27,9 @@ test.describe("hero dot field on touch devices", () => {
     const page = await context.newPage();
     await page.goto("/");
     expect(await page.evaluate(() => matchMedia("(pointer: coarse)").matches)).toBe(true);
-    await page.waitForTimeout(1800); // past the idle-callback timeout
     const canvas = page.locator("canvas[data-dot-field]");
+    // Positive signal that init ran and bailed out, instead of waiting a fixed time.
+    await expect(canvas).toHaveAttribute("data-skipped", "coarse-pointer");
     await expect(canvas).not.toHaveAttribute("data-ready", /.*/);
     await expect(canvas).toBeHidden();
     await expect(page.locator(".hero-pattern")).toBeVisible();
