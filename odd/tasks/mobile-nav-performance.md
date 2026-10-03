@@ -39,7 +39,12 @@ Option A: remove `<ClientRouter />` and use native cross-document View Transitio
 
 ## Tasks
 
-- [ ] T1 — Replace ClientRouter with native cross-document View Transitions; migrate `astro:page-load` / `astro:after-swap` / `astro:before-swap` listeners to native lifecycle (DOMContentLoaded / `pageshow` / `pagereveal`); enable prefetch with `prefetchAll` + `viewport` strategy; update tests that assert ClientRouter behavior. Route: delegated writer (2+ non-trivial files).
+- [x] T1 — Replace ClientRouter with native cross-document View Transitions; migrate `astro:page-load` / `astro:after-swap` / `astro:before-swap` listeners to native lifecycle (DOMContentLoaded / `pageshow` / `pagereveal`); enable prefetch with `prefetchAll` + `viewport` strategy; update tests that assert ClientRouter behavior. Route: delegated writer (2+ non-trivial files). Commit `28c74b1`.
+  - RED: `tests/e2e/native-navigation.spec.ts` 3/5 failed on old code (router meta present, no `@view-transition`, no prefetch without hover).
+  - GREEN: native-navigation 5/5; full Playwright 238 passed / 21 skipped / 0 failed; lint clean. Parent spot check: 17/17 nav, theme, language specs.
+  - `transition:name` still emits `view-transition-name` without ClientRouter (verified by spec + docs).
+  - Review: assess `under_budget` (medium, 172 lines since `65f846e`), pending in slice.
+- [x] T1b — Pre-existing `npm run check` failure on `main` (2 × TS2532 in `tests/e2e/heading-order.spec.ts:15`). Fixed with strict-safe iteration. Route: inline (one mechanical file). Commit `7ac1891`. Evidence: check 0 errors, heading-order 8/8, lint clean.
 - [ ] T2 — Shorten page transition choreography for snappy navigation (target ≤ 250 ms total), keep reduced-motion off. Route: delegated writer (same as T1 if scope stays small) or inline.
 - [ ] T3 — Mobile paint costs: no `backdrop-blur` below `lg` (opaque surface instead); skip hero dot field on `(pointer: coarse)`; `.status-dot` pulse via `transform`/`opacity` instead of `box-shadow`. Route: delegated writer.
 - [ ] T4 — LCP: `fetchpriority="high"` on the above-the-fold portrait. Route: inline (one mechanical file).
@@ -60,7 +65,8 @@ Option A: remove `<ClientRouter />` and use native cross-document View Transitio
 ## Progress
 
 - 2026-10-03: exploration + baseline done; option A chosen; document created.
+- 2026-10-03: T1 and T1b done. Execution order for the rest: T5 (mobile project first, so T2/T3 are tested on mobile), T2, T3, then T4 inline, then T6.
 
 ## Next step
 
-T1.
+T5, T2, T3 by one delegated writer, one commit per task.
