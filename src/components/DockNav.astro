@@ -26,12 +26,14 @@ const ICON_FOR: Record<string, IconName> = {
   One landmark, two presentations: a bottom tab bar below `lg` (thumb reach,
   four equal 44px+ targets, labels wrap instead of overflowing at 360px) and a
   floating top pill from `lg` up, centered between the logo and the actions.
+  The bar is opaque on mobile: a backdrop blur over scrolling content is a
+  paint cost on touch devices; the translucent blurred surface is desktop-only.
 -->
 <nav
   aria-label={t("nav.label")}
   class="dock fixed inset-x-3 bottom-3 z-50 mx-auto max-w-md lg:inset-x-0 lg:bottom-auto lg:top-5 lg:w-fit lg:max-w-none"
 >
-  <ul class="grid grid-cols-4 gap-1 rounded-lg border border-line-strong bg-raised/90 p-1.5 shadow-dock backdrop-blur-md lg:flex lg:items-center lg:rounded-pill">
+  <ul class="grid grid-cols-4 gap-1 rounded-lg border border-line-strong bg-raised p-1.5 shadow-dock lg:flex lg:items-center lg:rounded-pill lg:bg-raised/90 lg:backdrop-blur-md">
     {
       NAV_ITEMS.map(({ href, key }) => (
         <li>

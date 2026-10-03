@@ -11,9 +11,10 @@ for (const route of ROUTES) {
         .evaluateAll((nodes) => nodes.map((node) => Number(node.tagName.slice(1))));
 
       expect(levels[0]).toBe(1);
-      for (let i = 1; i < levels.length; i++) {
-        expect(levels[i] - levels[i - 1], `jump to h${levels[i]} after h${levels[i - 1]}`).toBeLessThanOrEqual(1);
-      }
+      levels.slice(1).forEach((level, i) => {
+        const previous = levels[i] ?? 0;
+        expect(level - previous, `jump to h${level} after h${previous}`).toBeLessThanOrEqual(1);
+      });
     });
   }
 }

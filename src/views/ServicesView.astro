@@ -68,6 +68,7 @@ const services = await getServices();
       <a
         href={cvPath(lang)}
         download
+        data-astro-prefetch="false"
         class="inline-flex min-h-12 items-center gap-2 rounded-pill bg-accent px-6 font-mono text-sm text-on-accent transition hover:brightness-110"
       >
         <Icon name="download" size={18} />

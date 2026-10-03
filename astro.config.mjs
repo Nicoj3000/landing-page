@@ -16,6 +16,8 @@ export default defineConfig({
     locales: ["es", "en"],
     routing: { prefixDefaultLocale: false },
   },
+  // Plain document loads (no client router): warm the next page as links enter the viewport.
+  prefetch: { prefetchAll: true, defaultStrategy: "viewport" },
   // The dev toolbar overlaps the bottom dock and intercepts pointer events in e2e.
   devToolbar: { enabled: false },
   // Status pages are noindex; keep them out of the sitemap too.

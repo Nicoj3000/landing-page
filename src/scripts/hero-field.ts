@@ -1,7 +1,8 @@
 /**
  * Pointer-reactive dot field for the hero. Vanilla canvas, loaded at idle:
  * never touches LCP, pauses off-screen / in background tabs, DPR capped at 2,
- * and does nothing at all under prefers-reduced-motion (CSS dot pattern stays).
+ * and does nothing at all under prefers-reduced-motion or on coarse pointers (the CSS dot
+ * pattern stays).
  * The frame loop only runs while the pointer is moving the field.
  */
 const GAP = 26;
@@ -11,9 +12,12 @@ const init = () => {
   const canvas = document.querySelector<HTMLCanvasElement>("canvas[data-dot-field]");
   const ctx = canvas?.getContext("2d");
   if (!canvas || !ctx || canvas.dataset.ready || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  // Touch devices never get the pointer effect: skip the canvas (CSS hides it, the static pattern stays).
+  if (matchMedia("(pointer: coarse)").matches) {
+    canvas.dataset.skipped = "coarse-pointer";
+    return;
+  }
 
-  const abort = new AbortController();
-  const { signal } = abort;
   let w = 0;
   let h = 0;
   let tx = -1e4;
@@ -88,7 +92,7 @@ const init = () => {
       ty = e.clientY - r.top;
       wake();
     },
-    { signal, passive: true },
+    { passive: true },
   );
   document.documentElement.addEventListener(
     "pointerleave",
@@ -96,9 +100,8 @@ const init = () => {
       tx = ty = -1e4;
       wake();
     },
-    { signal },
   );
-  document.addEventListener("visibilitychange", publish, { signal });
+  document.addEventListener("visibilitychange", publish);
 
   const io = new IntersectionObserver(([entry]) => {
     onScreen = !!entry?.isIntersecting;
@@ -111,19 +114,6 @@ const init = () => {
   ro.observe(canvas);
   theme.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
-  // ClientRouter swaps the page: release everything tied to this canvas.
-  document.addEventListener(
-    "astro:before-swap",
-    () => {
-      abort.abort();
-      io.disconnect();
-      ro.disconnect();
-      theme.disconnect();
-      cancelAnimationFrame(raf);
-    },
-    { once: true },
-  );
-
   resize();
   publish();
   canvas.dataset.ready = "true";
@@ -134,6 +124,7 @@ const schedule = () => {
   else setTimeout(init, 200);
 };
 
-document.addEventListener("astro:page-load", schedule);
+// Module scripts are deferred: the DOM is parsed, and each page is a fresh document.
+schedule();
 
 export {};

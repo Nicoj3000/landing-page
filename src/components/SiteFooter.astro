@@ -48,7 +48,7 @@ const link =
     </div>
     <div class={cell}>
       <p class="label-mono">{t("footer.resume")}</p>
-      <a href={cvPath(lang)} download class={link}>
+      <a href={cvPath(lang)} download data-astro-prefetch="false" class={link}>
         <Icon name="download" size={18} />{t("cta.downloadCv")}
       </a>
     </div>

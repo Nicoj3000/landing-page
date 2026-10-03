@@ -66,7 +66,8 @@ test.describe("counters", () => {
 test.describe("hero dot field", () => {
   const canvas = (page: Page) => page.locator("canvas[data-dot-field]");
 
-  test("loads lazily, draws, and reacts to the pointer", async ({ page }) => {
+  test("loads lazily, draws, and reacts to the pointer", async ({ page, isMobile }) => {
+    test.skip(isMobile, "the dot field is off on coarse pointers (see mobile-paint.spec.ts)");
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto("/");
     await expect(canvas(page)).toHaveAttribute("data-ready", "true", { timeout: 5000 });
@@ -82,7 +83,8 @@ test.describe("hero dot field", () => {
       .not.toBe(before);
   });
 
-  test("pauses while the hero is off-screen and resumes when it returns", async ({ page }) => {
+  test("pauses while the hero is off-screen and resumes when it returns", async ({ page, isMobile }) => {
+    test.skip(isMobile, "the dot field is off on coarse pointers (see mobile-paint.spec.ts)");
     await page.setViewportSize({ width: 1280, height: 700 });
     await page.goto("/");
     await expect(canvas(page)).toHaveAttribute("data-ready", "true", { timeout: 5000 });
@@ -103,7 +105,8 @@ test.describe("hero dot field", () => {
     await context.close();
   });
 
-  test("works after a View Transitions round trip", async ({ page }) => {
+  test("works after a View Transitions round trip", async ({ page, isMobile }) => {
+    test.skip(isMobile, "the dot field is off on coarse pointers (see mobile-paint.spec.ts)");
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto("/about-me");
     await page.getByRole("navigation", { name: "Navegación principal" }).getByRole("link", { name: "Inicio" }).click();
