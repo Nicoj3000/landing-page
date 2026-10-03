@@ -10,7 +10,8 @@ export default defineConfig({
   // (/about-me, not /about-me/). `format: "file"` emits about-me.html, which
   // Netlify serves at /about-me without a redirect hop.
   trailingSlash: "never",
-  build: { format: "file" },
+  // Inline the (~7 KB) stylesheet so first render needs no render-blocking request.
+  build: { format: "file", inlineStylesheets: "always" },
   i18n: {
     defaultLocale: "es",
     locales: ["es", "en"],
